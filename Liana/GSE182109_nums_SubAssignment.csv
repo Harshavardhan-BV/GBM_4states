@@ -1,0 +1,246 @@
+Patient,Assignment,SubAssignment,count
+LGG-03,Myeloid,i-microglia,1525
+LGG-03,Myeloid,h-microglia,1406
+LGG-03,Myeloid,s-mac 1,310
+LGG-03,Myeloid,a-microglia,257
+LGG-03,Myeloid,AP-microglia,175
+LGG-03,Myeloid,MDSC,71
+LGG-03,Myeloid,Proliferating,60
+LGG-03,Myeloid,DCs,49
+LGG-03,Myeloid,s-mac 2,43
+LGG-03,TCells,CD8 TCells,8
+LGG-03,TCells,NKCells,7
+LGG-03,TCells,Naiive TCells,3
+LGG-03,TCells,CD4 TCells,1
+LGG-04,Myeloid,i-microglia,1245
+LGG-04,Myeloid,h-microglia,818
+LGG-04,Myeloid,s-mac 1,302
+LGG-04,Myeloid,a-microglia,89
+LGG-04,TCells,CD8 TCells,85
+LGG-04,Myeloid,MDSC,76
+LGG-04,Myeloid,AP-microglia,72
+LGG-04,Myeloid,Proliferating,32
+LGG-04,Myeloid,s-mac 2,31
+LGG-04,TCells,Naiive TCells,17
+LGG-04,Myeloid,DCs,16
+LGG-04,TCells,NKCells,10
+LGG-04,TCells,Tregs,9
+LGG-04,TCells,CD4 TCells,7
+ndGBM-01,Myeloid,i-microglia,1610
+ndGBM-01,Myeloid,h-microglia,1463
+ndGBM-01,Myeloid,s-mac 1,341
+ndGBM-01,Myeloid,a-microglia,250
+ndGBM-01,Myeloid,MDSC,100
+ndGBM-01,Myeloid,AP-microglia,69
+ndGBM-01,TCells,CD8 TCells,47
+ndGBM-01,Myeloid,DCs,41
+ndGBM-01,Myeloid,s-mac 2,36
+ndGBM-01,TCells,Naiive TCells,35
+ndGBM-01,Myeloid,Proliferating,28
+ndGBM-01,TCells,NKCells,20
+ndGBM-01,TCells,CD4 TCells,9
+ndGBM-01,TCells,Tregs,1
+ndGBM-02,Myeloid,i-microglia,2203
+ndGBM-02,Myeloid,s-mac 1,1975
+ndGBM-02,Myeloid,h-microglia,1067
+ndGBM-02,Myeloid,MDSC,399
+ndGBM-02,Myeloid,s-mac 2,225
+ndGBM-02,TCells,CD8 TCells,171
+ndGBM-02,Myeloid,DCs,124
+ndGBM-02,Myeloid,a-microglia,105
+ndGBM-02,TCells,Naiive TCells,101
+ndGBM-02,Myeloid,AP-microglia,99
+ndGBM-02,TCells,NKCells,49
+ndGBM-02,TCells,Tregs,49
+ndGBM-02,TCells,CD4 TCells,25
+ndGBM-02,Myeloid,Proliferating,24
+ndGBM-03,Myeloid,i-microglia,1575
+ndGBM-03,Myeloid,h-microglia,841
+ndGBM-03,Myeloid,AP-microglia,840
+ndGBM-03,Myeloid,s-mac 1,489
+ndGBM-03,TCells,CD8 TCells,391
+ndGBM-03,TCells,Naiive TCells,202
+ndGBM-03,Myeloid,a-microglia,170
+ndGBM-03,Myeloid,MDSC,117
+ndGBM-03,Myeloid,Proliferating,57
+ndGBM-03,Myeloid,DCs,53
+ndGBM-03,TCells,CD4 TCells,47
+ndGBM-03,TCells,NKCells,45
+ndGBM-03,Myeloid,s-mac 2,38
+ndGBM-03,TCells,Tregs,36
+ndGBM-04,Myeloid,i-microglia,720
+ndGBM-04,Myeloid,s-mac 1,632
+ndGBM-04,Myeloid,h-microglia,557
+ndGBM-04,Myeloid,MDSC,87
+ndGBM-04,Myeloid,DCs,55
+ndGBM-04,TCells,CD8 TCells,46
+ndGBM-04,Myeloid,AP-microglia,40
+ndGBM-04,Myeloid,a-microglia,33
+ndGBM-04,Myeloid,Proliferating,29
+ndGBM-04,Myeloid,s-mac 2,28
+ndGBM-04,TCells,NKCells,14
+ndGBM-04,TCells,Naiive TCells,7
+ndGBM-04,TCells,CD4 TCells,5
+ndGBM-04,TCells,Tregs,5
+ndGBM-05,Myeloid,i-microglia,849
+ndGBM-05,Myeloid,h-microglia,601
+ndGBM-05,Myeloid,s-mac 1,281
+ndGBM-05,Myeloid,MDSC,97
+ndGBM-05,TCells,CD8 TCells,90
+ndGBM-05,Myeloid,AP-microglia,88
+ndGBM-05,TCells,NKCells,52
+ndGBM-05,Myeloid,Proliferating,49
+ndGBM-05,Myeloid,a-microglia,49
+ndGBM-05,TCells,Naiive TCells,37
+ndGBM-05,Myeloid,DCs,36
+ndGBM-05,Myeloid,s-mac 2,19
+ndGBM-05,TCells,CD4 TCells,17
+ndGBM-05,TCells,Tregs,7
+ndGBM-06,Myeloid,MDSC,26
+ndGBM-06,Myeloid,s-mac 1,26
+ndGBM-06,Myeloid,h-microglia,15
+ndGBM-06,Myeloid,s-mac 2,5
+ndGBM-06,TCells,CD8 TCells,2
+ndGBM-06,Myeloid,i-microglia,2
+ndGBM-06,TCells,NKCells,2
+ndGBM-06,Myeloid,a-microglia,1
+ndGBM-06,TCells,Naiive TCells,1
+ndGBM-06,TCells,Tregs,1
+ndGBM-07,Myeloid,s-mac 1,1324
+ndGBM-07,Myeloid,i-microglia,1235
+ndGBM-07,TCells,CD8 TCells,1023
+ndGBM-07,Myeloid,h-microglia,837
+ndGBM-07,TCells,Naiive TCells,599
+ndGBM-07,Myeloid,AP-microglia,453
+ndGBM-07,TCells,Tregs,344
+ndGBM-07,Myeloid,MDSC,323
+ndGBM-07,Myeloid,s-mac 2,292
+ndGBM-07,Myeloid,a-microglia,168
+ndGBM-07,TCells,CD4 TCells,154
+ndGBM-07,Myeloid,Proliferating,143
+ndGBM-07,Myeloid,DCs,136
+ndGBM-07,TCells,NKCells,52
+ndGBM-08,Myeloid,i-microglia,1416
+ndGBM-08,Myeloid,s-mac 1,583
+ndGBM-08,Myeloid,h-microglia,574
+ndGBM-08,Myeloid,MDSC,395
+ndGBM-08,Myeloid,AP-microglia,348
+ndGBM-08,TCells,CD8 TCells,67
+ndGBM-08,Myeloid,a-microglia,66
+ndGBM-08,Myeloid,s-mac 2,61
+ndGBM-08,Myeloid,DCs,45
+ndGBM-08,TCells,NKCells,38
+ndGBM-08,Myeloid,Proliferating,37
+ndGBM-08,TCells,Naiive TCells,8
+ndGBM-08,TCells,CD4 TCells,7
+ndGBM-08,TCells,Tregs,6
+ndGBM-09,Myeloid,i-microglia,1159
+ndGBM-09,Myeloid,s-mac 1,631
+ndGBM-09,TCells,CD8 TCells,561
+ndGBM-09,Myeloid,h-microglia,394
+ndGBM-09,Myeloid,s-mac 2,220
+ndGBM-09,TCells,Naiive TCells,210
+ndGBM-09,TCells,NKCells,139
+ndGBM-09,Myeloid,MDSC,110
+ndGBM-09,TCells,CD4 TCells,64
+ndGBM-09,Myeloid,AP-microglia,51
+ndGBM-09,TCells,Tregs,41
+ndGBM-09,Myeloid,DCs,39
+ndGBM-09,Myeloid,a-microglia,31
+ndGBM-09,Myeloid,Proliferating,6
+ndGBM-10,Myeloid,h-microglia,3145
+ndGBM-10,Myeloid,i-microglia,1692
+ndGBM-10,Myeloid,s-mac 1,742
+ndGBM-10,Myeloid,a-microglia,345
+ndGBM-10,Myeloid,DCs,202
+ndGBM-10,Myeloid,MDSC,162
+ndGBM-10,Myeloid,s-mac 2,142
+ndGBM-10,Myeloid,AP-microglia,115
+ndGBM-10,Myeloid,Proliferating,81
+ndGBM-10,TCells,CD8 TCells,37
+ndGBM-10,TCells,Naiive TCells,31
+ndGBM-10,TCells,NKCells,15
+ndGBM-11,Myeloid,i-microglia,2228
+ndGBM-11,Myeloid,h-microglia,791
+ndGBM-11,Myeloid,a-microglia,299
+ndGBM-11,Myeloid,s-mac 1,232
+ndGBM-11,Myeloid,DCs,62
+ndGBM-11,Myeloid,MDSC,62
+ndGBM-11,Myeloid,s-mac 2,42
+ndGBM-11,Myeloid,AP-microglia,40
+ndGBM-11,TCells,CD8 TCells,27
+ndGBM-11,TCells,Naiive TCells,24
+ndGBM-11,Myeloid,Proliferating,17
+ndGBM-11,TCells,NKCells,4
+ndGBM-11,TCells,Tregs,2
+ndGBM-11,TCells,CD4 TCells,1
+rGBM-01,Myeloid,s-mac 1,5067
+rGBM-01,Myeloid,i-microglia,3675
+rGBM-01,Myeloid,MDSC,3286
+rGBM-01,Myeloid,h-microglia,2856
+rGBM-01,Myeloid,s-mac 2,1757
+rGBM-01,Myeloid,AP-microglia,655
+rGBM-01,Myeloid,Proliferating,438
+rGBM-01,Myeloid,a-microglia,376
+rGBM-01,TCells,CD8 TCells,201
+rGBM-01,Myeloid,DCs,177
+rGBM-01,TCells,NKCells,110
+rGBM-01,TCells,Naiive TCells,78
+rGBM-01,TCells,Tregs,51
+rGBM-01,TCells,CD4 TCells,15
+rGBM-02,TCells,CD8 TCells,5044
+rGBM-02,Myeloid,s-mac 2,2688
+rGBM-02,TCells,Tregs,2017
+rGBM-02,TCells,Naiive TCells,1981
+rGBM-02,Myeloid,s-mac 1,1352
+rGBM-02,TCells,CD4 TCells,1312
+rGBM-02,Myeloid,MDSC,1119
+rGBM-02,Myeloid,i-microglia,1087
+rGBM-02,Myeloid,DCs,513
+rGBM-02,Myeloid,h-microglia,461
+rGBM-02,TCells,NKCells,329
+rGBM-02,Myeloid,a-microglia,60
+rGBM-02,Myeloid,AP-microglia,48
+rGBM-02,Myeloid,Proliferating,14
+rGBM-03,Myeloid,i-microglia,984
+rGBM-03,Myeloid,h-microglia,750
+rGBM-03,Myeloid,MDSC,288
+rGBM-03,Myeloid,s-mac 1,263
+rGBM-03,TCells,CD8 TCells,167
+rGBM-03,TCells,NKCells,112
+rGBM-03,Myeloid,s-mac 2,81
+rGBM-03,TCells,Naiive TCells,66
+rGBM-03,Myeloid,a-microglia,39
+rGBM-03,Myeloid,AP-microglia,23
+rGBM-03,Myeloid,DCs,15
+rGBM-03,TCells,CD4 TCells,11
+rGBM-03,TCells,Tregs,11
+rGBM-03,Myeloid,Proliferating,7
+rGBM-04,Myeloid,s-mac 1,1661
+rGBM-04,Myeloid,i-microglia,1625
+rGBM-04,Myeloid,h-microglia,1162
+rGBM-04,TCells,CD8 TCells,710
+rGBM-04,Myeloid,s-mac 2,201
+rGBM-04,Myeloid,a-microglia,169
+rGBM-04,TCells,Naiive TCells,163
+rGBM-04,Myeloid,MDSC,147
+rGBM-04,Myeloid,AP-microglia,88
+rGBM-04,TCells,CD4 TCells,79
+rGBM-04,Myeloid,DCs,75
+rGBM-04,Myeloid,Proliferating,40
+rGBM-04,TCells,NKCells,35
+rGBM-04,TCells,Tregs,18
+rGBM-05,Myeloid,s-mac 1,1102
+rGBM-05,Myeloid,h-microglia,1026
+rGBM-05,Myeloid,i-microglia,460
+rGBM-05,TCells,CD8 TCells,455
+rGBM-05,Myeloid,MDSC,341
+rGBM-05,TCells,Naiive TCells,240
+rGBM-05,Myeloid,s-mac 2,233
+rGBM-05,Myeloid,AP-microglia,99
+rGBM-05,Myeloid,Proliferating,90
+rGBM-05,Myeloid,a-microglia,87
+rGBM-05,Myeloid,DCs,77
+rGBM-05,TCells,CD4 TCells,75
+rGBM-05,TCells,Tregs,53
+rGBM-05,TCells,NKCells,35
