@@ -1,1 +1,2 @@
-4states/Data/CCLE/OmicsExpressionProteinCodingGenesTPMLogp1.csv
+4states/Data/*
+4states/Data_generated/*
