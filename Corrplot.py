@@ -35,8 +35,8 @@ def corr_plot(GSE, GSM):
     plt.close()
     plt.clf()
 # %%
-GSE = "GSE131928"
-GSMs = ["GSM3828672","GSM3828673"]
+GSE = "GSE168004"
+GSMs = ["OSM_celllines", "mgg23", "mgg75"]
 #%%
 for GSM in GSMs:
     corr_plot(GSE, GSM)

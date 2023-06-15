@@ -28,10 +28,10 @@ run_AUCell <- function(GSE, GSM){
 }
 
 # GSE ID
-GSE = "GSE131928"
+GSE = "GSE168004"
 
 # GSM file list
-GSMs = c("GSM3828672", "GSM3828673")
+GSMs = c("OSM_celllines", "mgg23", "mgg75")
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
