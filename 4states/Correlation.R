@@ -17,7 +17,14 @@ corr_df = function(GSE, GSM){
     fwrite(corrdf, paste0("./Output/",GSE,"/",GSM,"_correlation.tsv"), sep='\t', col.names=TRUE, row.names=TRUE)
 }
 
-GSE = "GSE131928"
+# GSE ID
+GSE = "GSE168004"
 
-corr_df(GSE, "GSM3828672")
-corr_df(GSE, "GSM3828673")
+# GSM file list
+GSMs = c("OSM_celllines", "mgg23", "mgg75")
+
+# Iterate over GSM samples and generate rds
+for (i in 1:length(GSMs)){
+    corr_df(GSE, GSMs[i])
+}
+

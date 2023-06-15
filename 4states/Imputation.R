@@ -10,5 +10,14 @@ impute <- function(Sample) {
     mcsaveRDS(t(count_matrix$result), paste0("./Data_generated/",Sample,"_imputed.rds"), mc.cores = 4)
 }
 
-impute("GSE131928/GSM3828672")
-impute("GSE131928/GSM3828673")
+# GSE ID
+GSE = "GSE168004"
+
+# GSM file list
+GSMs = c("OSM_celllines", "mgg23", "mgg75")
+
+# Iterate over GSM samples and generate rds
+for (i in 1:length(GSMs)){
+    impute(paste0(GSE,'/',GSMs[i]))
+}
+
