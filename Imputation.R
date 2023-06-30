@@ -14,10 +14,10 @@ impute <- function(GSE,GSM) {
 GSE = "GSE168004"
 
 # GSM file list
-GSMs = list.files('Data_generated/GSE131928/Counts/','*_counts.rds') %>% gsub('_counts.rds','',.)
+GSMs = list.files(paste0('./Data_generated/',GSE,'/Counts/'),'*_counts.rds') %>% gsub('_counts.rds','',.)
 
 # Create directory for output
-dir.create(paste0("Data_generated/", GSE, "/Imputed"), showWarnings = F, recursive = T)
+dir.create(paste0("./Data_generated/", GSE, "/Imputed"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
