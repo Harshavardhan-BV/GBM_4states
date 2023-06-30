@@ -30,7 +30,7 @@ GSE = "GSE168004"
 GSMs = list.files(paste0('./Data_generated/',GSE,'/Imputed/'),'*_imputed.rds') %>% gsub('_imputed.rds','',.)
 
 # Create directory for output
-dir.create(paste0("Output/", GSE, "/Correlation"), showWarnings = F, recursive = T)
+dir.create(paste0("./Output/", GSE, "/Correlation"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
