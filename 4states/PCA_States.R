@@ -19,7 +19,7 @@ gbm_pca = function(GSE, GSM){
     pca = prcomp(t(counts), center = T, scale. = T)
     # Get the loadings and explained variance of the first 2 PCs
     loadings = data.frame(pca$rotation[,1:2])
-    exp_var = data.frame(pca$sdev[1:2]^2 / sum(pca$sdev^2))
+    exp_var = data.frame(pca$sdev^2 / sum(pca$sdev^2))
     # Save the loadings as a tsv
     fwrite(exp_var, paste0("./Output/", GSE,'/PCA/',GSM,'_expvar.tsv'), sep='\t', col.names=FALSE)
     fwrite(loadings, paste0("./Output/", GSE,'/PCA/',GSM,'_loadings.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
