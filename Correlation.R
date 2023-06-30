@@ -4,7 +4,9 @@ library(data.table)
 library(readxl)
 
 corr_df = function(GSE, GSM){
-    df = mcreadRDS(paste0("./Data_generated/",GSE,"/",GSM,"_imputed.rds"), mc.cores=4)
+    # Read the imputed matrix
+    df = mcreadRDS(paste0("./Data_generated/Imputed/",GSE,"/",GSM,"_imputed.rds"), mc.cores=4)
+    # Get the signature genes
     gbmgenes = read_excel("./Signatures/1-s2.0-S0092867419306877-mmc2.xlsx",skip = 4)
     gbmgenes = gbmgenes[,0:6]
     # add values in all columns of gbmgenes to a list
@@ -15,15 +17,20 @@ corr_df = function(GSE, GSM){
     df = df[genes,]
     # Remove rows with 0 sd
     df = df[!apply(df,1,sd)==0,]
+    # Get the correlation
     corrdf = data.frame(cor(t(df),method="spearman"))
-    fwrite(corrdf, paste0("./Output/",GSE,"/",GSM,"_correlation.tsv"), sep='\t', col.names=TRUE, row.names=TRUE)
+    # Write the output
+    fwrite(corrdf, paste0("./Output/",GSE,"/Correlation/",GSM,"_correlation.tsv"), sep='\t', col.names=TRUE, row.names=TRUE)
 }
 
 # GSE ID
 GSE = "GSE168004"
 
 # GSM file list
-GSMs = c("OSM_celllines", "mgg23", "mgg75")
+GSMs = list.files('Data_generated/GSE131928/Imputed/','*_imputed.rds') %>% gsub('_imputed.rds','',.)
+
+# Create directory for output
+dir.create(paste0("Output/", GSE, "/Correlation"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
