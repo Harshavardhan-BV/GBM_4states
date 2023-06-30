@@ -5,7 +5,7 @@ library(readxl)
 
 corr_df = function(GSE, GSM){
     # Read the imputed matrix
-    df = mcreadRDS(paste0("./Data_generated/Imputed/",GSE,"/",GSM,"_imputed.rds"), mc.cores=4)
+    df = mcreadRDS(paste0("./Data_generated/",GSE,"/Imputed/",GSM,"_imputed.rds"), mc.cores=4)
     # Get the signature genes
     gbmgenes = read_excel("./Signatures/1-s2.0-S0092867419306877-mmc2.xlsx",skip = 4)
     gbmgenes = gbmgenes[,0:6]
@@ -27,7 +27,7 @@ corr_df = function(GSE, GSM){
 GSE = "GSE168004"
 
 # GSM file list
-GSMs = list.files('Data_generated/GSE131928/Imputed/','*_imputed.rds') %>% gsub('_imputed.rds','',.)
+GSMs = list.files(paste0('./Data_generated/',GSE,'/Imputed/'),'*_imputed.rds') %>% gsub('_imputed.rds','',.)
 
 # Create directory for output
 dir.create(paste0("Output/", GSE, "/Correlation"), showWarnings = F, recursive = T)
