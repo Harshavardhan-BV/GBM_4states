@@ -51,3 +51,10 @@ Rscript PCA_Full.R
 Rscript PCA_AUCell_corr.R
 python plot_PCA_AUCell_corr.py
 ```
+
+### 7. PCA of expression correlation
+Get the PCA loadings and explained variance of the correlation matrix of the GBM signature expression (why though idk)
+```bash
+Rscript Forbidden_PCA.R
+Rscript plot_Forbidden_PCA.py
+```
