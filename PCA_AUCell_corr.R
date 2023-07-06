@@ -3,10 +3,14 @@ library(trqwe)
 library(dplyr)
 library(data.table)
 
-top_load_corr = function(GSE, GSM, metdat, IdCol){
+top_load_corr = function(GSE, GSM, sc){
     print(GSM)
-    # Read the counts and subset for glioma cells
-    counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Imputed/", GSM, "_imputed.rds"), mc.cores=4)
+    # Read the counts
+    if (sc){
+        counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Imputed/", GSM, "_imputed.rds"), mc.cores=4)
+    }else{
+        counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
+    }
     if (!all(dim(counts)) || is.null(dim(counts))){return()}
     # Read the loadings
     loads = read.delim(paste0("./Output/", GSE,'/PCA-full/',GSM,'_loadings.tsv'))
@@ -19,7 +23,11 @@ top_load_corr = function(GSE, GSM, metdat, IdCol){
     top50_expr = counts[top50,]
     last50_expr = counts[last50,]
     # Read the AUCell scores
-    auc = read.csv(paste0("./Output/", GSE,'/AUCell/',GSM,'-AUCell.csv'))
+    if (sc){
+        auc = read.csv(paste0("./Output/", GSE,'/AUCell/',GSM,'-AUCell.csv'))
+    }else{
+        auc = read.csv(paste0("./Output/", GSE,'/ssGSEA/',GSM,'-ssgsea.csv'))
+    }
     rownames(auc) = auc[,1]
     auc = auc[,c('MES','NPC','OPC','AC')]
     # Get the correlation of t(auc) with top50_expr and last50_expr
@@ -31,12 +39,13 @@ top_load_corr = function(GSE, GSM, metdat, IdCol){
 }
 
 # GSE ID
-GSE = "GSE168004"
+GSE = "CCLE"
+sc = FALSE
 
 # Get all the files in folder
 GSMs = list.files(paste0("./Output/", GSE, "/PCA-full/"), "*_loadings.tsv")  %>% gsub('_loadings.tsv','',.)
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
-    top_load_corr(GSE, GSMs[i])
+    top_load_corr(GSE, GSMs[i], sc)
 }

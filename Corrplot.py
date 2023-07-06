@@ -1,4 +1,5 @@
 import os
+import glob
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -87,7 +88,8 @@ def corr_consistency(GSE, GSM):
 # GSE ID     
 GSE = "GSE168004"
 # List of GSM IDs
-GSMs = [x.replace("_correlation.tsv",'') for x in os.listdir('Output/'+GSE+'/Correlation/')]
+files = glob.glob('Output/'+GSE+'/Correlation/*_correlation.tsv')
+GSMs = [os.path.basename(x).replace(f'_correlation.tsv','') for x in files]
 # Make directory for figures
 os.makedirs('figures/'+GSE+'/Correlation/', exist_ok=True)
 
