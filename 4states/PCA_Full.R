@@ -3,10 +3,14 @@ library(trqwe)
 library(dplyr)
 library(data.table)
 
-gbm_pca = function(GSE, GSM){
+gbm_pca = function(GSE, GSM, sc){
     print(GSM)
     # Read the counts
-    counts = mcreadRDS(paste0("./Data_generated/Imputed/", GSE, "/", GSM, "_imputed.rds"), mc.cores=4)
+    if (sc){
+        counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Imputed/", GSM, "_imputed.rds"), mc.cores=4)
+    }else{
+        counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
+    }
     if (!all(dim(counts)) || is.null(dim(counts))){return()}
     counts = counts[!apply(counts,1,sd)==0,]
     # Run PCA
@@ -21,14 +25,19 @@ gbm_pca = function(GSE, GSM){
 
 # GSE ID
 GSE = "GSE168004"
+sc = TRUE
 
 # GSM file list
-GSMs = list.files(paste0("./Data_generated/", GSE, "/Imputed/"), "*_imputed.rds")  %>% gsub('_imputed.rds','',.)
+if (sc){
+    GSMs = list.files(paste0("./Data_generated/", GSE, "/Imputed/"), "*_imputed.rds")  %>% gsub('_imputed.rds','',.)
+}else{
+    GSMs = list.files(paste0("./Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
+}
 
 # Create directory for output
 dir.create(paste0("./Output/", GSE, "/PCA-full"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
-    gbm_pca(GSE, GSMs[i])
+    gbm_pca(GSE, GSMs[i],sc)
 }

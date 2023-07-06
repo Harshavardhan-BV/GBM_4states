@@ -19,7 +19,7 @@ Convert tsv file to rds for easier loading. Currently not an automated pipeline
 ```bash
 Rscript counts_to_rds-GSEID.R
 ```
-### 2. Imputation
+### 2. Imputation (Only for single cell data)
 Generate an imputed counts matrix using MAGIC.
 ```bash
 Rscript Imputation.R
@@ -30,11 +30,17 @@ Get the correlation matrix of gene expression of the signatures
 Rscript Correlation.R
 python Corrplot.py
 ```
-### 4. AUCell scoring
+### 4. AUCell scoring (for single cell data)
 Get the Gene enrichment score for each cell using AUCell
 ```bash
 Rscript AUCell.R
 python AUCell_plot.py
+```
+
+### 4. ssGSEA scoring (for bulk data)
+Get the Gene enrichment score for each cell using ssGSEA
+```bash
+python ssGSEA.py
 ```
 
 ### 5. PCA of GBM signature expression
@@ -44,8 +50,8 @@ Rscript PCA_States.R
 python plot_PCA_states.py
 ```
 
-### 6. PCA correlation with AUCell scores
-Get the PCA loadings and explained variance of the full expression and correlate the top/last loadings with AUCell scores
+### 6. PCA correlation with AUCell/ssGSEA scores
+Get the PCA loadings and explained variance of the full expression and correlate the top/last loadings with AUCell/ssGSEA scores
 ```bash
 Rscript PCA_Full.R
 Rscript PCA_AUCell_corr.R

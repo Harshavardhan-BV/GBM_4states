@@ -7,15 +7,15 @@ plt.rcParams["svg.hashsalt"]=''
 
 def corr_plot_AUCell(GSE,GSM):
     print(GSM)
-    df = pd.read_csv('Output/'+GSE+'/'+GSM+'-AUCell.csv', index_col=0)
+    df = pd.read_csv('Output/'+GSE+'/AUCell/'+GSM+'-AUCell.csv', index_col=0)
     df = df.loc[:, (df != 0).any(axis=0)]
     fourdf = df[['NPC','AC','OPC','MES']]
-    sns.clustermap(df.corr(), cmap='coolwarm',vmax=1, vmin=-1)
-    plt.savefig('figures/'+GSE+'/AUCell_'+GSM+'_corrplot_all.svg')
+    sns.clustermap(df.corr(method='spearman'), cmap='coolwarm',vmax=1, vmin=-1)
+    plt.savefig('figures/'+GSE+'/AUCell/AUCell_'+GSM+'_corrplot_all.svg')
     plt.clf()
     plt.close()
-    sns.clustermap(fourdf.corr(), cmap='coolwarm',vmax=1, vmin=-1)
-    plt.savefig('figures/'+GSE+'/AUCell_'+GSM+'_corrplot_4D.svg')
+    sns.clustermap(fourdf.corr(method='spearman'), cmap='coolwarm',vmax=1, vmin=-1)
+    plt.savefig('figures/'+GSE+'/AUCell/AUCell_'+GSM+'_corrplot_4D.svg')
     plt.clf()
     plt.close()
      
