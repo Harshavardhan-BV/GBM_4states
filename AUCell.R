@@ -5,10 +5,11 @@ library(data.table)
 library(dplyr)
 
 run_AUCell <- function(GSE, GSM){
+    print(GSM)
     # Read the counts
     matrix_AUCell = mcreadRDS(paste0("./Data_generated/",GSE,"/Imputed/",GSM,"_imputed.rds"), mc.cores=4)
     # Get the gene sets
-    geneSets = getGmt('./Signatures/GBM_6states.gmt')
+    geneSets = getGmt('./Signatures/GBM_states.gmt')
     # Subset only the expressed genes
     geneSets <- subsetGeneSets(geneSets, rownames(matrix_AUCell)) 
     # Build cell rankings
@@ -28,7 +29,9 @@ run_AUCell <- function(GSE, GSM){
 }
 
 # GSE ID
-GSE = "GSE168004"
+# GSE = "GSE168004"
+# GSE = "GSE131928"
+GSE = "GSE182109"
 
 # GSM file list
 GSMs = list.files(paste0('./Data_generated/',GSE,'/Imputed/'),'*_imputed.rds') %>% gsub('_imputed.rds','',.)
