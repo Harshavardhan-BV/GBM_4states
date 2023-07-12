@@ -24,11 +24,11 @@ def corr_plot(corr_df, gbmgenes, GSE, GSM, suff):
     row_colors = row_colors.fillna('white')
     # plot the clustermap of the correlation matrix
     sns.clustermap(data=corr_df, cmap='coolwarm',vmax=1, vmin=-1, row_colors=row_colors, col_colors=row_colors)
-    # add legend for row_colours given by lut
     # create a list of patches for the legend
     patches = [
         mpatches.Patch(color=color, label=column) for column, color in lut.items()
     ]
+    # add legend for row_colours given by lut
     plt.legend(handles = patches , bbox_to_anchor=(1.7, 1), loc='upper left')
     # save the figure
     plt.savefig('./figures/'+GSE+'/Correlation/'+GSM+'_Corrplot_'+suff+'.png',dpi=600)

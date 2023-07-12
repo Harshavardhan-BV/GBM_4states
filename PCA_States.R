@@ -3,8 +3,8 @@ library(trqwe)
 library(dplyr)
 library(data.table)
 
-gbm_pca = function(GSE, GSM, sc){
-    print(GSM)
+gbm_pca = function(GSE, GSM, suff, sc){
+    print(paste(GSM, suff))
     # Read the counts
     if (sc){
         counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Imputed/", GSM, "_imputed.rds"), mc.cores=4)
@@ -12,9 +12,8 @@ gbm_pca = function(GSE, GSM, sc){
         counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
     }
     # Read the signatures
-    sigs = read.delim("./Signatures/GBM_states.gmt", header = F)
-    rownames(sigs) = sigs[,1]
-    sigs = sigs[,c(-1,-2)]
+    sigs = read.csv("./Signatures/GBM_signatures.csv")
+    sigs = sigs[,grep(suff, colnames(sigs))]
     genes = unique(unlist(sigs, use.names = F))
     genes = genes[genes %in% rownames(counts)]
     # Subset only the signature genes
@@ -27,13 +26,18 @@ gbm_pca = function(GSE, GSM, sc){
     loadings = data.frame(pca$rotation[,1:2])
     exp_var = data.frame(pca$sdev^2 / sum(pca$sdev^2))
     # Save the loadings as a tsv
-    fwrite(exp_var, paste0("./Output/", GSE,'/PCA/',GSM,'_expvar.tsv'), sep='\t', col.names=FALSE)
-    fwrite(loadings, paste0("./Output/", GSE,'/PCA/',GSM,'_loadings.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
+    fwrite(exp_var, paste0("./Output/", GSE,'/PCA/',GSM,'_expvar_',suff,'.tsv'), sep='\t', col.names=FALSE)
+    fwrite(loadings, paste0("./Output/", GSE,'/PCA/',GSM,'_loadings_',suff,'.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
 }
 
 # GSE ID
 GSE = "GSE168004"
+# GSE = "GSE131928"
+# GSE = "GSE182109"
 sc = TRUE
+
+# GSE = "CCLE"
+# sc = FALSE
 
 # GSM file list
 if (sc){
@@ -46,5 +50,6 @@ dir.create(paste0("./Output/", GSE, "/PCA"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
-    gbm_pca(GSE, GSMs[i], sc)
+    gbm_pca(GSE, GSMs[i], 'Nef',sc)
+    gbm_pca(GSE, GSMs[i], 'Ver',sc)
 }
