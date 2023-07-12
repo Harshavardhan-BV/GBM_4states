@@ -12,7 +12,6 @@ Analysis of transcriptomic data to understand the relationship of the 4 distinct
 - Python 
     - [requirements.txt](./requirements.txt)
 
-
 ## Usage
 ### 1. Data processing
 Convert tsv file to rds for easier loading. Currently not an automated pipeline
@@ -56,11 +55,4 @@ Get the PCA loadings and explained variance of the full expression and correlate
 Rscript PCA_Full.R
 Rscript PCA_AUCell_corr.R
 python plot_PCA_AUCell_corr.py
-```
-
-### 7. PCA of expression correlation
-Get the PCA loadings and explained variance of the correlation matrix of the GBM signature expression (why though idk)
-```bash
-Rscript Forbidden_PCA.R
-Rscript plot_Forbidden_PCA.py
 ```
