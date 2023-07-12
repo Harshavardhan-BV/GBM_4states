@@ -3,6 +3,17 @@ library(trqwe)
 library(dplyr)
 library(data.table)
 
+load_corr_specific = function(top50_expr, last50_expr, auc, suff, GSE, GSM){
+    auc = auc[,grep(suff, colnames(auc))]
+    # Get the correlation of t(auc) with top50_expr and last50_expr
+    top50_corr =  data.frame(cor(t(top50_expr), auc, method = 'spearman'))
+    last50_corr =  data.frame(cor(t(last50_expr), auc, method = 'spearman'))
+    # Write the correlation to file
+    fwrite(top50_corr, paste0("./Output/", GSE,'/PCA-full/',GSM,'_top50-corr_',suff,'.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
+    fwrite(last50_corr, paste0("./Output/", GSE,'/PCA-full/',GSM,'_last50-corr_',suff,'.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
+
+}
+
 top_load_corr = function(GSE, GSM, sc){
     print(GSM)
     # Read the counts
@@ -29,16 +40,17 @@ top_load_corr = function(GSE, GSM, sc){
         auc = read.csv(paste0("./Output/", GSE,'/ssGSEA/',GSM,'-ssgsea.csv'))
     }
     rownames(auc) = auc[,1]
-    auc = auc[,c('MES','NPC','OPC','AC')]
-    # Get the correlation of t(auc) with top50_expr and last50_expr
-    top50_corr =  data.frame(cor(t(top50_expr), auc, method = 'spearman'))
-    last50_corr =  data.frame(cor(t(last50_expr), auc, method = 'spearman'))
-    # Write the correlation to file
-    fwrite(top50_corr, paste0("./Output/", GSE,'/PCA-full/',GSM,'_top50-corr.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
-    fwrite(last50_corr, paste0("./Output/", GSE,'/PCA-full/',GSM,'_last50-corr.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
+    load_corr_specific(top50_expr, last50_expr, auc, 'Nef', GSE, GSM)
+    load_corr_specific(top50_expr, last50_expr, auc, 'Ver', GSE, GSM)
+    
 }
 
 # GSE ID
+# GSE = "GSE168004"
+# GSE = "GSE131928"
+# GSE = "GSE182109"
+# sc = TRUE
+
 GSE = "CCLE"
 sc = FALSE
 
