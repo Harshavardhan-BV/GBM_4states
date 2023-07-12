@@ -12,8 +12,7 @@ corr_df = function(GSE, GSM, sc){
         df = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
     }
     # Get the signature genes
-    gbmgenes = read_excel("./Signatures/1-s2.0-S0092867419306877-mmc2.xlsx",skip = 4)
-    gbmgenes = gbmgenes[,0:6]
+    gbmgenes = read.csv("./Signatures/GBM_signatures.csv")
     # add values in all columns of gbmgenes to a list
     genes = unlist(gbmgenes, use.names = FALSE)
     # remove NA values and those genes not in df
@@ -30,7 +29,12 @@ corr_df = function(GSE, GSM, sc){
 
 # GSE ID
 GSE = "GSE168004"
+# GSE = "GSE131928"
+# GSE = "GSE182109"
 sc = TRUE
+
+# GSE = "CCLE"
+# sc = FALSE
 
 # GSM file list
 if (sc){
