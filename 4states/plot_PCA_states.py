@@ -39,6 +39,7 @@ GSE = "GSE168004"
 # GSE = "GSE131928"
 # GSE = "GSE182109"
 # GSE = "CCLE"
+# GSE = "TCGA"
 # List files in Output
 files = os.listdir('Output/'+GSE+'/PCA')
 # Get the GSMs

@@ -43,6 +43,7 @@ def run_ssgsea(GSE, GSM):
 
 # GSE ID
 GSE = 'CCLE'
+# GSE = 'TCGA'
 # List files in Output
 files = glob.glob('Data_generated/'+GSE+'/Counts/*_counts.tsv')
 # Get the GSMs

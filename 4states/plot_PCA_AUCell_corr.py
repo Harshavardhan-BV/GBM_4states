@@ -31,6 +31,7 @@ GSE = "GSE168004"
 # GSE = "GSE131928"
 # GSE = "GSE182109"
 # GSE = "CCLE"
+# GSE = "TCGA"
 
 # Make directory for figures
 os.makedirs('figures/'+GSE+'/PCA-full/', exist_ok=True)

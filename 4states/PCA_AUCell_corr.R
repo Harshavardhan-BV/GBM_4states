@@ -52,6 +52,7 @@ top_load_corr = function(GSE, GSM, sc){
 # sc = TRUE
 
 GSE = "CCLE"
+# GSE = "TCGA"
 sc = FALSE
 
 # Get all the files in folder

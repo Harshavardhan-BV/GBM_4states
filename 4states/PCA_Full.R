@@ -25,7 +25,13 @@ gbm_pca = function(GSE, GSM, sc){
 
 # GSE ID
 GSE = "GSE168004"
+# GSE = "GSE131928"
+# GSE = "GSE182109"
 sc = TRUE
+
+# GSE = "CCLE"
+# GSE = "TCGA"
+# sc = FALSE
 
 # GSM file list
 if (sc){
