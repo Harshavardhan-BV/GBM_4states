@@ -1,13 +1,28 @@
 import os
 import glob
+import numpy as np
 import gseapy as gp
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from multiprocessing import cpu_count
+from scipy.stats import spearmanr
+plt.rcParams["svg.hashsalt"]=''
+
+def spearman_pval(x,y):
+    return spearmanr(x,y)[1]
 
 def plot_seprate(df, suff, GSE, GSM):
-    sns.clustermap(df.corr(method='spearman'), cmap='coolwarm',vmax=1, vmin=-1)
+    # Find the correlation of the matrix
+    corr_df = df.corr(method='spearman')
+    # Get the pvalues
+    p_values = df.corr(method=spearman_pval)
+    # change diagonal to 0. df.corr defaults diagonal to 1 for some reason
+    np.fill_diagonal(p_values.values, 0)
+    # Convert it to * format
+    p_values = p_values.applymap(lambda x: '*' if x < 0.05 else '')
+    # Plot the clustermap with the text being pvalues
+    sns.clustermap(corr_df, cmap='coolwarm', vmax=1, vmin=-1, annot=p_values, fmt='', annot_kws={"size": 20})
     plt.savefig('figures/'+GSE+'/ssGSEA/ssGSEA_'+GSM+'_corrplot_'+suff+'.svg')
     plt.clf()
     plt.close()
