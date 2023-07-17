@@ -35,9 +35,38 @@ def corr_plot(corr_df, gbmgenes, GSE, GSM, suff):
     plt.close()
     plt.clf()
 
+def corr_pair_plot(corr_df1, gbmgenes1, GSE, GSM):
+    combinats = list(it.combinations(gbmgenes1.columns,2))
+    for combi in combinats:
+        suff = '-'.join(combi) 
+        # Select the genes of geneset combination
+        gbmgenes = gbmgenes1.loc[:,combi]
+        # Select only the genes present in correlation matrix
+        genes = gbmgenes.melt().dropna()
+        genes = genes[genes.value.isin(corr_df1.index) & genes.value.isin(corr_df1.columns)]
+        # select the columns and rows of df in gbmgenes
+        corr_df = corr_df1.loc[genes.value,genes.value]
+        # make a colour map for the genes
+        lut = { col: f'tab:{clr}' for col, clr in zip(gbmgenes.columns,['red','blue'])}
+        # map the colours to the genes
+        row_colors = corr_df.index.map(genes.drop_duplicates(subset=['value']).set_index('value')['variable'])
+        row_colors = row_colors.map(lut)
+        row_colors = row_colors.fillna('white')
+        # plot the heatmap of the correlation matrix
+        g = sns.clustermap(data=corr_df, cmap='coolwarm',vmax=1, vmin=-1, row_colors=row_colors, col_colors=row_colors, row_cluster=False, col_cluster=False, dendrogram_ratio=0.11)
+        # create a list of patches for the legend
+        patches = [
+            mpatches.Patch(color=color, label=column) for column, color in lut.items()
+        ]
+        # add legend for row_colours given by lut
+        plt.legend(handles = patches , bbox_to_anchor=(1.7, 1), loc='upper left')
+        g.fig.suptitle(suff, fontsize=30) 
+        # save the figure
+        plt.savefig('./figures/'+GSE+'/Correlation/'+GSM+'_Corrplot_'+suff+'.png',dpi=600)
+        plt.close()
+        plt.clf()
+
 def corr_consistency(corr_df, gbmgenes, GSE, GSM, suff):
-    # Select only the columns that start with suff
-    gbmgenes = gbmgenes.filter(like=suff)
     combinats = list(it.combinations(gbmgenes.columns,2))
     cons = np.empty(len(combinats))
     for i in range(len(combinats)):
@@ -78,13 +107,18 @@ def wrapper(GSE,GSM):
     # Read the GBM genes
     gbmgenes = pd.read_csv("./Signatures/GBM_signatures.csv") 
     for suff in ['Nef','Ver']:
-        corr_plot(corr_df,gbmgenes,GSE,GSM,suff)
-        corr_consistency(corr_df,gbmgenes,GSE,GSM,suff)
+        gbmgenes1 = gbmgenes.filter(like=suff)
+        corr_plot(corr_df,gbmgenes1,GSE,GSM,suff)
+        corr_consistency(corr_df,gbmgenes1,GSE,GSM,suff)
+        corr_pair_plot(corr_df,gbmgenes1,GSE,GSM)
+    gbmgenes1 = gbmgenes.loc[:,['NefNPC','NefMES', 'VerPN', 'VerMES']]
+    corr_pair_plot(corr_df,gbmgenes1,GSE,GSM)
+    corr_consistency(corr_df,gbmgenes1,GSE,GSM,'Mix')
 
 # GSE ID     
-GSE = "GSE168004"
+# GSE = "GSE168004"
 # GSE = "GSE131928"
-# GSE = "GSE182109"
+GSE = "GSE182109"
 # GSE = "CCLE"
 # GSE = "TCGA"
 
