@@ -3,6 +3,17 @@ library(trqwe)
 library(dplyr)
 library(data.table)
 
+get_sig = function(sigs,suff){
+    # If suff doesnt contain - then return the genes in the signature set
+    if (!grepl('-', suff)){
+        sigs = sigs[,grep(suff, colnames(sigs))]
+    } else {
+    # Split by - and return the genes in each signature
+        sigs = lapply(strsplit(suff,'-')[[1]], function(x) sigs[,grep(x, colnames(sigs))])
+    }
+    return(sigs)
+}
+
 gbm_pca = function(GSE, GSM, suff, sc){
     print(paste(GSM, suff))
     # Read the counts
@@ -13,7 +24,8 @@ gbm_pca = function(GSE, GSM, suff, sc){
     }
     # Read the signatures
     sigs = read.csv("./Signatures/GBM_signatures.csv")
-    sigs = sigs[,grep(suff, colnames(sigs))]
+    #split suff by - and get the genes in each signature
+    sigs = get_sig(sigs, suff)
     genes = unique(unlist(sigs, use.names = F))
     genes = genes[genes %in% rownames(counts)]
     # Subset only the signature genes
@@ -31,9 +43,9 @@ gbm_pca = function(GSE, GSM, suff, sc){
 }
 
 # GSE ID
-GSE = "GSE168004"
+# GSE = "GSE168004"
 # GSE = "GSE131928"
-# GSE = "GSE182109"
+GSE = "GSE182109"
 sc = TRUE
 
 # GSE = "CCLE"
@@ -53,4 +65,8 @@ dir.create(paste0("./Output/", GSE, "/PCA"), showWarnings = F, recursive = T)
 for (i in 1:length(GSMs)){
     gbm_pca(GSE, GSMs[i], 'Nef',sc)
     gbm_pca(GSE, GSMs[i], 'Ver',sc)
+    gbm_pca(GSE, GSMs[i], 'VerPN-VerMES',sc)
+    gbm_pca(GSE, GSMs[i], 'VerCL-VerNL',sc)
+    gbm_pca(GSE, GSMs[i], 'NefNPC-VerMES',sc)
+    gbm_pca(GSE, GSMs[i], 'NefOPC-NefAC',sc)
 }
