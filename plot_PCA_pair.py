@@ -27,6 +27,7 @@ def loada_barplot(GSE, GSM, gs):
     g = sns.barplot(data=load_df,x='PC1',y=load_df.index, hue='Signature', dodge=False, orient='h', order= load_df.sort_values('PC1',ascending=False).index)
     g.set(yticklabels=[], yticks=[])
     plt.xlabel('PC1\n'+str(round(var_df.values[0][0],2))+'%')
+    plt.title(suff, fontsize=20) 
     plt.tight_layout()
     plt.savefig('./figures/'+GSE+'/PCA/'+GSM+'_loadings_barplot_'+suff+'.svg')
     plt.close()
