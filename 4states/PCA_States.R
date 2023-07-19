@@ -42,15 +42,29 @@ gbm_pca = function(GSE, GSM, suff, sc){
     fwrite(loadings, paste0("./Output/", GSE,'/PCA/',GSM,'_loadings_',suff,'.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
 }
 
+gbm_pair_pca = function(GSE, GSM, suff, sc){
+    # Read the signatures
+    sigs = read.csv("./Signatures/GBM_signatures.csv")
+    sigs = sigs[,grep(suff, colnames(sigs))]
+    # Make combinations of the signatures
+    sigs = combn(colnames(sigs),2)
+    # Iterate over the combinations
+    for (i in 1:ncol(sigs)){
+        suff = sigs[,i]
+        suff = paste(suff, collapse = '-')
+        gbm_pca(GSE, GSM, suff, sc)
+    }
+}
+
 # GSE ID
 # GSE = "GSE168004"
-# GSE = "GSE131928"
-GSE = "GSE182109"
-sc = TRUE
+GSE = "GSE131928"
+# GSE = "GSE182109"
+# sc = TRUE
 
 # GSE = "CCLE"
 # GSE = "TCGA"
-# sc = FALSE
+sc = FALSE
 
 # GSM file list
 if (sc){
@@ -64,9 +78,7 @@ dir.create(paste0("./Output/", GSE, "/PCA"), showWarnings = F, recursive = T)
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
     gbm_pca(GSE, GSMs[i], 'Nef',sc)
+    gbm_pair_pca(GSE, GSMs[i], 'Nef',sc)
     gbm_pca(GSE, GSMs[i], 'Ver',sc)
-    gbm_pca(GSE, GSMs[i], 'VerPN-VerMES',sc)
-    gbm_pca(GSE, GSMs[i], 'VerCL-VerNL',sc)
-    gbm_pca(GSE, GSMs[i], 'NefNPC-VerMES',sc)
-    gbm_pca(GSE, GSMs[i], 'NefOPC-NefAC',sc)
+    gbm_pair_pca(GSE, GSMs[i], 'Ver',sc)   
 }
