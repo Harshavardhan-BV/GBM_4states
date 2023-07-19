@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/CVE-2023-32700 patched) (preloaded format=xelatex 2023.6.19)  5 JUL 2023 12:53
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/CVE-2023-32700 patched) (preloaded format=xelatex 2023.6.19)  19 JUL 2023 13:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1494,97 +1494,505 @@ Overfull \vbox (40.26942pt too high) detected at line 40
 [1
 
 ]
-File: ./figures//CCLE_ssgsea_corr_4D.pdf Graphic file (type pdf)
-<use ./figures//CCLE_ssgsea_corr_4D.pdf>
-File: ./figures//AUCell_GSM3828672_corrplot_4D.pdf Graphic file (type pdf)
-<use ./figures//AUCell_GSM3828672_corrplot_4D.pdf>
-File: ./figures//AUCell_GSM3828673_corrplot_4D.pdf Graphic file (type pdf)
-<use ./figures//AUCell_GSM3828673_corrplot_4D.pdf>
- [2
+LaTeX Font Info:    Trying to load font information for U+msa on input line 41.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 41.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [2
 
 ]
-File: ./figures//AUCell_OSM_celllines_corrplot_4D.pdf Graphic file (type pdf)
-<use ./figures//AUCell_OSM_celllines_corrplot_4D.pdf>
-File: ./figures//AUCell_mgg23_corrplot_4D.pdf Graphic file (type pdf)
-<use ./figures//AUCell_mgg23_corrplot_4D.pdf>
-File: ./figures//AUCell_mgg75_corrplot_4D.pdf Graphic file (type pdf)
-<use ./figures//AUCell_mgg75_corrplot_4D.pdf>
+File: ./figures//neftel_ninja_star.jpg Graphic file (type bmp)
+<./figures//neftel_ninja_star.jpg>
+File: ./figures//verhaak_clusters.jpg Graphic file (type bmp)
+<./figures//verhaak_clusters.jpg>
  [3
 
 ]
-File: ./figures//signature_overlap.pdf Graphic file (type pdf)
-<use ./figures//signature_overlap.pdf>
+File: ./figures//neftel_ninja_star.jpg Graphic file (type bmp)
+<./figures//neftel_ninja_star.jpg>
+File: ./figures//verhaak_clusters.jpg Graphic file (type bmp)
+<./figures//verhaak_clusters.jpg>
+ [4
 
-Overfull \vbox (6.0287pt too high) detected at line 98
- []
-
-[4
-
-]
-File: ./figures//CCLE_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//CCLE_Corrplot_coloured.pdf>
-File: ./figures//GSM3828672_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//GSM3828672_Corrplot_coloured.pdf>
-File: ./figures//GSM3828673_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//GSM3828673_Corrplot_coloured.pdf>
- [5
+] [5
 
 ]
-File: ./figures//OSM_celllines_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//OSM_celllines_Corrplot_coloured.pdf>
-File: ./figures//mgg23_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//mgg23_Corrplot_coloured.pdf>
-File: ./figures//mgg75_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//mgg75_Corrplot_coloured.pdf>
- [6
+[6
 
 ]
-File: ./figures//GSM3828672_Consistency.pdf Graphic file (type pdf)
-<use ./figures//GSM3828672_Consistency.pdf>
-File: ./figures//GSM3828673_Consistency.pdf Graphic file (type pdf)
-<use ./figures//GSM3828673_Consistency.pdf>
+
+Package fontspec Info: Font family 'FiraSansLight(1)' created for font 'Fira
+(fontspec)             Sans Light' with options
+(fontspec)             [Ligatures=TeX,ItalicFont={Fira Sans Light
+(fontspec)             Italic},BoldFont={Fira Sans},BoldItalicFont={Fira Sans
+(fontspec)             Italic},Numbers={Monospaced}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Fira Sans
+(fontspec)             Light/OT:script=latn;language=dflt;+tnum;mapping=tex-tex
+t;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"Fira Sans
+(fontspec)             Light/OT:script=latn;language=dflt;+tnum;+smcp;mapping=t
+ex-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"Fira
+(fontspec)             Sans/OT:script=latn;language=dflt;+tnum;mapping=tex-text
+;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: <->"Fira
+(fontspec)             Sans/OT:script=latn;language=dflt;+tnum;+smcp;mapping=te
+x-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"Fira Sans Light
+(fontspec)             Italic/OT:script=latn;language=dflt;+tnum;mapping=tex-te
+xt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"Fira Sans Light
+(fontspec)             Italic/OT:script=latn;language=dflt;+tnum;+smcp;mapping=
+tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Fira Sans
+(fontspec)             Italic/OT:script=latn;language=dflt;+tnum;mapping=tex-te
+xt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"Fira Sans
+(fontspec)             Italic/OT:script=latn;language=dflt;+tnum;+smcp;mapping=
+tex-text;"
+
  [7
 
-]
-File: ./figures//OSM_celllines_Consistency.pdf Graphic file (type pdf)
-<use ./figures//OSM_celllines_Consistency.pdf>
-File: ./figures//mgg23_Consistency.pdf Graphic file (type pdf)
-<use ./figures//mgg23_Consistency.pdf>
-File: ./figures//mgg75_Consistency.pdf Graphic file (type pdf)
-<use ./figures//mgg75_Consistency.pdf>
- [8
+] [8
 
 ]
-File: ./figures//GSM3828672_loadings_plot.pdf Graphic file (type pdf)
-<use ./figures//GSM3828672_loadings_plot.pdf>
-File: ./figures//GSM3828673_loadings_plot.pdf Graphic file (type pdf)
-<use ./figures//GSM3828673_loadings_plot.pdf>
- [9
+File: ./figures//ssGSEA_CCLE_corrplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//ssGSEA_CCLE_corrplot_Nef.pdf>
+File: ./figures//ssGSEA_TCGA_corrplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//ssGSEA_TCGA_corrplot_Nef.pdf>
+
+Overfull \vbox (32.06131pt too high) detected at line 104
+ []
+
+[9
 
 ]
-File: ./figures//OSM_celllines_loadings_plot.pdf Graphic file (type pdf)
-<use ./figures//OSM_celllines_loadings_plot.pdf>
-File: ./figures//mgg23_loadings_plot.pdf Graphic file (type pdf)
-<use ./figures//mgg23_loadings_plot.pdf>
-File: ./figures//mgg75_loadings_plot.pdf Graphic file (type pdf)
-<use ./figures//mgg75_loadings_plot.pdf>
- [10
+File: ./figures//AUCell_GSM3828672_corrplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//AUCell_GSM3828672_corrplot_Nef.pdf>
+File: ./figures//AUCell_mgg23_corrplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//AUCell_mgg23_corrplot_Nef.pdf>
+
+Overfull \vbox (32.06131pt too high) detected at line 124
+ []
+
+[10
 
 ]
-File: ./figures//GSM3828672_load-corr.pdf Graphic file (type pdf)
-<use ./figures//GSM3828672_load-corr.pdf>
-File: ./figures//GSM3828673_load-corr.pdf Graphic file (type pdf)
-<use ./figures//GSM3828673_load-corr.pdf>
- [11
+File: ./figures//ssGSEA_CCLE_corrplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//ssGSEA_CCLE_corrplot_Ver.pdf>
+File: ./figures//ssGSEA_TCGA_corrplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//ssGSEA_TCGA_corrplot_Ver.pdf>
+
+Overfull \vbox (32.06131pt too high) detected at line 144
+ []
+
+[11
 
 ]
-File: ./figures//OSM_celllines_load-corr.pdf Graphic file (type pdf)
-<use ./figures//OSM_celllines_load-corr.pdf>
-File: ./figures//mgg23_load-corr.pdf Graphic file (type pdf)
-<use ./figures//mgg23_load-corr.pdf>
-File: ./figures//mgg75_load-corr.pdf Graphic file (type pdf)
-<use ./figures//mgg75_load-corr.pdf>
- [12
+File: ./figures//AUCell_GSM3828672_corrplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//AUCell_GSM3828672_corrplot_Ver.pdf>
+File: ./figures//AUCell_mgg23_corrplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//AUCell_mgg23_corrplot_Ver.pdf>
+
+Overfull \vbox (32.06131pt too high) detected at line 164
+ []
+
+[12
+
+]
+File: ./figures//ssGSEA_CCLE_corrplot_2D.pdf Graphic file (type pdf)
+<use ./figures//ssGSEA_CCLE_corrplot_2D.pdf>
+File: ./figures//ssGSEA_TCGA_corrplot_2D.pdf Graphic file (type pdf)
+<use ./figures//ssGSEA_TCGA_corrplot_2D.pdf>
+
+Overfull \vbox (32.06131pt too high) detected at line 184
+ []
+
+[13
+
+]
+File: ./figures//AUCell_GSM3828672_corrplot_2D.pdf Graphic file (type pdf)
+<use ./figures//AUCell_GSM3828672_corrplot_2D.pdf>
+File: ./figures//AUCell_mgg23_corrplot_2D.pdf Graphic file (type pdf)
+<use ./figures//AUCell_mgg23_corrplot_2D.pdf>
+
+Overfull \vbox (32.06131pt too high) detected at line 204
+ []
+
+[14
+
+]
+File: ./figures//signature_overlap_Nef.pdf Graphic file (type pdf)
+<use ./figures//signature_overlap_Nef.pdf>
+File: ./figures//signature_overlap_Ver.pdf Graphic file (type pdf)
+<use ./figures//signature_overlap_Ver.pdf>
+File: ./figures//signature_overlap_All.pdf Graphic file (type pdf)
+<use ./figures//signature_overlap_All.pdf>
+ [15
+
+]
+File: ./figures//signature_overlap_Nef.pdf Graphic file (type pdf)
+<use ./figures//signature_overlap_Nef.pdf>
+File: ./figures//signature_overlap_Ver.pdf Graphic file (type pdf)
+<use ./figures//signature_overlap_Ver.pdf>
+File: ./figures//signature_overlap_All.pdf Graphic file (type pdf)
+<use ./figures//signature_overlap_All.pdf>
+ [16
+
+]
+File: ./figures//signature_overlap_Nef.pdf Graphic file (type pdf)
+<use ./figures//signature_overlap_Nef.pdf>
+File: ./figures//signature_overlap_Ver.pdf Graphic file (type pdf)
+<use ./figures//signature_overlap_Ver.pdf>
+File: ./figures//signature_overlap_All.pdf Graphic file (type pdf)
+<use ./figures//signature_overlap_All.pdf>
+ [17
+
+] [18
+
+]
+File: ./figures//CCLE_Corrplot_Nef.png Graphic file (type bmp)
+<./figures//CCLE_Corrplot_Nef.png>
+File: ./figures//TCGA_Corrplot_Nef.png Graphic file (type bmp)
+<./figures//TCGA_Corrplot_Nef.png>
+
+Overfull \vbox (32.06168pt too high) detected at line 268
+ []
+
+[19
+
+]
+File: ./figures//GSM3828672_Corrplot_Nef.png Graphic file (type bmp)
+<./figures//GSM3828672_Corrplot_Nef.png>
+File: ./figures//mgg23_Corrplot_Nef.png Graphic file (type bmp)
+<./figures//mgg23_Corrplot_Nef.png>
+
+Overfull \vbox (32.06168pt too high) detected at line 288
+ []
+
+[20
+
+]
+File: ./figures//CCLE_Corrplot_Ver.png Graphic file (type bmp)
+<./figures//CCLE_Corrplot_Ver.png>
+File: ./figures//TCGA_Corrplot_Ver.png Graphic file (type bmp)
+<./figures//TCGA_Corrplot_Ver.png>
+
+Overfull \vbox (32.06168pt too high) detected at line 309
+ []
+
+[21
+
+]
+File: ./figures//GSM3828672_Corrplot_Ver.png Graphic file (type bmp)
+<./figures//GSM3828672_Corrplot_Ver.png>
+File: ./figures//mgg23_Corrplot_Ver.png Graphic file (type bmp)
+<./figures//mgg23_Corrplot_Ver.png>
+
+Overfull \vbox (32.06168pt too high) detected at line 329
+ []
+
+[22
+
+]
+File: ./figures//strong_teams.pdf Graphic file (type pdf)
+<use ./figures//strong_teams.pdf>
+File: ./figures//no_teams.pdf Graphic file (type pdf)
+<use ./figures//no_teams.pdf>
+
+Overfull \vbox (29.02362pt too high) detected at line 357
+ []
+
+[23
+
+]
+File: ./figures//strong_teams.pdf Graphic file (type pdf)
+<use ./figures//strong_teams.pdf>
+File: ./figures//no_teams.pdf Graphic file (type pdf)
+<use ./figures//no_teams.pdf>
+
+Overfull \vbox (29.02362pt too high) detected at line 357
+ []
+
+[24
+
+]
+File: ./figures//CCLE_Corrplot_pair-Nef.png Graphic file (type bmp)
+<./figures//CCLE_Corrplot_pair-Nef.png>
+File: ./figures//CCLE_Consistency_Nef.pdf Graphic file (type pdf)
+<use ./figures//CCLE_Consistency_Nef.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 377
+ []
+
+[25
+
+]
+File: ./figures//CCLE_Corrplot_pair-Ver.png Graphic file (type bmp)
+<./figures//CCLE_Corrplot_pair-Ver.png>
+File: ./figures//CCLE_Consistency_Ver.pdf Graphic file (type pdf)
+<use ./figures//CCLE_Consistency_Ver.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 397
+ []
+
+[26
+
+]
+File: ./figures//CCLE_Corrplot_pair-Mix.png Graphic file (type bmp)
+<./figures//CCLE_Corrplot_pair-Mix.png>
+File: ./figures//CCLE_Consistency_Mix.pdf Graphic file (type pdf)
+<use ./figures//CCLE_Consistency_Mix.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 417
+ []
+
+[27
+
+]
+File: ./figures//TCGA_Corrplot_pair-Nef.png Graphic file (type bmp)
+<./figures//TCGA_Corrplot_pair-Nef.png>
+File: ./figures//TCGA_Consistency_Nef.pdf Graphic file (type pdf)
+<use ./figures//TCGA_Consistency_Nef.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 437
+ []
+
+[28
+
+]
+File: ./figures//TCGA_Corrplot_pair-Ver.png Graphic file (type bmp)
+<./figures//TCGA_Corrplot_pair-Ver.png>
+File: ./figures//TCGA_Consistency_Ver.pdf Graphic file (type pdf)
+<use ./figures//TCGA_Consistency_Ver.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 457
+ []
+
+[29
+
+]
+File: ./figures//TCGA_Corrplot_pair-Mix.png Graphic file (type bmp)
+<./figures//TCGA_Corrplot_pair-Mix.png>
+File: ./figures//TCGA_Consistency_Mix.pdf Graphic file (type pdf)
+<use ./figures//TCGA_Consistency_Mix.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 477
+ []
+
+[30
+
+]
+File: ./figures//GSM3828672_Corrplot_pair-Nef.png Graphic file (type bmp)
+<./figures//GSM3828672_Corrplot_pair-Nef.png>
+File: ./figures//GSM3828672_Consistency_Nef.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_Consistency_Nef.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 498
+ []
+
+[31
+
+]
+File: ./figures//GSM3828672_Corrplot_pair-Ver.png Graphic file (type bmp)
+<./figures//GSM3828672_Corrplot_pair-Ver.png>
+File: ./figures//GSM3828672_Consistency_Ver.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_Consistency_Ver.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 518
+ []
+
+[32
+
+]
+File: ./figures//GSM3828672_Corrplot_pair-Mix.png Graphic file (type bmp)
+<./figures//GSM3828672_Corrplot_pair-Mix.png>
+File: ./figures//GSM3828672_Consistency_Mix.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_Consistency_Mix.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 538
+ []
+
+[33
+
+]
+File: ./figures//mgg23_Corrplot_pair-Nef.png Graphic file (type bmp)
+<./figures//mgg23_Corrplot_pair-Nef.png>
+File: ./figures//mgg23_Consistency_Nef.pdf Graphic file (type pdf)
+<use ./figures//mgg23_Consistency_Nef.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 558
+ []
+
+[34
+
+]
+File: ./figures//mgg23_Corrplot_pair-Ver.png Graphic file (type bmp)
+<./figures//mgg23_Corrplot_pair-Ver.png>
+File: ./figures//mgg23_Consistency_Ver.pdf Graphic file (type pdf)
+<use ./figures//mgg23_Consistency_Ver.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 578
+ []
+
+[35
+
+]
+File: ./figures//mgg23_Corrplot_pair-Mix.png Graphic file (type bmp)
+<./figures//mgg23_Corrplot_pair-Mix.png>
+File: ./figures//mgg23_Consistency_Mix.pdf Graphic file (type pdf)
+<use ./figures//mgg23_Consistency_Mix.pdf>
+
+Overfull \vbox (26.74881pt too high) detected at line 598
+ []
+
+[36
+
+]
+File: ./figures//CCLE_loadings_barplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//CCLE_loadings_barplot_Nef.pdf>
+File: ./figures//TCGA_loadings_barplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//TCGA_loadings_barplot_Nef.pdf>
+ [37
+
+]
+File: ./figures//GSM3828672_loadings_barplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_loadings_barplot_Nef.pdf>
+File: ./figures//mgg23_loadings_barplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//mgg23_loadings_barplot_Nef.pdf>
+ [38
+
+]
+File: ./figures//CCLE_loadings_barplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//CCLE_loadings_barplot_Ver.pdf>
+File: ./figures//TCGA_loadings_barplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//TCGA_loadings_barplot_Ver.pdf>
+ [39
+
+]
+File: ./figures//GSM3828672_loadings_barplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_loadings_barplot_Ver.pdf>
+File: ./figures//mgg23_loadings_barplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//mgg23_loadings_barplot_Ver.pdf>
+ [40
+
+]
+File: ./figures//CCLE_load-corr_Nef.pdf Graphic file (type pdf)
+<use ./figures//CCLE_load-corr_Nef.pdf>
+File: ./figures//TCGA_load-corr_Nef.pdf Graphic file (type pdf)
+<use ./figures//TCGA_load-corr_Nef.pdf>
+
+Overfull \vbox (32.06131pt too high) detected at line 698
+ []
+
+[41
+
+]
+File: ./figures//GSM3828672_load-corr_Nef.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_load-corr_Nef.pdf>
+File: ./figures//mgg23_load-corr_Nef.pdf Graphic file (type pdf)
+<use ./figures//mgg23_load-corr_Nef.pdf>
+
+Overfull \vbox (32.06131pt too high) detected at line 718
+ []
+
+[42
+
+]
+File: ./figures//CCLE_load-corr_Ver.pdf Graphic file (type pdf)
+<use ./figures//CCLE_load-corr_Ver.pdf>
+File: ./figures//TCGA_load-corr_Ver.pdf Graphic file (type pdf)
+<use ./figures//TCGA_load-corr_Ver.pdf>
+
+Overfull \vbox (32.06131pt too high) detected at line 738
+ []
+
+[43
+
+]
+File: ./figures//GSM3828672_load-corr_Ver.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_load-corr_Ver.pdf>
+File: ./figures//mgg23_load-corr_Ver.pdf Graphic file (type pdf)
+<use ./figures//mgg23_load-corr_Ver.pdf>
+
+Overfull \vbox (32.06131pt too high) detected at line 758
+ []
+
+[44
+
+] [45
+
+]
+File: ./figures//GSM3828672_loadings_barplot_pair-Nef.png Graphic file (type bm
+p)
+<./figures//GSM3828672_loadings_barplot_pair-Nef.png>
+File: ./figures//GSM3828672_expvar_Nef.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_expvar_Nef.pdf>
+ [46
+
+]
+File: ./figures//GSM3828672_loadings_barplot_pair-Ver.png Graphic file (type bm
+p)
+<./figures//GSM3828672_loadings_barplot_pair-Ver.png>
+File: ./figures//GSM3828672_expvar_Ver.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_expvar_Ver.pdf>
+ [47
+
+]
+File: ./figures//CCLE_expvar_Nef.pdf Graphic file (type pdf)
+<use ./figures//CCLE_expvar_Nef.pdf>
+File: ./figures//TCGA_expvar_Nef.pdf Graphic file (type pdf)
+<use ./figures//TCGA_expvar_Nef.pdf>
+File: ./figures//mgg23_expvar_Nef.pdf Graphic file (type pdf)
+<use ./figures//mgg23_expvar_Nef.pdf>
+ [48
+
+]
+File: ./figures//CCLE_expvar_Ver.pdf Graphic file (type pdf)
+<use ./figures//CCLE_expvar_Ver.pdf>
+File: ./figures//TCGA_expvar_Ver.pdf Graphic file (type pdf)
+<use ./figures//TCGA_expvar_Ver.pdf>
+File: ./figures//mgg23_expvar_Ver.pdf Graphic file (type pdf)
+<use ./figures//mgg23_expvar_Ver.pdf>
+ [49
+
+] [50
+
+] [51
+
+] [52
+
+] [53
+
+] [54
+
+]
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
+ [55
+
+] [56
+
 
 ]
 \tf@nav=\write7
@@ -1598,18 +2006,18 @@ File: ./figures//mgg75_load-corr.pdf Graphic file (type pdf)
 
  (./slides.aux)
 Package rerunfilecheck Info: File `slides.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: C3BC0437EDE9CA0B1B66A9AF0A0694F0;430.
 Package logreq Info: Writing requests to 'slides.run.xml'.
 \openout1 = `slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37809 strings out of 476864
- 828040 string characters out of 5810745
- 1850979 words of memory out of 6000000
- 57227 multiletter control sequences out of 15000+600000
- 512903 words of font info for 65 fonts, out of 8000000 for 9000
+ 39103 strings out of 476864
+ 867736 string characters out of 5810745
+ 1863979 words of memory out of 6000000
+ 58481 multiletter control sequences out of 15000+600000
+ 519510 words of font info for 99 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 128i,13n,134p,1886b,5044s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,13n,134p,1886b,5064s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on slides.pdf (12 pages).
+Output written on slides.pdf (56 pages).
