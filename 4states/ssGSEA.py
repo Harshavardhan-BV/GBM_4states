@@ -1,31 +1,17 @@
 import os
 import glob
+import argparse
 import numpy as np
 import gseapy as gp
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 from multiprocessing import cpu_count
-from scipy.stats import spearmanr
-plt.rcParams["svg.hashsalt"]=''
 
-def spearman_pval(x,y):
-    return spearmanr(x,y)[1]
-
-def plot_seprate(df, suff, GSE, GSM):
-    # Find the correlation of the matrix
-    corr_df = df.corr(method='spearman')
-    # Get the pvalues
-    p_values = df.corr(method=spearman_pval)
-    # change diagonal to 0. df.corr defaults diagonal to 1 for some reason
-    np.fill_diagonal(p_values.values, 0)
-    # Convert it to * format
-    p_values = p_values.applymap(lambda x: '*' if x < 0.05 else '')
-    # Plot the clustermap with the text being pvalues
-    sns.clustermap(corr_df, cmap='coolwarm', vmax=1, vmin=-1, annot=p_values, fmt='', annot_kws={"size": 20})
-    plt.savefig('figures/'+GSE+'/ssGSEA/ssGSEA_'+GSM+'_corrplot_'+suff+'.svg')
-    plt.clf()
-    plt.close()
+# Read the GSE ID from command line
+parser = argparse.ArgumentParser(
+                    prog='ssGSEA.py',
+                    description='Calculates ssGSEA scores for a given GSE')
+parser.add_argument('GSE', type=str, nargs=1, help='GSE ID')
+GSE = parser.parse_args().GSE[0]
 
 def run_ssgsea(GSE, GSM):
     # Read the counts
@@ -42,30 +28,14 @@ def run_ssgsea(GSE, GSM):
     df = ss.res2d.pivot(index='Name', columns='Term', values='NES')
     df = df.convert_dtypes()
     # Save the output
-    df.to_csv("./Output/"+GSE+"/ssGSEA/"+GSM+"-ssgsea.csv", index=True)
-    df = df.loc[:, (df != 0).any(axis=0)]
-    # Plot all signatures
-    plot_seprate(df, 'all', GSE, GSM)
-    # Select only Verhaak signatures
-    df1 = df.loc[:, ['VerCL','VerMES','VerPN', 'VerNL']]
-    plot_seprate(df1, 'Ver', GSE, GSM)
-    # Select only Neftel signatures
-    df1 = df.loc[:, ['NefMES','NefOPC','NefAC', 'NefNPC']]
-    plot_seprate(df1, 'Nef', GSE, GSM)
-    # Select only MES-MES vs NPC-PN
-    df1 = df.loc[:, ['NefMES','VerMES','VerPN', 'NefNPC']]
-    plot_seprate(df1, '2D', GSE, GSM)
+    df.to_csv("./Output/"+GSE+"/ssGSEA/"+GSM+"-ssGSEA.csv", index=True)
 
-# GSE ID
-GSE = 'CCLE'
-# GSE = 'TCGA'
 # List files in Output
 files = glob.glob('Data_generated/'+GSE+'/Counts/*_counts.tsv')
 # Get the GSMs
 GSMs = [os.path.basename(x).replace(f'_counts.tsv','') for x in files]
 # Make directory for figures and output
 os.makedirs('Output/'+GSE+'/ssGSEA/', exist_ok=True)
-os.makedirs('figures/'+GSE+'/ssGSEA/', exist_ok=True)
 
 for i in range(len(GSMs)):
     run_ssgsea(GSE, GSMs[i])
