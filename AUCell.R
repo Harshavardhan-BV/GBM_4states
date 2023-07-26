@@ -4,6 +4,13 @@ library(trqwe)
 library(data.table)
 library(dplyr)
 
+# Read the GSE ID from command line
+GSE = commandArgs(trailingOnly=TRUE)
+# test if there is only one argument: if not, return an error
+if (length(GSE)!=1) {
+  stop("One argument must be supplied (GSE ID)", call.=FALSE)
+} 
+
 run_AUCell <- function(GSE, GSM){
     print(GSM)
     # Read the counts
@@ -28,11 +35,6 @@ run_AUCell <- function(GSE, GSM){
     }
 }
 
-# GSE ID
-# GSE = "GSE168004"
-# GSE = "GSE131928"
-GSE = "GSE182109"
-
 # GSM file list
 GSMs = list.files(paste0('./Data_generated/',GSE,'/Imputed/'),'*_imputed.rds') %>% gsub('_imputed.rds','',.)
 
@@ -40,6 +42,6 @@ GSMs = list.files(paste0('./Data_generated/',GSE,'/Imputed/'),'*_imputed.rds') %
 dir.create(paste0("./Output/", GSE, "/AUCell"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
-for (i in 1:length(GSMs)){
-    run_AUCell(GSE, GSMs[i])
+for (GSM in GSMs){
+    run_AUCell(GSE, GSM)
 }
