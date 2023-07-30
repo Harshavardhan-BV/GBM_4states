@@ -15,6 +15,7 @@ colnames(counts) <- gsub("\\.\\..*", "", colnames(counts))
 # convert to dataframe
 counts = data.frame(t(counts))
 # Export the counts for the GBM celllines only as tsv
+dir.create('../Data_generated/CCLE/Counts', showWarnings = FALSE, recursive = TRUE)
 fwrite(counts, '../Data_generated/CCLE/Counts/CCLE_counts.tsv', sep='\t', row.names = T)
 # Export the counts for GBM celllines as rds
 mcsaveRDS(counts, "../Data_generated/CCLE/Counts/CCLE_counts.rds", mc.cores=4)

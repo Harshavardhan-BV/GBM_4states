@@ -31,6 +31,7 @@ counts_all = counts_all %>%
 rownames(counts_all) = counts_all$gene_name
 counts_all = counts_all[,-1]
 # Export the counts for the GBM celllines only as tsv
+dir.create('../Data_generated/TCGA/Counts', showWarnings = FALSE, recursive = TRUE)
 fwrite(counts_all, '../Data_generated/TCGA/Counts/TCGA_counts.tsv', sep='\t', row.names = T)
 # Export the counts for GBM celllines as rds
 mcsaveRDS(counts_all, "../Data_generated/TCGA/Counts/TCGA_counts.rds", mc.cores=4)
