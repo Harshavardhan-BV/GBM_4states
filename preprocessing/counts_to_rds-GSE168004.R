@@ -1,6 +1,8 @@
 library(dplyr)
 library(trqwe)
 
+dir.create("../Data_generated/GSE168004/Counts", showWarnings = FALSE, recursive = TRUE)
+
 df = read.csv("../Data/GSE168004_RAW/GSE168004_OSM_celllines_tpm.csv.gz",row.names = 1)
 mcsaveRDS(df, "../Data_generated/GSE168004/Counts/OSM_celllines_counts.rds", mc.cores=4)
 
