@@ -9,7 +9,7 @@ Analysis of transcriptomic data to understand the relationship of the 4 distinct
     - data.table
     - AUCell
     - RMagic
-    - corrr
+    - Seurat
 - Python 
     - [requirements.txt](./requirements.txt)
 
