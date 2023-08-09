@@ -12,9 +12,9 @@ if (length(GSE)!=1) {
 impute <- function(GSE,GSM) {
     count_matrix = mcreadRDS(paste0("../Data_generated/",GSE,"/Counts/",GSM,"_counts.rds"), mc.cores=4)
     count_matrix = t(count_matrix)
-    gc()
-    count_matrix = magic(count_matrix, n.jobs = -2, solver='exact')
-    gc()
+    gc(reset=T)
+    count_matrix = magic(count_matrix, n.jobs = -3, solver='exact')
+    gc(reset=T)
     mcsaveRDS(t(count_matrix$result), paste0("../Data_generated/",GSE,"/Imputed/",GSM,"_imputed.rds"), mc.cores = 4)
 }
 

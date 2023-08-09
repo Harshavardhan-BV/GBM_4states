@@ -7,11 +7,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 plt.rcParams["svg.hashsalt"]=''
 
-GSEs = ['CCLE','TCGA','GSE131928', 'GSE168004','GSE182109']
-
-def kde_cons(GSEs, suff):
-    # Read the consistency across all GSEs
-    df = corr_scraper(GSEs, suff)
+def kde_cons(df, suff, maxnorm=False):
+    if maxnorm:
+        df['Consistency'] = df['Consistency']/df['Consistency'].max()
+        suff+='_maxnorm'
     # Get combination from G1 and G2
     df['Combination'] = df['G1']+'-'+df['G2']
     # Plot the KDE
@@ -19,6 +18,20 @@ def kde_cons(GSEs, suff):
     plt.tight_layout()
     # Save the figure
     plt.savefig('./figures/Correlation/kdeplot_'+suff+'.svg')
+    plt.clf()
+    plt.close()
+
+def box_cons(df, suff, maxnorm=False):
+    if maxnorm:
+        df['Consistency'] = df['Consistency']/df['Consistency'].max()
+        suff+='_maxnorm'
+    # Get combination from G1 and G2
+    df['Combination'] = df['G1']+'-'+df['G2']
+    # Plot the KDE
+    sns.boxplot(data=df, x='Consistency', y='Combination')
+    plt.tight_layout()
+    # Save the figure
+    plt.savefig('./figures/Correlation/boxplot_'+suff+'.svg')
     plt.clf()
     plt.close()
 
@@ -41,9 +54,33 @@ def corr_scraper(GSEs, suff):
     return df_mega
 
 os.makedirs('./figures/Correlation', exist_ok=True)
+
+# Bulk datasets
+datasets = pd.read_csv('./Datasets_Bulk.csv')
+GSEs = datasets.GSE
 # Neftel signatures
-kde_cons(GSEs, 'Nef')
+df = corr_scraper(GSEs, 'Nef')
+box_cons(df, 'Bulk_Nef')
+box_cons(df, 'Bulk_Nef', maxnorm=True)
 # Verhaak signatures
-kde_cons(GSEs, 'Ver')
+df = corr_scraper(GSEs, 'Ver')
+box_cons(df, 'Bulk_Ver')
+box_cons(df, 'Bulk_Ver', maxnorm=True)
 # Mix 
-kde_cons(GSEs, 'Mix')
+df = corr_scraper(GSEs, 'Mix')
+box_cons(df, 'Bulk_Mix')
+box_cons(df, 'Bulk_Mix', maxnorm=True)
+
+# Single-cell datasets
+datasets = pd.read_csv('./Datasets_SC.csv')
+GSEs = datasets.GSE
+# Neftel signatures
+df = corr_scraper(GSEs, 'Nef')
+box_cons(df, 'SC_Nef')
+box_cons(df, 'SC_Nef', maxnorm=True)
+# Verhaak signatures
+box_cons(df, 'SC_Ver')
+box_cons(df, 'SC_Ver', maxnorm=True)
+# Mix 
+box_cons(df, 'SC_Mix')
+box_cons(df, 'SC_Mix', maxnorm=True)

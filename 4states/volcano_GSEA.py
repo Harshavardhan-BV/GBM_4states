@@ -7,20 +7,26 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 plt.rcParams["svg.hashsalt"]=''
 
-GSEs = ['CCLE','TCGA','GSE131928', 'GSE168004','GSE182109']
-
 def volcplot(ax, df):
     df = df.copy()
-    df['-log10(p-value)'] = -np.log10(df['pval']+1e-300)
+    df['-log10(p-value)'] = -np.log10(df['pval'])
+    # replace infinite pvalue to the max 
+    max_pval = df['-log10(p-value)'].replace(np.inf, np.nan).max()
+    df['-log10(p-value)'] = np.where(df['pval']==0, max_pval, df['-log10(p-value)'])
     # Colour if pval<0.05 and red if corr>0.5, blue if corr<-0.5
     df['Correlation'] = np.where(df['pval']<0.05, np.where(df['corr']>0.3, '+ve', np.where(df['corr']<-0.3, '-ve', 'NA')), 'NA')
-    sns.scatterplot(data=df, x='corr', y='-log10(p-value)', hue='Correlation', palette=['grey','tab:red','tab:blue'],hue_order=['NA','+ve','-ve'], ax=ax)
-    # add lines for corr=0.5 and corr=-0.5 and pval=0.05
+    # Plot the scatter
+    sns.scatterplot(data=df, x='corr', y='-log10(p-value)', hue='Max', style='Min', ax=ax)
+    # Add counts of +ve and -ve
+    ax.text(0.9, 0.9, '+ve: '+str(sum(df['Correlation']=='+ve')), transform=ax.transAxes, ha='right')
+    ax.text(0.1, 0.9, '-ve: '+str(sum(df['Correlation']=='-ve')), transform=ax.transAxes, ha='left')
+    ax.text(0.5, 0.9, 'NA: '+str(sum(df['Correlation']=='NA')), transform=ax.transAxes, ha='center')
+    # add lines for corr=0.3 and corr=-0.3 and pval=0.05
     ax.axvline(x=0.3, color='tab:red', linestyle='--')
     ax.axvline(x=-0.3, color='tab:blue', linestyle='--')
     ax.axhline(y=-np.log10(0.05), color='grey', linestyle='--')
     # remove legend
-    ax.get_legend().remove()
+    # ax.get_legend().remove()
     # # Add axis labels
     # ax.set_xlabel('Spearmans correlation')
     # ax.set_ylabel('-log10(p-value)')
@@ -36,8 +42,8 @@ def volc_grid(df, gs, suff):
         volcplot(ax[j,k], df_sub)
         ax[j,k].set_title(combi[i][0]+' vs '+combi[i][1])
     # Add common legend
-    handles, labels = ax[0,0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc='upper center', ncol=3)
+    # handles, labels = ax[0,0].get_legend_handles_labels()
+    # fig.legend(handles, labels, loc='upper center', ncol=3)
     plt.tight_layout()
     plt.savefig('./figures/GSEA/volcano_'+suff+'.svg')
     plt.clf()
@@ -55,12 +61,16 @@ def corr_scraper(GSEs):
             # Read the correlation and p-value dataframes
             corr_df = pd.read_csv('./Output/'+GSE+'/GSEA/'+GSM+'-corr.tsv', sep='\t', index_col=0)
             p_values = pd.read_csv('./Output/'+GSE+'/GSEA/'+GSM+'-pval.tsv', sep='\t', index_col=0)
+            mimax_df = pd.read_csv('./Output/'+GSE+'/GSEA/'+GSM+'-minmax.tsv', sep='\t', index_col=0)
             # Convert matrix to long format
             corr_df = corr_df.stack().reset_index()
             p_values = p_values.stack().reset_index()
             # Merge the two dataframes
             df = pd.merge(corr_df, p_values, on=['level_0','level_1'])
             df.columns = ['src','tgt','corr','pval']
+            # Add the values of max and min where both src and tgt contains Nef
+            df['Max'] = np.where((df['src'].str.contains('Nef')) & (df['tgt'].str.contains('Nef')), mimax_df.loc['Nef','max'], np.where((df['src'].str.contains('Ver')) & (df['tgt'].str.contains('Ver')), mimax_df.loc['Ver','max'],'NA'))
+            df['Min'] = np.where((df['src'].str.contains('Nef')) & (df['tgt'].str.contains('Nef')), mimax_df.loc['Nef','min'], np.where((df['src'].str.contains('Ver')) & (df['tgt'].str.contains('Ver')), mimax_df.loc['Ver','min'],'NA'))
             # Add GSM and GSE columns
             df['GSM'] = GSM
             df['GSE'] = GSE
@@ -69,13 +79,32 @@ def corr_scraper(GSEs):
     return df_mega
             
 os.makedirs('./figures/GSEA', exist_ok=True)
+
+datasets = pd.read_csv('./Datasets_Bulk.csv')
+GSEs = datasets.GSE
+
 df_mega = corr_scraper(GSEs)
 
 sigs = ['NefMES','NefAC','NefOPC','NefNPC']
-volc_grid(df_mega, sigs, 'Nef')
+volc_grid(df_mega, sigs, 'Bulk_Nef')
 
 sigs = ['VerMES','VerCL','VerNL','VerPN']
-volc_grid(df_mega, sigs, 'Ver')
+volc_grid(df_mega, sigs, 'Bulk_Ver')
 
 sigs = ['VerMES','NefMES','NefNPC','VerPN']
-volc_grid(df_mega, sigs, '2D')
+volc_grid(df_mega, sigs, 'Bulk_2D')
+
+
+datasets = pd.read_csv('./Datasets_SC.csv')
+GSEs = datasets.GSE
+
+df_mega = corr_scraper(GSEs)
+
+sigs = ['NefMES','NefAC','NefOPC','NefNPC']
+volc_grid(df_mega, sigs, 'SC_Nef')
+
+sigs = ['VerMES','VerCL','VerNL','VerPN']
+volc_grid(df_mega, sigs, 'SC_Ver')
+
+sigs = ['VerMES','NefMES','NefNPC','VerPN']
+volc_grid(df_mega, sigs, 'SC_2D')
