@@ -100,3 +100,24 @@ countToTpm <- function(rawCount) {
     # Return the TPM matrix
     return(data.frame(tpm))
 }
+
+FPKMToTPM <- function(counts) {
+    # Store the rownames and colnames
+    geneSymbol = rownames(counts)
+    CellNames = colnames(counts)
+    # Process one column at a time.
+    tpm <- do.call(cbind, lapply(1:ncol(counts), function(i) {
+    rate = sum(counts[,i])
+    (counts[,i]/rate) * 1e6
+    }))
+    rm(counts)
+    gc(verbose = F)
+    # Convert to log2tpm
+    tpm = log2(tpm+1)
+    gc(verbose = F)
+    # Set the row and column names
+    colnames(tpm) <- CellNames 
+    rownames(tpm) <- geneSymbol
+    # Return the TPM matrix
+    return(data.frame(tpm))
+}

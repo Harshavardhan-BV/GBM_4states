@@ -1,0 +1,32 @@
+GSE,Bulk/SC,Tum/CL,Comments,preprocess,GSEA,GeneExpr
+CCLE,Bulk,CL,,Y,Y,Y
+TCGA,Bulk,Tum,,Y,Y,Y
+GSE208697,Bulk,CL,stemcellline,Y,Y,Y
+GSE189517,Bulk,Mouse XG,"PDGFB overexpression 
++ Surrounding cells",Y,Y,Y
+GSE195681,Bulk,CL,,Y,Y,Y
+GSE145556,Bulk,CL,SOX10KO,Y,Y,Y
+GSE214248,Bulk,Tum,CXCL8 disruption,Y,Y,Y
+GSE153794,Bulk,GSC cultures (glioblastoma specimens), FPKM,Y,Y,Y
+GSE235911,Bulk,CL,Siglec-9KO,Y,Y,Y
+GSE176539,Bulk,patient derived cancer stem cell,"anti-E2F, anti-STAT3",Y,Y,Y
+GSE207886,Bulk,Tum – Mouse XG,,Y,Y,Y
+GSE227674,Bulk,CL,Erlotinib treatment,Y,Y,Y
+GSE206917,Bulk,CL+Tum,"radioresistant, FPKM",Y,Y,Y
+GSE232158,Bulk,(Tum+CL) – Mouse XG ,,Y,Y,Y
+GSE213307,Bulk,CL – Mouse XG,PP2Ac KO,Y,Y,Y
+GSE203177,Bulk,CL,SPRK1 – OE & KO,Y,Y,Y
+GSE226721,Bulk,Tum,GSK3368715,Y,Y,Y
+GSE102136,Bulk,Tum,Tet1 Loss,Y,Y,Y
+GSE224082,Bulk,CL,LSD1 KD,Y,Y,Y
+GSE226990,Bulk,Tum,RCN3 KD,Y,Y,Y
+GSE184941,Bulk,Tum,"LGG II, HGG III & IV",Y,Y,Y
+GSE119834,Bulk,CL+Tum,FPKM,Y,Y,Y
+GSE179649,Bulk,Tum,Treatment – radiation/TMZ,Y,Y,Y
+GSE154041,Bulk,Tum,"regorafenib and lomustine, CPM",Y,Y,Y
+GSE222515,Bulk,Tum,,Y,Y,Y
+GSE149009,Bulk,Tum,,Y,Y,Y
+GSE121720,"RRNA-depleted
+ Total ssRNA",Tum,SOX10KO,Y,Y,Y
+GSE107559,Bulk,Tum,FPKM,Y,Y,Y
+

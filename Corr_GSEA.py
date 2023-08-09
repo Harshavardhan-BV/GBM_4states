@@ -17,6 +17,16 @@ sc = parser.parse_args().sc
 def spearman_pval(x,y):
     return spearmanr(x,y)[1]
 
+def minmax(df, sigs, suff):
+    df = df.loc[:,sigs]
+    # Find the identity of max score
+    max = df.max().idxmax()
+    # Find the identity of min score
+    min = df.min().idxmin()
+    # Make a dataframe
+    df_minmax = pd.DataFrame({'max':max,'min':min},index=[suff])
+    return df_minmax
+
 def aucorr(GSE, GSM):
     print(GSM)
     df = pd.read_csv('Output/'+GSE+'/'+suff+'/'+GSM+'-'+suff+'.csv', index_col=0)
@@ -29,6 +39,12 @@ def aucorr(GSE, GSM):
     # Save the correlation and pvalue matrices
     corr_df.to_csv('Output/'+GSE+'/GSEA/'+GSM+'-corr.tsv', sep='\t')
     p_values.to_csv('Output/'+GSE+'/GSEA/'+GSM+'-pval.tsv', sep='\t')
+    # Get min-max for each signature set
+    sigs = ['NefMES','NefAC','NefOPC','NefNPC']
+    minmax_df = minmax(df, sigs, 'Nef')
+    sigs = ['VerMES','VerCL','VerNL','VerPN']
+    minmax_df = pd.concat([minmax_df, minmax(df, sigs, 'Ver')])
+    minmax_df.to_csv('Output/'+GSE+'/GSEA/'+GSM+'-minmax.tsv', sep='\t')
 
 # List of GSM IDs
 suff = 'AUCell' if sc else 'ssGSEA'
