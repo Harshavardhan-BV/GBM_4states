@@ -10,6 +10,9 @@ Analysis of transcriptomic data to understand the relationship of the 4 distinct
     - AUCell
     - RMagic
     - Seurat
+    - hdf5r
+    - biomaRt
+    - 
 - Python 
     - [requirements.txt](./requirements.txt)
 
