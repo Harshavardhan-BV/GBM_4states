@@ -7,10 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 plt.rcParams["svg.hashsalt"]=''
 
-def kde_cons(df, suff, maxnorm=False):
-    if maxnorm:
-        df['Consistency'] = df['Consistency']/df['Consistency'].max()
-        suff+='_maxnorm'
+def kde_cons(df, suff):
     # Get combination from G1 and G2
     df['Combination'] = df['G1']+'-'+df['G2']
     # Plot the KDE
@@ -21,10 +18,7 @@ def kde_cons(df, suff, maxnorm=False):
     plt.clf()
     plt.close()
 
-def box_cons(df, suff, maxnorm=False):
-    if maxnorm:
-        df['Consistency'] = df['Consistency']/df['Consistency'].max()
-        suff+='_maxnorm'
+def box_cons(df, suff):
     # Get combination from G1 and G2
     df['Combination'] = df['G1']+'-'+df['G2']
     # Plot the KDE
@@ -35,7 +29,7 @@ def box_cons(df, suff, maxnorm=False):
     plt.clf()
     plt.close()
 
-def corr_scraper(GSEs, suff):
+def corr_scraper(GSEs, suff, maxnorm=False):
     df_mega = pd.DataFrame()
     # Iterate through GSEs
     for GSE in GSEs:
@@ -46,6 +40,8 @@ def corr_scraper(GSEs, suff):
         for GSM in GSMs:
             # Read the correlation 
             df = pd.read_csv('./Output/'+GSE+'/Correlation/'+GSM+'_consistency_'+suff+'.tsv', sep='\t')
+            if maxnorm:
+                df['Consistency'] = df['Consistency'] / df['Consistency'].max()
             # Add GSM and GSE columns
             df['GSM'] = GSM
             df['GSE'] = GSE
@@ -61,15 +57,19 @@ GSEs = datasets.GSE
 # Neftel signatures
 df = corr_scraper(GSEs, 'Nef')
 box_cons(df, 'Bulk_Nef')
-box_cons(df, 'Bulk_Nef', maxnorm=True)
+df = corr_scraper(GSEs, 'Nef', maxnorm=True)
+box_cons(df, 'Bulk_Nef_maxnorm')
 # Verhaak signatures
 df = corr_scraper(GSEs, 'Ver')
 box_cons(df, 'Bulk_Ver')
-box_cons(df, 'Bulk_Ver', maxnorm=True)
+df = corr_scraper(GSEs, 'Nef', maxnorm=True)
+box_cons(df, 'Bulk_Ver_maxnorm')
 # Mix 
 df = corr_scraper(GSEs, 'Mix')
 box_cons(df, 'Bulk_Mix')
-box_cons(df, 'Bulk_Mix', maxnorm=True)
+df = corr_scraper(GSEs, 'Mix', maxnorm=True)
+box_cons(df, 'Bulk_Mix_maxnorm')
+
 
 # Single-cell datasets
 datasets = pd.read_csv('./Datasets_SC.csv')
@@ -77,10 +77,15 @@ GSEs = datasets.GSE
 # Neftel signatures
 df = corr_scraper(GSEs, 'Nef')
 box_cons(df, 'SC_Nef')
-box_cons(df, 'SC_Nef', maxnorm=True)
+df = corr_scraper(GSEs, 'Nef', maxnorm=True)
+box_cons(df, 'SC_Nef_maxnorm')
 # Verhaak signatures
+df = corr_scraper(GSEs, 'Ver')
 box_cons(df, 'SC_Ver')
-box_cons(df, 'SC_Ver', maxnorm=True)
+df = corr_scraper(GSEs, 'Nef', maxnorm=True)
+box_cons(df, 'SC_Ver_maxnorm')
 # Mix 
+df = corr_scraper(GSEs, 'Mix')
 box_cons(df, 'SC_Mix')
-box_cons(df, 'SC_Mix', maxnorm=True)
+df = corr_scraper(GSEs, 'Mix', maxnorm=True)
+box_cons(df, 'SC_Mix_maxnorm')
