@@ -28,5 +28,28 @@ GSE222515,Bulk,Tum,,Y,Y,Y
 GSE149009,Bulk,Tum,,Y,Y,Y
 GSE121720,"RRNA-depleted
  Total ssRNA",Tum,SOX10KO,Y,Y,Y
+GSE100351,Bulk,Tum,RPKM,Y,Y,Y
 GSE107559,Bulk,Tum,FPKM,Y,Y,Y
+GSE139533,Bulk,Tum,,Y,Y,Y
+GSE141945,Bulk,Tum+Organoids,,Y,Y,Y
+QCell,Bulk,CL,FPKM,Y,Y,Y
+CGGA,Bulk,Tum,,Y,Y,Y
+GSE232434,Bulk,Tum,SNP rs755622,Y,Y,Y
+GSE154367,Bulk,Mouse XG,glioblastoma initiating cells and patient-matched EPSC,Y,Y,Y
+GSE154958,Bulk,CL+Tum,glioblastoma initiating cells and patient-matched EPSC,Y,Y,Y
+GSE147352,RRNA-depleted total RNAseq,Tum,has normal and lgg,Y,Y,Y
+GSE145645,Bulk,Tum,has normal,Y,Y,Y
+GSE190504,Bulk,Tum,"IDH1 mutation, CPM",Y,Y,Y
+GSE156819,Bulk,Mouse XG,"DMSO/JQ1 treated,2 files?",Y,Y,Y
+GSE158550,Bulk,CL,"BRD8 KO, FPKM",Y,Y,Y
+GSE89623,Bulk,CL,"CPM, Ion channel only?",Y,Y,Y
+GSE186332,Bulk,Tum,selinexor exposure,Y,Y,Y
+GSE117632,Bulk,Tum,Hypoxia,Y,Y,Y
+GSE99175,Bulk,CL,dBET6/JQ1,Y,Y,Y
+GSE99181,Bulk,CL,dBET6/JQ1,Y,Y,Y
+GSE112734,Bulk,CL,NFKB/TMZ,Y,Y,Y
+GSE112735,Bulk,CL,"NFKB/TMZ,EGFRvIII expressing",Y,Y,Y
+GSE181144,Bulk,Tum,MEOX2 loss,Y,Y,Y
+GSE97632,Bulk,CL,KLF4 wt & mut,Y,Y,Y
+GLASS,Bulk,Tum,,Y,Y,Y
 

@@ -36,5 +36,7 @@ rownames(counts_all) = counts_all[,1]
 counts_all = counts_all[,-1]
 # Convert to TPM
 counts_all = FPKMToTPM(counts_all)
+# Remove empty gene name
+counts_all = counts_all[!rownames(counts_all)=='',]
 # Save the counts matrix
 exportCount(counts_all, 'GSE100351', 'GSE100351')

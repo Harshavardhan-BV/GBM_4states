@@ -121,3 +121,52 @@ FPKMToTPM <- function(counts) {
     # Return the TPM matrix
     return(data.frame(tpm))
 }
+
+CPMToFPKM <- function(rawCount){
+    rawCount <- cbind(rownames(rawCount), rawCount)
+    # Read gene length annotation
+    geneLengthMap_hg = read.table(file="../Signatures/hg38_gene_length_kb.txt", sep = "\t",header = F,stringsAsFactors = F)
+    commonGenes_hg = intersect(rawCount[,1], geneLengthMap_hg[,2])
+    geneLengthMap_mm = read.table(file="../Signatures/mm10_gene_length_kb.txt", sep = "\t",header = F,stringsAsFactors = F)
+    commonGenes_mm = intersect(rawCount[,1], geneLengthMap_mm[,2])
+    geneCol = 2
+    # Check which species has more common genes and use that for TPM calculation
+    if(length(commonGenes_hg) > length(commonGenes_mm)) {
+        geneLengthMap = geneLengthMap_hg
+        commonGenes = commonGenes_hg
+    }
+    else{
+        geneLengthMap = geneLengthMap_mm
+        commonGenes = commonGenes_mm
+    }
+    # Get the common gene indices for count matrix
+    idx1 = match(commonGenes,rawCount[,1])
+    # Subset count matrix for common genes
+    rawCount = rawCount[idx1,-c(1)]
+    # Get the common gene indices for gene length annotation
+    idx2 = match(commonGenes,geneLengthMap[,2])
+    # Subset gene length annotation for common genes
+    geneLengthSubset = geneLengthMap[idx2, ]
+    geneSymbol = geneLengthSubset[ ,geneCol]
+    featureLength = geneLengthSubset[ ,3]
+
+    rownames(rawCount) = geneSymbol
+    CellNames = colnames(rawCount) 
+    # Ensure valid arguments.
+    stopifnot(length(featureLength) == nrow(rawCount))
+
+    # Compute effective lengths of features in each library.
+    effLen <- featureLength
+
+    # Process one column at a time.
+    FPKM <- do.call(cbind, lapply(1:ncol(rawCount), function(i) {
+        (rawCount[,i])/effLen
+    }))
+    rm(rawCount)
+    gc(verbose = F)
+    # Copy the row and column names from the original matrix.
+    colnames(FPKM) <- CellNames 
+    rownames(FPKM) <- toupper(geneSymbol)
+    # Return the TPM matrix
+    return(data.frame(FPKM))
+}
