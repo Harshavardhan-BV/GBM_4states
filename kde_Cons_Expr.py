@@ -62,7 +62,7 @@ box_cons(df, 'Bulk_Nef_maxnorm')
 # Verhaak signatures
 df = corr_scraper(GSEs, 'Ver')
 box_cons(df, 'Bulk_Ver')
-df = corr_scraper(GSEs, 'Nef', maxnorm=True)
+df = corr_scraper(GSEs, 'Ver', maxnorm=True)
 box_cons(df, 'Bulk_Ver_maxnorm')
 # Mix 
 df = corr_scraper(GSEs, 'Mix')
@@ -82,7 +82,7 @@ box_cons(df, 'SC_Nef_maxnorm')
 # Verhaak signatures
 df = corr_scraper(GSEs, 'Ver')
 box_cons(df, 'SC_Ver')
-df = corr_scraper(GSEs, 'Nef', maxnorm=True)
+df = corr_scraper(GSEs, 'Ver', maxnorm=True)
 box_cons(df, 'SC_Ver_maxnorm')
 # Mix 
 df = corr_scraper(GSEs, 'Mix')
