@@ -9,6 +9,7 @@ GSE145556,Bulk,CL,SOX10KO,Y,Y,Y
 GSE214248,Bulk,Tum,CXCL8 disruption,Y,Y,Y
 GSE153794,Bulk,GSC cultures (glioblastoma specimens), FPKM,Y,Y,Y
 GSE235911,Bulk,CL,Siglec-9KO,Y,Y,Y
+GSE231577-B,Bulk,Mouse XG,,Y,Y,Y
 GSE176539,Bulk,patient derived cancer stem cell,"anti-E2F, anti-STAT3",Y,Y,Y
 GSE207886,Bulk,Tum – Mouse XG,,Y,Y,Y
 GSE227674,Bulk,CL,Erlotinib treatment,Y,Y,Y
@@ -52,4 +53,10 @@ GSE112735,Bulk,CL,"NFKB/TMZ,EGFRvIII expressing",Y,Y,Y
 GSE181144,Bulk,Tum,MEOX2 loss,Y,Y,Y
 GSE97632,Bulk,CL,KLF4 wt & mut,Y,Y,Y
 GLASS,Bulk,Tum,,Y,Y,Y
-
+GSE98126,Bulk,Tum,,Y,Y,Y
+GSE178337,Bulk,CL,CCL21 treatment,Y,Y,Y
+GSE218041,Bulk,CL,CCR7 inhibitors,Y,Y,Y
+GSE218042,Bulk,CL,CCR7 knockdown,Y,Y,Y
+GSE111247,Bulk,CL,"γ-irradiation, temozolomide and oncolytic measles virus",Y,Y,Y
+GSE163071,Bulk,,LGG,Y,Y,Y
+GSE74557,Bulk,CL,GSCs,Y,Y,Y

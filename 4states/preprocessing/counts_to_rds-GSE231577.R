@@ -5,7 +5,7 @@ df = read.csv("../Data/GSE231577_RAW/GSE231577_tumor_gene_count_matrix.csv.gz",r
 # Select only the part after | in colnames
 df$genenames = sapply(strsplit(rownames(df), '\\|'), function(x) x[2])
 # remove nan genenames
-df = df[!is.na(df$Name),]
+df = df[!is.na(df$genenames),]
 # merge duplicate gene names
 df = df %>%
   group_by(genenames) %>%
