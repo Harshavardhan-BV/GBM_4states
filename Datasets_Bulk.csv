@@ -7,7 +7,7 @@ GSE189517,Bulk,Mouse XG,"PDGFB overexpression
 GSE195681,Bulk,CL,,Y,Y,Y
 GSE145556,Bulk,CL,SOX10KO,Y,Y,Y
 GSE214248,Bulk,Tum,CXCL8 disruption,Y,Y,Y
-GSE153794,Bulk,GSC cultures (glioblastoma specimens), FPKM,Y,Y,Y
+GSE153794,Bulk,GSC cultures (glioblastoma specimens),FPKM,Y,Y,Y
 GSE235911,Bulk,CL,Siglec-9KO,Y,Y,Y
 GSE231577-B,Bulk,Mouse XG,,Y,Y,Y
 GSE176539,Bulk,patient derived cancer stem cell,"anti-E2F, anti-STAT3",Y,Y,Y
@@ -41,7 +41,7 @@ GSE154958,Bulk,CL+Tum,glioblastoma initiating cells and patient-matched EPSC,Y,Y
 GSE147352,RRNA-depleted total RNAseq,Tum,has normal and lgg,Y,Y,Y
 GSE145645,Bulk,Tum,has normal,Y,Y,Y
 GSE190504,Bulk,Tum,"IDH1 mutation, CPM",Y,Y,Y
-GSE156819,Bulk,Mouse XG,"DMSO/JQ1 treated,2 files?",Y,Y,Y
+GSE156819,Bulk,Mouse XG,DMSO/JQ1 treated,Y,Y,Y
 GSE158550,Bulk,CL,"BRD8 KO, FPKM",Y,Y,Y
 GSE89623,Bulk,CL,"CPM, Ion channel only?",Y,Y,Y
 GSE186332,Bulk,Tum,selinexor exposure,Y,Y,Y
@@ -58,5 +58,18 @@ GSE178337,Bulk,CL,CCL21 treatment,Y,Y,Y
 GSE218041,Bulk,CL,CCR7 inhibitors,Y,Y,Y
 GSE218042,Bulk,CL,CCR7 knockdown,Y,Y,Y
 GSE111247,Bulk,CL,"γ-irradiation, temozolomide and oncolytic measles virus",Y,Y,Y
-GSE163071,Bulk,,LGG,Y,Y,Y
+GSE163071,Bulk,Tum,LGG,Y,Y,Y
 GSE74557,Bulk,CL,GSCs,Y,Y,Y
+GSE179882,Bulk,CL,HDAC1KO  + normal,Y,Y,Y
+GSE183910,Bulk,CL,EGFR variants,Y,Y,Y
+GSE186440,Bulk,CL,DAXX or ATRX KO,Y,Y,Y
+GSE114222,Bulk,Tum,,Y,Y,Y
+GSE33912,Bulk,CL,Wats in Sheet1,Y,Y,Y
+GSE200062,Bulk,CL,"SOX2 Epigenetic Silencer, Whats the normalization",Y,Y,Y
+GSE168037,Bulk,Mouse XG,,Y,Y,Y
+GSE198438,Bulk,Mouse XG,mir-NRF2,Y,Y,Y
+GSE198439,Bulk,Mouse XG,p16,Y,Y,Y
+GSE86237,Bulk,PDX,BMI1 and EZH2 Inhibition,Y,Y,Y
+GSE137048,Bulk,CL,Dunno wat the other sample is,Y,Y,Y
+GSE135408,Bulk,Tum,Edge & Core,Y,Y,Y
+GSE138662,Bulk,CL,serum-starved ,Y,Y,Y
