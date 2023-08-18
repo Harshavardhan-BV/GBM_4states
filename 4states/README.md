@@ -46,17 +46,17 @@ python ssGSEA.py GSEID # if bulk data
 ```
 - Calculate the correlation of the AUCell/ssGSEA scores between the samples
 ```bash
-Rscript Corr_GSEA.py GSEID -sc #if single cell data
+python Corr_GSEA.py GSEID -sc #if single cell data
 #(or)
-Rscript Corr_GSEA.py GSEID #if bulk data
+python Corr_GSEA.py GSEID #if bulk data
 ```
 - (Optional) Plot the correlation matrix as clustermap
 ```bash
 python hmap_GSEA.py GSEID
 ```
-- Get the volcano plot of the correlation between combinations across samples. Edit the GSEs in the script.
+- Get the volcano plot of the correlation between combinations across samples. Edit the GSEs in `Input/Datsets_Bulk.csv` and `Input/Datsets_SC.csv`
 ```bash
-Rscript volcano_GSEA.py
+python volcano_GSEA.py
 ```
 
 ### 3. Gene signature overlap
@@ -80,7 +80,7 @@ python Consistency_Expr.py GSEID
 ```bash
 python hmap_Expr.py GSEID
 ```
-- Get the distribution of consistency for combinations. Edit the GSEs in the script.
+- Get the distribution of consistency for combinations. Edit the GSEs in `Input/Datsets_Bulk.csv` and `Input/Datsets_SC.csv`
 ```bash
 python kde_Cons_Expr.py
 ```
