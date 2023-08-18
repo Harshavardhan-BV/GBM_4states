@@ -41,6 +41,7 @@ GSE154958,Bulk,CL+Tum,glioblastoma initiating cells and patient-matched EPSC,Y,Y
 GSE147352,RRNA-depleted total RNAseq,Tum,has normal and lgg,Y,Y,Y
 GSE145645,Bulk,Tum,has normal,Y,Y,Y
 GSE190504,Bulk,Tum,"IDH1 mutation, CPM",Y,Y,Y
+GSE59612,Bulk,Tum,Segregated by Contrast,Y,Y,Y
 GSE156819,Bulk,Mouse XG,DMSO/JQ1 treated,Y,Y,Y
 GSE158550,Bulk,CL,"BRD8 KO, FPKM",Y,Y,Y
 GSE89623,Bulk,CL,"CPM, Ion channel only?",Y,Y,Y
@@ -73,3 +74,10 @@ GSE86237,Bulk,PDX,BMI1 and EZH2 Inhibition,Y,Y,Y
 GSE137048,Bulk,CL,Dunno wat the other sample is,Y,Y,Y
 GSE135408,Bulk,Tum,Edge & Core,Y,Y,Y
 GSE138662,Bulk,CL,serum-starved ,Y,Y,Y
+GSE215401,Bulk,CL,"CAMP, MS275 and Combination treated",Y,Y,Y
+GSE158700-B,Bulk,PDX,endothelial cells,Y,Y,Y
+GSE155434,Bulk,Tum,"Glioblastoma initiating cells, not processing exons",Y,Y,Y
+GSE79671,Bulk,Tum,bevacizumab combination therapy,Y,Y,Y
+GSE165386,Bulk,CL,,Y,Y,Y
+GSE77530,Bulk,Tum,FPKM,Y,Y,Y
+GSE122832,Bulk,CL,,Y,Y,Y
