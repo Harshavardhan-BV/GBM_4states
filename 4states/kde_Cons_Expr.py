@@ -52,7 +52,7 @@ def corr_scraper(GSEs, suff, maxnorm=False):
 os.makedirs('./figures/Correlation', exist_ok=True)
 
 # Bulk datasets
-datasets = pd.read_csv('./Datasets_Bulk.csv')
+datasets = pd.read_csv('./Input/Datasets_Bulk.csv')
 GSEs = datasets.GSE
 # Neftel signatures
 df = corr_scraper(GSEs, 'Nef')
@@ -72,7 +72,7 @@ box_cons(df, 'Bulk_Mix_maxnorm')
 
 
 # Single-cell datasets
-datasets = pd.read_csv('./Datasets_SC.csv')
+datasets = pd.read_csv('./Input/Datasets_SC.csv')
 GSEs = datasets.GSE
 # Neftel signatures
 df = corr_scraper(GSEs, 'Nef')

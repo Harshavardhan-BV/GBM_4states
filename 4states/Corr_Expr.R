@@ -1,7 +1,6 @@
 library(dplyr)
 library(trqwe)
 library(data.table)
-library(readxl)
 
 # Read the GSE ID and sc from command line
 args = commandArgs(trailingOnly=TRUE)

@@ -51,17 +51,17 @@ def volc_grid(df, gs, suff):
     plt.clf()
     plt.close()
 
-def volc_grid_2D(df, gsrc, gtgt, suff):
+def volc_grid_2D(df, gtgt, gsrc, suff):
     ls = len(gsrc)
     lt = len(gtgt)
-    fig, ax = plt.subplots(lt, ls, figsize=(5*ls,3*lt), sharex=True, sharey=True)
+    fig, ax = plt.subplots(ls, lt, figsize=(5*lt,3*ls), sharex=True, sharey=True, squeeze=False)
     for j in range(lt):
         for k in range(ls):
             src = gsrc[k]
             tgt = gtgt[j]
             df_sub = df[(df['src']==src) & (df['tgt']==tgt)]
-            volcplot(ax[j,k], df_sub)
-            ax[j,k].set_title(src+' vs '+tgt)
+            volcplot(ax[k,j], df_sub)
+            ax[k,j].set_title(src+' vs '+tgt)
     # Add common legend
     handles, labels = ax[0,0].get_legend_handles_labels()
     # Change xlabels
@@ -75,7 +75,7 @@ def volc_grid_2D(df, gsrc, gtgt, suff):
     plt.clf()
     plt.close()
 
-def corr_scraper(GSEs):
+def corr_scraper(GSEs, expr=False):
     df_mega = pd.DataFrame()
     # Iterate through GSEs
     for GSE in GSEs:
@@ -84,9 +84,13 @@ def corr_scraper(GSEs):
         GSMs = [os.path.basename(file).replace('-corr.tsv','') for file in files]
         # Iterate through GSMs
         for GSM in GSMs:
+            if expr:
+                path = './Output/'+GSE+'/GSEA-Expr/'
+            else:
+                path = './Output/'+GSE+'/GSEA/'
             # Read the correlation and p-value dataframes
-            corr_df = pd.read_csv('./Output/'+GSE+'/GSEA/'+GSM+'-corr.tsv', sep='\t', index_col=0)
-            p_values = pd.read_csv('./Output/'+GSE+'/GSEA/'+GSM+'-pval.tsv', sep='\t', index_col=0)
+            corr_df = pd.read_csv(path+GSM+'-corr.tsv', sep='\t', index_col=0)
+            p_values = pd.read_csv(path+GSM+'-pval.tsv', sep='\t', index_col=0)
             # Convert matrix to long format
             corr_df = corr_df.stack().reset_index()
             p_values = p_values.stack().reset_index()
@@ -106,17 +110,25 @@ datasets = pd.read_csv('./Input/Datasets_Bulk.csv')
 GSEs = datasets.GSE
 
 df_mega = corr_scraper(GSEs)
+df_mega_expr = corr_scraper(GSEs, expr=True)
 
 sig_met = ['OXPHOS','GLYC','FAO']
 sig_cc = ['G2M','KEGG_CC', 'WP_CC','BIOCARTA_CC']
+sig_imm = ['PD-L1']
+gene_imm = ['CTLA4','CD274','LAG3','HAVCR2','CD47','LGALS9','CD276']
+
 sigs = ['NefMES','NefAC','NefOPC','NefNPC']
 volc_grid(df_mega, sigs, 'Bulk_Nef')
 volc_grid_2D(df_mega, sigs, sig_met, 'Bulk_Nef_Met')
 volc_grid_2D(df_mega, sigs, sig_cc, 'Bulk_Nef_CC')
+volc_grid_2D(df_mega, sigs, sig_imm, 'Bulk_Nef_Imm')
+volc_grid_2D(df_mega_expr, sigs, gene_imm, 'Bulk_Nef_Imm_Expr')
 sigs = ['VerMES','VerCL','VerNL','VerPN']
 volc_grid(df_mega, sigs, 'Bulk_Ver')
 volc_grid_2D(df_mega, sigs, sig_met, 'Bulk_Ver_Met')
 volc_grid_2D(df_mega, sigs, sig_cc, 'Bulk_Ver_CC')
+volc_grid_2D(df_mega, sigs, sig_imm, 'Bulk_Ver_Imm')
+volc_grid_2D(df_mega_expr,  sigs, gene_imm, 'Bulk_Ver_Imm_Expr')
 sigs = ['VerMES','NefMES','NefNPC','VerPN']
 volc_grid(df_mega, sigs, 'Bulk_2D')
 
