@@ -1,16 +1,30 @@
 library(dplyr)
 library(trqwe)
 library(data.table)
+library(Rmagic)
+library(Seurat)
 
 # Save the processed counts matrix
-exportCount <- function(counts, GSE, GSM, sc=FALSE){
+exportCount <- function(counts, GSE, GSM, sc=FALSE, imputed=FALSE, split=FALSE){
+    # Path to save the counts
+    path = paste0("../Data_generated/", GSE, "/")
+    # Change path depending on imputed or raw counts
+    if (imputed){
+        path = paste0(path, "/Imputed/")
+    } else {
+        path = paste0(path, "/Counts/")
+    }
+    # Make seperate directory for split
+    if (split){
+        path = paste0(path, "_split")
+    }
     # Create the directory for the counts
-    dir.create(paste0("../Data_generated/", GSE, "/Counts"), showWarnings = FALSE, recursive = TRUE)
+    dir.create(path, showWarnings = FALSE, recursive = TRUE)
     # Save the counts matrix as rds
-    mcsaveRDS(counts, paste0("../Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
+    mcsaveRDS(counts, paste0(path, GSM, "_counts.rds"), mc.cores=4)
     if (!sc){
         # If bulk save as tsv as well
-        fwrite(counts, paste0("../Data_generated/", GSE, "/Counts/", GSM, "_counts.tsv"), sep="\t", row.names = T)
+        fwrite(counts, paste0(path,"/", GSM, "_counts.tsv"), sep="\t", row.names = T)
     }
 }
 # GeneID to GeneSymbol
@@ -36,6 +50,7 @@ GeneIDToSymb <- function(counts){
     counts = counts %>%
     group_by(GeneSymbol) %>%
     summarise_all(mean) %>% data.frame()
+    gc(verbose = F)
     # Set the row names as gene names
     rownames(counts) = counts$GeneSymbol
     # Remove the GeneSymbol column
@@ -170,3 +185,72 @@ CPMToFPKM <- function(rawCount){
     # Return the TPM matrix
     return(data.frame(FPKM))
 }
+
+SC_QC = function(counts, normalize=TRUE){
+    # Get the Mitochondrial gene percent
+    counts[["percent.mt"]] <- PercentageFeatureSet(counts, pattern = "^MT-")
+    # Subset for outliers
+    nF_max = lapply(counts[["nFeature_RNA"]], quantile, 0.95, names=F)
+    nF_min = lapply(counts[["nFeature_RNA"]], quantile,0.05, names=F)
+    counts = subset(counts, subset = nFeature_RNA >= nF_min & nFeature_RNA <= nF_max & percent.mt <= 5)
+    if (normalize){
+        # Normalize the counts to log CPM
+        counts <- NormalizeData(counts)
+    }
+    # Return
+    return(counts)
+}
+
+impute <- function(count_matrix) {
+    count_matrix = t(count_matrix)
+    count_matrix = magic(count_matrix, n.jobs = -3, solver='exact', seed=0)
+    gc(reset=T)
+    count_matrix = t(count_matrix$result)
+    return(count_matrix)
+}
+
+process_mtx = function(GSE, GSM, counts, barcodes, features){
+    # Read the counts matrix
+    counts = ReadMtx(mtx=counts, cells=barcodes, features=features)
+    # Change genenames to uppercase
+    rownames(counts) = toupper(rownames(counts))
+    # Make seurat object
+    counts = CreateSeuratObject(counts)
+    counts = SC_QC(counts)
+    # Save as rds
+    dir.create(paste0("../Data_generated/", GSE, "/Counts_split"), showWarnings = FALSE, recursive = TRUE)
+    mcsaveRDS(counts, paste0("../Data_generated/", GSE, "/Counts_split/", GSM, "_counts.rds"), mc.cores=4)
+    # Save as rds
+    dir.create(paste0("../Data_generated/", GSE, "/Imputed_split"), showWarnings = FALSE, recursive = TRUE)
+    mcsaveRDS(counts, paste0("../Data_generated/", GSE, "/Imputed_split/", GSM, "_imputed.rds"), mc.cores=4)
+}
+
+merge_split = function(GSE,GSM, imputed=FALSE){
+    # List all the split counts files
+    if (imputed){
+        files = list.files(paste0("../Data_generated/", GSE, "/Imputed_split/"), pattern = "_imputed.rds", full.names = T)
+    } else {
+        files = list.files(paste0("../Data_generated/", GSE, "/Counts_split/"), pattern = "_counts.rds", full.names = T)
+    }
+    # Process one file at a time
+    for (file in files){
+        GSM = strsplit(file, "_")[[1]][1]
+        # Read the counts
+        counts = mcreadRDS(file, mc.cores=4)
+        # merge with the counts matrix
+        if (exists("counts_all")){
+            counts_all <- merge(counts_all, y = counts, add.cell.ids = c("", GSM))
+        } else {
+            colnames(counts) = paste0(GSM, "_", colnames(counts))
+            counts_all = counts
+        }
+        
+    }
+    exportCount(counts_mega, GSE, GSM, sc=TRUE, imputed=imputed)
+}
+
+
+    # # Find the barcodes, features and counts files
+    # barcodes = list.files(paste0("../Data/", GSE, "_RAW/"), pattern = "barcodes.tsv.gz", full.names = T) %>% sort()
+    # features = list.files(paste0("../Data/", GSE, "_RAW/"), pattern = "features.tsv.gz", full.names = T) %>% sort()
+    # counts = list.files(paste0("../Data/", GSE, "_RAW/"), pattern = "matrix.mtx.gz", full.names = T) %>% sort()
