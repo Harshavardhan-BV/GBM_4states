@@ -14,11 +14,11 @@ GSE = args[!args %in% '-sc'][1]
 corr_df = function(GSE, GSM, sc, genes){
     print(GSM)
     # Read the counts
+    df = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4) 
+    # GSEA scores
     if (sc){
-        df = mcreadRDS(paste0("./Data_generated/", GSE, "/Imputed/", GSM, "_imputed.rds"), mc.cores=4)
-        df_gsea = read.csv(paste0("./Output/", GSE, "/AUCell/", GSM, "-AUCell.csv"))
+        df_gsea = read.csv(paste0("./Output/", GSE, "/AUCell/", GSM, "-AUCell.csv"), row.names=1)
     }else{
-        df = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
         df_gsea = read.csv(paste0("./Output/", GSE, "/ssGSEA/", GSM, "-ssGSEA.csv"), row.names=1)
     }
     # remove NA values and those genes not in df
@@ -43,11 +43,7 @@ corr_df = function(GSE, GSM, sc, genes){
 }
 
 # GSM file list
-if (sc){
-    GSMs = list.files(paste0("./Data_generated/", GSE, "/Imputed/"), "*_imputed.rds")  %>% gsub('_imputed.rds','',.)
-}else{
-    GSMs = list.files(paste0("./Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
-}
+GSMs = list.files(paste0("./Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
 
 genes = c('CTLA4','CD274','LAG3','HAVCR2','CD47','LGALS9','CD276')
 # Create directory for output

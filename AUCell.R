@@ -14,7 +14,7 @@ if (length(GSE)!=1) {
 run_AUCell <- function(GSE, GSM){
     print(GSM)
     # Read the counts
-    matrix_AUCell = mcreadRDS(paste0("./Data_generated/",GSE,"/Imputed/",GSM,"_imputed.rds"), mc.cores=4)
+    matrix_AUCell = mcreadRDS(paste0("./Data_generated/",GSE,"/Counts/",GSM,"_counts.rds"), mc.cores=4) %>% as.matrix()
     # Get the gene sets
     geneSets = getGmt('./Signatures/GBM_states.gmt')
     # Subset only the expressed genes
@@ -36,7 +36,7 @@ run_AUCell <- function(GSE, GSM){
 }
 
 # GSM file list
-GSMs = list.files(paste0('./Data_generated/',GSE,'/Imputed/'),'*_imputed.rds') %>% gsub('_imputed.rds','',.)
+GSMs = list.files(paste0('./Data_generated/',GSE,'/Counts/'),'*_counts.rds') %>% gsub('_counts.rds','',.)
 
 # Create directory for output
 dir.create(paste0("./Output/", GSE, "/AUCell"), showWarnings = F, recursive = T)

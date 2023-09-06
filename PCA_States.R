@@ -14,14 +14,10 @@ get_sig = function(sigs,suff){
     return(sigs)
 }
 
-gbm_pca = function(GSE, GSM, suff, sc){
+gbm_pca = function(GSE, GSM, suff){
     print(paste(GSM, suff))
     # Read the counts
-    if (sc){
-        counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Imputed/", GSM, "_imputed.rds"), mc.cores=4)
-    }else{
-        counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
-    }
+    counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
     # Read the signatures
     sigs = read.csv("./Signatures/GBM_signatures.csv")
     #split suff by - and get the genes in each signature
@@ -42,7 +38,7 @@ gbm_pca = function(GSE, GSM, suff, sc){
     fwrite(loadings, paste0("./Output/", GSE,'/PCA/',GSM,'_loadings_',suff,'.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
 }
 
-gbm_pair_pca = function(GSE, GSM, suff, sc){
+gbm_pair_pca = function(GSE, GSM, suff){
     # Read the signatures
     sigs = read.csv("./Signatures/GBM_signatures.csv")
     sigs = sigs[,grep(suff, colnames(sigs))]
@@ -52,7 +48,7 @@ gbm_pair_pca = function(GSE, GSM, suff, sc){
     for (i in 1:ncol(sigs)){
         suff = sigs[,i]
         suff = paste(suff, collapse = '-')
-        gbm_pca(GSE, GSM, suff, sc)
+        gbm_pca(GSE, GSM, suff)
     }
 }
 
@@ -60,25 +56,20 @@ gbm_pair_pca = function(GSE, GSM, suff, sc){
 # GSE = "GSE168004"
 GSE = "GSE131928"
 # GSE = "GSE182109"
-# sc = TRUE
 
 # GSE = "CCLE"
 # GSE = "TCGA"
-sc = FALSE
 
 # GSM file list
-if (sc){
-    GSMs = list.files(paste0("./Data_generated/", GSE, "/Imputed/"), "*_imputed.rds")  %>% gsub('_imputed.rds','',.)
-}else{
-    GSMs = list.files(paste0("./Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
-}
+GSMs = list.files(paste0("./Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
+
 # Create directory for output
 dir.create(paste0("./Output/", GSE, "/PCA"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
-    gbm_pca(GSE, GSMs[i], 'Nef',sc)
-    gbm_pair_pca(GSE, GSMs[i], 'Nef',sc)
-    gbm_pca(GSE, GSMs[i], 'Ver',sc)
-    gbm_pair_pca(GSE, GSMs[i], 'Ver',sc)   
+    gbm_pca(GSE, GSMs[i], 'Nef')
+    gbm_pair_pca(GSE, GSMs[i], 'Nef')
+    gbm_pca(GSE, GSMs[i], 'Ver')
+    gbm_pair_pca(GSE, GSMs[i], 'Ver')
 }

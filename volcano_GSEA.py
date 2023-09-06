@@ -112,37 +112,41 @@ GSEs = datasets.GSE
 df_mega = corr_scraper(GSEs)
 df_mega_expr = corr_scraper(GSEs, expr=True)
 
+sigs_nef = ['NefMES','NefAC','NefOPC','NefNPC']
+sigs_ver = ['VerMES','VerCL','VerNL','VerPN']
+sigs_2D = ['VerMES','NefMES','NefNPC','VerPN']
 sig_met = ['OXPHOS','GLYC','FAO']
 sig_cc = ['G2M','KEGG_CC', 'WP_CC','BIOCARTA_CC']
 sig_imm = ['PD-L1']
 gene_imm = ['CTLA4','CD274','LAG3','HAVCR2','CD47','LGALS9','CD276']
 
-sigs = ['NefMES','NefAC','NefOPC','NefNPC']
-volc_grid(df_mega, sigs, 'Bulk_Nef')
-volc_grid_2D(df_mega, sigs, sig_met, 'Bulk_Nef_Met')
-volc_grid_2D(df_mega, sigs, sig_cc, 'Bulk_Nef_CC')
-volc_grid_2D(df_mega, sigs, sig_imm, 'Bulk_Nef_Imm')
-volc_grid_2D(df_mega_expr, sigs, gene_imm, 'Bulk_Nef_Imm_Expr')
-sigs = ['VerMES','VerCL','VerNL','VerPN']
-volc_grid(df_mega, sigs, 'Bulk_Ver')
-volc_grid_2D(df_mega, sigs, sig_met, 'Bulk_Ver_Met')
-volc_grid_2D(df_mega, sigs, sig_cc, 'Bulk_Ver_CC')
-volc_grid_2D(df_mega, sigs, sig_imm, 'Bulk_Ver_Imm')
-volc_grid_2D(df_mega_expr,  sigs, gene_imm, 'Bulk_Ver_Imm_Expr')
-sigs = ['VerMES','NefMES','NefNPC','VerPN']
-volc_grid(df_mega, sigs, 'Bulk_2D')
+volc_grid(df_mega, sigs_nef, 'Bulk_Nef')
+volc_grid_2D(df_mega, sigs_nef, sig_met, 'Bulk_Nef_Met')
+volc_grid_2D(df_mega, sigs_nef, sig_cc, 'Bulk_Nef_CC')
+volc_grid_2D(df_mega, sigs_nef, sig_imm, 'Bulk_Nef_Imm')
+volc_grid_2D(df_mega_expr, sigs_nef, gene_imm, 'Bulk_Nef_Imm_Expr')
+volc_grid(df_mega, sigs_ver, 'Bulk_Ver')
+volc_grid_2D(df_mega, sigs_ver, sig_met, 'Bulk_Ver_Met')
+volc_grid_2D(df_mega, sigs_ver, sig_cc, 'Bulk_Ver_CC')
+volc_grid_2D(df_mega, sigs_ver, sig_imm, 'Bulk_Ver_Imm')
+volc_grid_2D(df_mega_expr,  sigs_ver, gene_imm, 'Bulk_Ver_Imm_Expr')
+volc_grid(df_mega, sigs_2D, 'Bulk_2D')
 
 
 datasets = pd.read_csv('./Input/Datasets_SC.csv')
 GSEs = datasets.GSE
 
 df_mega = corr_scraper(GSEs)
+df_mega_expr = corr_scraper(GSEs, expr=True)
 
-sigs = ['NefMES','NefAC','NefOPC','NefNPC']
-volc_grid(df_mega, sigs, 'SC_Nef')
-
-sigs = ['VerMES','VerCL','VerNL','VerPN']
-volc_grid(df_mega, sigs, 'SC_Ver')
-
-sigs = ['VerMES','NefMES','NefNPC','VerPN']
-volc_grid(df_mega, sigs, 'SC_2D')
+volc_grid(df_mega, sigs_nef, 'SC_Nef')
+volc_grid_2D(df_mega, sigs_nef, sig_met, 'SC_Nef_Met')
+volc_grid_2D(df_mega, sigs_nef, sig_cc, 'SC_Nef_CC')
+volc_grid_2D(df_mega, sigs_nef, sig_imm, 'SC_Nef_Imm')
+volc_grid_2D(df_mega_expr, sigs_nef, gene_imm, 'SC_Nef_Imm_Expr')
+volc_grid(df_mega, sigs_ver, 'SC_Ver')
+volc_grid_2D(df_mega, sigs_ver, sig_met, 'SC_Ver_Met')
+volc_grid_2D(df_mega, sigs_ver, sig_cc, 'SC_Ver_CC')
+volc_grid_2D(df_mega, sigs_ver, sig_imm, 'SC_Ver_Imm')
+volc_grid_2D(df_mega_expr,  sigs_ver, gene_imm, 'SC_Ver_Imm_Expr')
+volc_grid(df_mega, sigs_2D, 'SC_2D')

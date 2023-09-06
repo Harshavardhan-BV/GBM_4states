@@ -17,3 +17,17 @@ df = df[,-1]
 df = countToTpm(df)
 # Save the counts matrix
 exportCount(df, 'GSE231577-B', 'GSE231577')
+
+# Single cell sample
+# Read the ctrl counts
+counts_all = Read10X_h5('../Data/GSE231577_RAW/GSM7291138_Ctrl_filtered_feature_bc_matrix.h5')
+colnames(counts_all) = paste0('GSM7291138_', colnames(counts_all))
+# Read the DIP counts
+counts = Read10X_h5('../Data/GSE231577_RAW/GSM7291139_DIP_filtered_feature_bc_matrix.h5')
+colnames(counts) = paste0('GSM7291139_', colnames(counts))
+# Merge the counts
+counts_all = cbind(counts_all, counts)
+# Perform QC and normalization
+counts_all = SC_QC(counts_all)
+# Save the counts matrix
+exportCount(counts_all, 'GSE231577', 'GSE231577', sc=T)
