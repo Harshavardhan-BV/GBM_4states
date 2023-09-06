@@ -30,12 +30,6 @@ Analysis of transcriptomic data to understand the relationship of the 4 distinct
 Convert raw files to rds for easier loading. Done on a case-by-case basis as formats are not standardized.
 ```bash
 Rscript counts_to_rds-GSEID.R
-```
-- Imputation (Only for single cell data)
-Generate an imputed counts matrix using MAGIC.
-```bash
-Rscript Imputation.R GSEID
-```
 
 ### 2. Gene-set enrichment analysis
 - Get the Gene-set enrichment score for each cell/sample using AUCell/ssGSEA
@@ -68,9 +62,7 @@ python Signature_overlap.py
 ### 4. GBM signature expression
 - Get the correlation matrix of gene expression of the signatures
 ```bash
-Rscript Corr_Expr.R GSEID -sc #if single cell data
-#(or)
-Rscript Corr_Expr.R GSEID #if bulk data
+Rscript Corr_Expr.R GSEID
 ```
 - Get the consistency of correlation between the signature expression across samples
 ```bash

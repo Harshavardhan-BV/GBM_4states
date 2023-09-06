@@ -79,3 +79,24 @@ counts_all = counts_all[,-1]
 counts_all = counts_all[!rownames(counts_all) == "",]
 # Save the counts matrix
 exportCount(counts_all, 'GSE158700-B', 'human')
+
+# Single Cell dataset
+# Read the counts
+counts_all = read.table('../Data/GSE158700_RAW/GSM4808322_Bulk_tumor_sc_matrix.txt.gz', row.names = 1)
+counts = read.table('../Data/GSE158700_RAW/GSM4808323_enriched_sc_matrix.txt.gz', row.names = 1)
+# Set colnames
+colnames(counts_all) = paste0('GSM4808322_', colnames(counts_all))
+colnames(counts) = paste0('GSM4808323_', colnames(counts))
+# Merge the counts
+counts_all = merge(counts_all, counts, by = 'row.names', all = T)
+# Set the rownames
+rownames(counts_all) = counts_all[,1]
+counts_all = counts_all[,-1]
+# Set na to 0
+counts_all[is.na(counts_all)] = 0
+# gene name to upper case
+rownames(counts_all) = toupper(rownames(counts_all))
+# Perform QC and normalization
+counts_all = SC_QC(counts_all)
+# Save the counts matrix
+exportCount(counts_all, 'GSE158700', 'GSE158700', sc=T)
