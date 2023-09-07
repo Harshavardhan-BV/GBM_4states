@@ -63,8 +63,6 @@
 
     \begin{frame}[standout]
         Are these cell states distinct?
-        
-        \pause How does this heterogeneity and plasticity affect therapy?
     \end{frame}
 
     \begin{frame}{Datasets}
@@ -77,7 +75,6 @@
             TCGA             & Tumour                   & Bulk                     & \cite{TCGA-GBM}\\ \hline
             GSE131928        & Tumour                   & SingleCell               & \cite{Neftel}  \\ \hline
             GSE168004        & CellLine                 & SingleCell               & \cite{scCL_GBM}\\ \hline
-%             GSE182109        & Tumour                   & SingleCell               \\ \hline
             \end{tabular}
     \end{table}
     \end{frame}
@@ -90,12 +87,12 @@
                 \centering
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{ssGSEA_CCLE_corrplot_Nef}
+                    \includegraphics[width=\textwidth]{GSEA_CCLE_corrplot_Nef}
                     \caption{CCLE (Bulk-CellLine)}
                 \end{subfigure}
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{ssGSEA_TCGA_corrplot_Nef}
+                    \includegraphics[width=\textwidth]{GSEA_TCGA_corrplot_Nef}
                     \caption{TCGA (Bulk-Tumour)}
                 \end{subfigure}
                 \caption{Correlation of ssGSEA scores - Neftel}
@@ -110,12 +107,12 @@
                 \centering
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{AUCell_GSM3828672_corrplot_Nef}
+                    \includegraphics[width=\textwidth]{GSEA_GSM3828672_corrplot_Nef}
                     \caption{GSE131928 (SingleCell-Tumour)}
                 \end{subfigure}
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{AUCell_mgg23_corrplot_Nef}
+                    \includegraphics[width=\textwidth]{GSEA_celllines_corrplot_Nef}
                     \caption{GSE168004 (SingleCell-CellLine)}
                 \end{subfigure}
                 \caption{Correlation of AUCell scores - Neftel}
@@ -130,12 +127,12 @@
                 \centering
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{ssGSEA_CCLE_corrplot_Ver}
+                    \includegraphics[width=\textwidth]{GSEA_CCLE_corrplot_Ver}
                     \caption{CCLE (Bulk-CellLine)}
                 \end{subfigure}
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{ssGSEA_TCGA_corrplot_Ver}
+                    \includegraphics[width=\textwidth]{GSEA_TCGA_corrplot_Ver}
                     \caption{TCGA (Bulk-Tumour)}
                 \end{subfigure}
                 \caption{Correlation of ssGSEA scores - Verhaak}
@@ -150,12 +147,12 @@
                 \centering
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{AUCell_GSM3828672_corrplot_Ver}
+                    \includegraphics[width=\textwidth]{GSEA_GSM3828672_corrplot_Ver}
                     \caption{GSE131928 (SingleCell-Tumour)}
                 \end{subfigure}
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{AUCell_mgg23_corrplot_Ver}
+                    \includegraphics[width=\textwidth]{GSEA_celllines_corrplot_Ver}
                     \caption{GSE168004 (SingleCell-CellLine)}
                 \end{subfigure}
                 \caption{Correlation of AUCell scores - Verhaak}
@@ -170,12 +167,12 @@
                 \centering
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{ssGSEA_CCLE_corrplot_2D}
+                    \includegraphics[width=\textwidth]{GSEA_CCLE_corrplot_2D}
                     \caption{CCLE (Bulk-CellLine)}
                 \end{subfigure}
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{ssGSEA_TCGA_corrplot_2D}
+                    \includegraphics[width=\textwidth]{GSEA_TCGA_corrplot_2D}
                     \caption{TCGA (Bulk-Tumour)}
                 \end{subfigure}
                 \caption{Correlation of ssGSEA scores - Comparison}
@@ -190,12 +187,12 @@
                 \centering
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{AUCell_GSM3828672_corrplot_2D}
+                    \includegraphics[width=\textwidth]{GSEA_GSM3828672_corrplot_2D}
                     \caption{GSE131928 (SingleCell-Tumour)}
                 \end{subfigure}
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{AUCell_mgg23_corrplot_2D}
+                    \includegraphics[width=\textwidth]{GSEA_celllines_corrplot_Nef}
                     \caption{GSE168004 (SingleCell-CellLine)}
                 \end{subfigure}
                 \caption{Correlation of AUCell scores- Comparison}
@@ -230,23 +227,6 @@
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{Signatures}
-        \begin{table}[]
-            \centering
-            \resizebox{\textwidth}{!}{%
-                \begin{tabular}{|l|llllllll|}
-                    \hline
-                    \textbf{NefNPC-VerPN}  & ABAT  & AMOTL2 & ASCL1  & BCAN  & BEX1 & CHD7 & DBN1 & DCX \\
-                    & DLL3 & FXYD6   & MAP2  & MARCKSL1 & MLLT11 & MYT1 & PAK3 & PFN2 \\
-                    & SCG3 & SEZ6L & SOX11 & SOX4 & STMN1 & STMN4 & & \\ \hline
-                    \textbf{NefMES-VerMES} & ANXA1 & ANXA2  & CHI3L1 & CLIC1 & CTSB & EMP3 & LGALS1 & LGALS3 \\
-                    & NPC2 & S100A11 & SERPINE1 & TIMP1    & TNFRSF1A & WWTR1 & & \\ \hline
-                \end{tabular}%
-            }
-            \caption{Genes common between signatures}
-        \end{table}
-    \end{frame}
-
     \begin{frame}{Signature Expression - Neftel et al}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
@@ -255,14 +235,34 @@
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{CCLE_Corrplot_Nef}
-                    \caption{CCLE (Bulk-CellLine)}
+                    \caption{Correlation of signature expression - Neftel}
                 \end{subfigure}
+                \begin{subfigure}[c]{0.4\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{CCLE_Consistency_Nef}
+                    \caption{J metric of signature correlation - Neftel}
+                \end{subfigure}
+                \caption{CCLE (Bulk-CellLine)}
+            \end{figure}
+        \end{adjustwidth}
+    \end{frame}
+
+    \begin{frame}{Signature Expression - Neftel et al}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}\ContinuedFloat
+                \centering
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{TCGA_Corrplot_Nef}
-                    \caption{TCGA (Bulk-Tumour)}
+                    \caption{Correlation of signature expression - Neftel}
                 \end{subfigure}
-                \caption{Correlation of signature expression - Neftel}
+                \begin{subfigure}[c]{0.4\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{TCGA_Consistency_Nef}
+                    \caption{J metric of signature correlation - Neftel}
+                \end{subfigure}
+                \caption{TCGA (Bulk-Tumour)}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
@@ -275,18 +275,57 @@
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{GSM3828672_Corrplot_Nef}
-                    \caption{GSE131928 (SingleCell-Tumour)}
+                    \caption{Correlation of signature expression - Neftel}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.48\textwidth}
+                \begin{subfigure}[c]{0.4\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{mgg23_Corrplot_Nef}
-                    \caption{GSE168004 (SingleCell-CellLine)}
+                    \includegraphics[width=\textwidth]{GSM3828672_Consistency_Nef}
+                    \caption{J metric of signature correlation - Neftel}
                 \end{subfigure}
-                \caption{Correlation of signature expression - Neftel}
+            \caption{GSE131928 (SingleCell-Tumour)}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
+    \begin{frame}{Signature Expression - Neftel et al}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}\ContinuedFloat
+                \centering
+                \begin{subfigure}[c]{0.48\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{celllines_Corrplot_Nef}
+                    \caption{Correlation of signature expression - Neftel}
+                \end{subfigure}
+                \begin{subfigure}[c]{0.4\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{celllines_Consistency_Nef}
+                    \caption{J metric of signature correlation - Neftel}
+                \end{subfigure}
+                \caption{GSE168004 (SingleCell-CellLine)}
+            \end{figure}
+        \end{adjustwidth}
+    \end{frame}
+
+    \begin{frame}{Signature Expression - Verhaak et al}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}
+                \centering
+                \begin{subfigure}[c]{0.48\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{CCLE_Corrplot_Ver}
+                    \caption{Correlation of signature expression - Verhaak}
+                \end{subfigure}
+                \begin{subfigure}[c]{0.4\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{CCLE_Consistency_Ver}
+                    \caption{J metric of signature correlation - Verhaak}
+                \end{subfigure}
+                \caption{CCLE (Bulk-CellLine)}
+            \end{figure}
+        \end{adjustwidth}
+    \end{frame}
 
     \begin{frame}{Signature Expression - Verhaak et al}
         \begin{adjustwidth}{-5cm}{-5cm}
@@ -295,15 +334,15 @@
                 \centering
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{CCLE_Corrplot_Ver}
-                    \caption{CCLE (Bulk-CellLine)}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.48\textwidth}
-                    \centering
                     \includegraphics[width=\textwidth]{TCGA_Corrplot_Ver}
-                    \caption{TCGA (Bulk-Tumour)}
+                    \caption{Correlation of signature expression - Verhaak}
                 \end{subfigure}
-                \caption{Correlation of signature expression - Verhaak}
+                \begin{subfigure}[c]{0.4\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{TCGA_Consistency_Ver}
+                    \caption{J metric of signature correlation - Verhaak}
+                \end{subfigure}
+                \caption{TCGA (Bulk-Tumour)}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
@@ -316,288 +355,39 @@
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{GSM3828672_Corrplot_Ver}
-                    \caption{GSE131928 (SingleCell-Tumour)}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.48\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{mgg23_Corrplot_Ver}
-                    \caption{GSE168004 (SingleCell-CellLine)}
-                \end{subfigure}
-                \caption{Correlation of signature expression - Verhaak}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{Pairwise Signature Expression - Metric}
-        $$Consistency = \frac{1}{2}(\frac{\sum_{x,y \in S_1, S_1} \rho_R(x,y)}{2 (N_1)^2} + \frac{\sum_{x,y \in S_2, S_2} \rho_R(x,y)}{2 (N_2)^2} - \frac{\sum_{x,y \in S_1, S_2} \rho_R(x,y)}{N_1 N_2})$$
-        {\footnotesize Where,
-        \begin{itemize}
-            \item $\rho_R(x,y)$ = Spearman correlation between x and y
-            \item $S_i$ = Signature i
-            \item $N_i$ = No. of genes in Signature i
-        \end{itemize}}
-        \pause
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}
-                \centering
-                \begin{subfigure}[c]{0.5\textwidth}
-                    \centering
-                    \includegraphics[width=0.5\textwidth]{strong_teams}
-                    \caption{Consistency = 1}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.5\textwidth}
-                    \centering
-                    \includegraphics[width=0.5\textwidth]{no_teams}
-                    \caption{Consistency = 0}
-                \end{subfigure}
-                \caption{Consistency on example cases}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{Pairwise Signature Expression - Neftel et al}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{CCLE_Corrplot_pair-Nef}
-                    \caption{Pairwise Signature Correlation}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{CCLE_Consistency_Nef}
-                    \caption{Consistency of Signature Correlation}
-                \end{subfigure}
-                \caption{Pairwise correlation of signature expression - CCLE (Bulk-CellLine) - Neftel}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{Pairwise Signature Expression - Verhaak et al}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}\ContinuedFloat
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{CCLE_Corrplot_pair-Ver}
-                    \caption{Pairwise Signature Correlation}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{CCLE_Consistency_Ver}
-                    \caption{Consistency of Signature Correlation}
-                \end{subfigure}
-                \caption{Pairwise correlation of signature expression - CCLE (Bulk-CellLine) - Verhaak}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{Pairwise Signature Expression - Comparison}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}\ContinuedFloat
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{CCLE_Corrplot_pair-Mix}
-                    \caption{Pairwise Signature Correlation}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{CCLE_Consistency_Mix}
-                    \caption{Consistency of Signature Correlation}
-                \end{subfigure}
-                \caption{Pairwise correlation of signature expression - CCLE (Bulk-CellLine) - Comparison}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{Pairwise Signature Expression - Neftel et al}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{TCGA_Corrplot_pair-Nef}
-                    \caption{Pairwise Signature Correlation}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{TCGA_Consistency_Nef}
-                    \caption{Consistency of Signature Correlation}
-                \end{subfigure}
-                \caption{Pairwise correlation of signature expression - TCGA (Bulk-Tumour) - Neftel}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{Pairwise Signature Expression - Verhaak et al}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}\ContinuedFloat
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{TCGA_Corrplot_pair-Ver}
-                    \caption{Pairwise Signature Correlation}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{TCGA_Consistency_Ver}
-                    \caption{Consistency of Signature Correlation}
-                \end{subfigure}
-                \caption{Pairwise correlation of signature expression - TCGA (Bulk-Tumour) - Verhaak}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{Pairwise Signature Expression - Comparison}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}\ContinuedFloat
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{TCGA_Corrplot_pair-Mix}
-                    \caption{Pairwise Signature Correlation}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{TCGA_Consistency_Mix}
-                    \caption{Consistency of Signature Correlation}
-                \end{subfigure}
-                \caption{Pairwise correlation of signature expression - TCGA (Bulk-Tumour) - Comparison}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-
-    \begin{frame}{Pairwise Signature Expression - Neftel et al}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_Corrplot_pair-Nef}
-                    \caption{Pairwise Signature Correlation}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_Consistency_Nef}
-                    \caption{Consistency of Signature Correlation}
-                \end{subfigure}
-                \caption{Pairwise correlation of signature expression - GSE131928 (SingleCell-Tumour) - Neftel}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{Pairwise Signature Expression - Verhaak et al}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}\ContinuedFloat
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_Corrplot_pair-Ver}
-                    \caption{Pairwise Signature Correlation}
+                    \caption{Correlation of signature expression - Verhaak}
                 \end{subfigure}
                 \begin{subfigure}[c]{0.4\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{GSM3828672_Consistency_Ver}
-                    \caption{Consistency of Signature Correlation}
+                    \caption{J metric of signature correlation - Verhaak}
                 \end{subfigure}
-                \caption{Pairwise correlation of signature expression - GSE131928 (SingleCell-Tumour) - Verhaak}
+            \caption{GSE131928 (SingleCell-Tumour)}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{Pairwise Signature Expression - Comparison}
+    \begin{frame}{Signature Expression - Verhaak et al}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}\ContinuedFloat
                 \centering
-                \begin{subfigure}[c]{0.7\textwidth}
+                \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_Corrplot_pair-Mix}
-                    \caption{Pairwise Signature Correlation}
+                    \includegraphics[width=\textwidth]{celllines_Corrplot_Ver}
+                    \caption{Correlation of signature expression - Verhaak}
                 \end{subfigure}
                 \begin{subfigure}[c]{0.4\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_Consistency_Mix}
-                    \caption{Consistency of Signature Correlation}
+                    \includegraphics[width=\textwidth]{celllines_Consistency_Ver}
+                    \caption{J metric of signature correlation - Verhaak}
                 \end{subfigure}
-                \caption{Pairwise correlation of signature expression - GSE131928 (SingleCell-Tumour) - Comparison}
+                \caption{GSE168004 (SingleCell-CellLine)}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{Pairwise Signature Expression - Neftel et al}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{mgg23_Corrplot_pair-Nef}
-                    \caption{Pairwise Signature Correlation}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{mgg23_Consistency_Nef}
-                    \caption{Consistency of Signature Correlation}
-                \end{subfigure}
-                \caption{Pairwise correlation of signature expression - GSE168004 (SingleCell-CellLine) - Neftel}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{Pairwise Signature Expression - Verhaak et al}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}\ContinuedFloat
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{mgg23_Corrplot_pair-Ver}
-                    \caption{Pairwise Signature Correlation}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{mgg23_Consistency_Ver}
-                    \caption{Consistency of Signature Correlation}
-                \end{subfigure}
-                \caption{Pairwise correlation of signature expression - GSE168004 (SingleCell-CellLine) - Verhaak}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{Pairwise Signature Expression - Comparison}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}\ContinuedFloat
-                \centering
-                \begin{subfigure}[c]{0.7\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{mgg23_Corrplot_pair-Mix}
-                    \caption{Pairwise Signature Correlation}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{mgg23_Consistency_Mix}
-                    \caption{Consistency of Signature Correlation}
-                \end{subfigure}
-                \caption{Pairwise correlation of signature expression - GSE168004 (SingleCell-CellLine) - Comparison}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{PCA of Signature - Neftel et al}
+    \begin{frame}{PCA of Signature}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}
@@ -605,19 +395,39 @@
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{CCLE_loadings_barplot_Nef}
-                    \caption{CCLE (Bulk-CellLine)}
+                    \caption{Neftel}
                 \end{subfigure}
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{TCGA_loadings_barplot_Nef}
-                    \caption{TCGA (Bulk-Tumour)}
+                    \includegraphics[width=\textwidth]{CCLE_loadings_barplot_Ver}
+                    \caption{Verhaak}
                 \end{subfigure}
-                \caption{Loadings of PC1 - PCA on signature expression - Neftel}
+                \caption{Loadings of PC1 - PCA on signature expression - CCLE (Bulk-CellLine)}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{PCA of Signature - Neftel et al}
+    \begin{frame}{PCA of Signature}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}\ContinuedFloat
+                \centering
+                \begin{subfigure}[c]{0.48\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{TCGA_loadings_barplot_Nef}
+                    \caption{Neftel}
+                \end{subfigure}
+                \begin{subfigure}[c]{0.48\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{TCGA_loadings_barplot_Ver}
+                    \caption{Verhaak}
+                \end{subfigure}
+                \caption{Loadings of PC1 - PCA on signature expression - TCGA (Bulk-Tumour)}
+            \end{figure}
+        \end{adjustwidth}
+    \end{frame}
+
+    \begin{frame}{PCA of Signature}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}\ContinuedFloat
@@ -625,228 +435,290 @@
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{GSM3828672_loadings_barplot_Nef}
-                    \caption{GSE131928 (SingleCell-Tumour)}
+                    \caption{Neftel}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.48\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{mgg23_loadings_barplot_Nef}
-                    \caption{GSE168004 (SingleCell-CellLine)}
-                \end{subfigure}
-                \caption{Loadings of PC1 - PCA on signature expression - Neftel}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{PCA of Signature - Verhaak et al}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}\ContinuedFloat
-                \centering
-                \begin{subfigure}[c]{0.48\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{CCLE_loadings_barplot_Ver}
-                    \caption{CCLE (Bulk-CellLine)}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.48\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{TCGA_loadings_barplot_Ver}
-                    \caption{TCGA (Bulk-Tumour)}
-                \end{subfigure}
-                \caption{Loadings of PC1 - PCA on signature expression - Verhaak}
-            \end{figure}
-        \end{adjustwidth}
-    \end{frame}
-
-    \begin{frame}{PCA of Signature - Verhaak et al}
-        \begin{adjustwidth}{-5cm}{-5cm}
-            \centering
-            \begin{figure}\ContinuedFloat
-                \centering
                 \begin{subfigure}[c]{0.48\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{GSM3828672_loadings_barplot_Ver}
-                    \caption{GSE131928 (SingleCell-Tumour)}
+                    \caption{Verhaak}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.48\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{mgg23_loadings_barplot_Ver}
-                    \caption{GSE168004 (SingleCell-CellLine)}
-                \end{subfigure}
-                \caption{Loadings of PCA on signature expression - Verhaak}
+                \caption{Loadings of PC1 - PCA on signature expression - GSE131928 (SingleCell-Tumour)}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{PCA vs Gene-sets - Neftel et al}
+    \begin{frame}{PCA of Signature}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}\ContinuedFloat
+                \centering
+                \begin{subfigure}[c]{0.48\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{celllines_loadings_barplot_Nef}
+                    \caption{Neftel}
+                \end{subfigure}
+                \begin{subfigure}[c]{0.48\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{celllines_loadings_barplot_Ver}
+                    \caption{Verhaak}
+                \end{subfigure}
+                \caption{Loadings of PC1 - PCA on signature expression - GSE168004 (SingleCell-CellLine)}
+            \end{figure}
+        \end{adjustwidth}
+    \end{frame}
+
+    \begin{frame}{Meta-analysis - Neftel}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}
                 \centering
-                \begin{subfigure}[c]{0.48\textwidth}
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{CCLE_load-corr_Nef}
-                    \caption{CCLE (Bulk-CellLine)}
+                    \includegraphics[width=0.55\textwidth]{volcano_Bulk_Nef}
+                    \caption{Bulk}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.48\textwidth}
+                \\
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{TCGA_load-corr_Nef}
-                    \caption{TCGA (Bulk-Tumour)}
+                    \includegraphics[width=0.55\textwidth]{volcano_SC_Nef}
+                    \caption{Single-cell}
                 \end{subfigure}
-                \caption{Correlation of top loadings of PCA with ssGSEA scores - Neftel}
+                \caption{Volcano plots of Neftel et al signature correlation}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{PCA vs Gene-sets - Neftel et al}
+    \begin{frame}{Meta-analysis - Neftel}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}\ContinuedFloat
                 \centering
-                \begin{subfigure}[c]{0.48\textwidth}
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_load-corr_Nef}
-                    \caption{GSE131928 (SingleCell-Tumour)}
+                    \includegraphics[width=0.3\textwidth]{boxplot_Bulk_Nef_maxnorm}
+                    \caption{Bulk}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.48\textwidth}
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{mgg23_load-corr_Nef}
-                    \caption{GSE168004 (SingleCell-CellLine)}
+                    \includegraphics[width=0.3\textwidth]{boxplot_SC_Nef_maxnorm}
+                    \caption{Single-cell}
                 \end{subfigure}
-                \caption{Correlation of top loadings of PCA with AUCell scores - Neftel}
+                \caption{Box plots of J metrics}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{PCA vs Gene-sets - Verhaak et al}
+    \begin{frame}{Meta-analysis - Verhaak}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}\ContinuedFloat
                 \centering
-                \begin{subfigure}[c]{0.48\textwidth}
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{CCLE_load-corr_Ver}
-                    \caption{CCLE (Bulk-CellLine)}
+                    \includegraphics[width=0.55\textwidth]{volcano_Bulk_Ver}
+                    \caption{Bulk}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.48\textwidth}
+                \\
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{TCGA_load-corr_Ver}
-                    \caption{TCGA (Bulk-Tumour)}
+                    \includegraphics[width=0.55\textwidth]{volcano_SC_Ver}
+                    \caption{Single-cell}
                 \end{subfigure}
-                \caption{Correlation of top loadings of PCA with ssGSEA scores - Verhaak}
+                \caption{Volcano plots of Verhaak signature correlation}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{PCA vs Gene-sets - Verhaak et al}
+    \begin{frame}{Meta-analysis - Verhaak}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}\ContinuedFloat
                 \centering
-                \begin{subfigure}[c]{0.48\textwidth}
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_load-corr_Ver}
-                    \caption{GSE131928 (SingleCell-Tumour)}
+                    \includegraphics[width=0.3\textwidth]{boxplot_Bulk_Ver_maxnorm}
+                    \caption{Bulk}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.48\textwidth}
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{mgg23_load-corr_Ver}
-                    \caption{GSE168004 (SingleCell-CellLine)}
+                    \includegraphics[width=0.3\textwidth]{boxplot_SC_Ver_maxnorm}
+                    \caption{Single-cell}
                 \end{subfigure}
-                \caption{Correlation of top loadings of PCA with AUCell scores - Verhaak}
+                \caption{Box plots of J metrics}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}
-        Here be dragons!
+    \begin{frame}{Meta-analysis - Comparison}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}\ContinuedFloat
+                \centering
+                \begin{subfigure}[c]{\textwidth}
+                    \centering
+                    \includegraphics[width=0.55\textwidth]{volcano_Bulk_2D}
+                    \caption{Bulk}
+                \end{subfigure}
+                \\
+                \begin{subfigure}[c]{\textwidth}
+                    \centering
+                    \includegraphics[width=0.55\textwidth]{volcano_SC_2D}
+                    \caption{Single-cell}
+                \end{subfigure}
+                \caption{Volcano plots of comparison of signature correlation}
+            \end{figure}
+        \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{Pairwise PCA - Neftel}
+    \begin{frame}{Meta-analysis - CellCycle}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}
                 \centering
-                \begin{subfigure}[c]{0.7\textwidth}
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_loadings_barplot_pair-Nef}
-                    \caption{Loadings of PC1}
+                    \includegraphics[width=0.7\textwidth]{volcano_Bulk_Nef_CC}
+                    \caption{Bulk}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_expvar_Nef}
-                    \caption{Explained variance by PC1}
-                \end{subfigure}
-                \caption{Pairwise PCA - GSE131928 (SingleCell-Tumor)}
+                \caption{Volcano plots of cell cycle to Neftel signature correlation}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{Pairwise PCA - Verhaak}
+    \begin{frame}{Meta-analysis - CellCycle}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}\ContinuedFloat
                 \centering
-                \begin{subfigure}[c]{0.7\textwidth}
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_loadings_barplot_pair-Ver}
-                    \caption{Loadings of PC1}
+                    \includegraphics[width=0.7\textwidth]{volcano_SC_Nef_CC}
+                    \caption{SingleCell}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.4\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{GSM3828672_expvar_Ver}
-                    \caption{Explained variance by PC1}
-                \end{subfigure}
-                \caption{Pairwise PCA - GSE131928 (SingleCell-Tumor)}
+                \caption{Volcano plots of cell cycle to Neftel signature correlation}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{Pairwise PCA - Neftel}
+    \begin{frame}{Meta-analysis - CellCycle}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}\ContinuedFloat
                 \centering
-                \begin{subfigure}[c]{0.38\textwidth}
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{CCLE_expvar_Nef}
-                    \caption{CCLE (Bulk-CellLine)}
+                    \includegraphics[width=0.7\textwidth]{volcano_Bulk_Ver_CC}
+                    \caption{Bulk}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.38\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{TCGA_expvar_Nef}
-                    \caption{TCGA (Bulk-Tumour)}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.38\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{mgg23_expvar_Nef}
-                    \caption{GSE168004 (SingleCell-CellLine)}
-                \end{subfigure}
-                \caption{Explained variance by PC1 - Pairwise PCA - Neftel}
+                \caption{Volcano plots of cell cycle to Verhaak signature correlation}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
 
-    \begin{frame}{Pairwise PCA - Verhaak}
+    \begin{frame}{Meta-analysis - CellCycle}
         \begin{adjustwidth}{-5cm}{-5cm}
             \centering
             \begin{figure}\ContinuedFloat
                 \centering
-                \begin{subfigure}[c]{0.38\textwidth}
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{CCLE_expvar_Ver}
-                    \caption{CCLE (Bulk-CellLine)}
+                    \includegraphics[width=0.7\textwidth]{volcano_SC_Ver_CC}
+                    \caption{SingleCell}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.38\textwidth}
+                \caption{Volcano plots of cell cycle to Verhaak signature correlation}
+            \end{figure}
+        \end{adjustwidth}
+    \end{frame}
+
+    \begin{frame}{Meta-analysis - Metabolism}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}
+                \centering
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{TCGA_expvar_Ver}
-                    \caption{TCGA (Bulk-Tumour)}
+                    \includegraphics[width=0.7\textwidth]{volcano_Bulk_Nef_Met}
+                    \caption{Bulk}
                 \end{subfigure}
-                \begin{subfigure}[c]{0.38\textwidth}
+                \caption{Volcano plots of metabolism to Neftel signature correlation}
+            \end{figure}
+        \end{adjustwidth}
+    \end{frame}
+
+    \begin{frame}{Meta-analysis - Metabolism}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}
+                \centering
+                \begin{subfigure}[c]{\textwidth}
                     \centering
-                    \includegraphics[width=\textwidth]{mgg23_expvar_Ver}
-                    \caption{GSE168004 (SingleCell-CellLine)}
+                    \includegraphics[width=0.7\textwidth]{volcano_SC_Nef_Met}
+                    \caption{SingleCell}
                 \end{subfigure}
-                \caption{Explained variance by PC1 - Pairwise PCA - Verhaak}
+                \caption{Volcano plots of metabolism to Neftel signature correlation}
+            \end{figure}
+        \end{adjustwidth}
+    \end{frame}
+
+    \begin{frame}{Meta-analysis - Metabolism}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}\ContinuedFloat
+                \centering
+                \begin{subfigure}[c]{\textwidth}
+                    \centering
+                    \includegraphics[width=0.7\textwidth]{volcano_Bulk_Ver_Met}
+                    \caption{Bulk}
+                \end{subfigure}
+                \caption{Volcano plots of metabolism to Verhaak signature correlation}
+            \end{figure}
+        \end{adjustwidth}
+    \end{frame}
+
+    \begin{frame}{Meta-analysis - Metabolism}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}\ContinuedFloat
+                \centering
+                \begin{subfigure}[c]{\textwidth}
+                    \centering
+                    \includegraphics[width=0.7\textwidth]{volcano_SC_Ver_Met}
+                    \caption{SingleCell}
+                \end{subfigure}
+                \caption{Volcano plots of metabolism to Verhaak signature correlation}
+            \end{figure}
+        \end{adjustwidth}
+    \end{frame}
+
+    \begin{frame}{Meta-analysis - Immune}
+        \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{figure}
+                \centering
+                \begin{subfigure}[c]{\textwidth}
+                    \centering
+                    \includegraphics[width=0.55\textwidth]{volcano_Bulk_Nef_Imm}
+                    \caption{Neftel - Bulk}
+                \end{subfigure}
+                \\
+                \begin{subfigure}[c]{\textwidth}
+                    \centering
+                    \includegraphics[width=0.55\textwidth]{volcano_SC_Nef_Imm}
+                    \caption{Neftel - Single-cell}
+                \end{subfigure}
+                \\
+                \begin{subfigure}[c]{\textwidth}
+                    \centering
+                    \includegraphics[width=0.55\textwidth]{volcano_Bulk_Ver_Imm}
+                    \caption{Verhaak - Bulk}
+                \end{subfigure}
+                \\
+                \begin{subfigure}[c]{\textwidth}
+                    \centering
+                    \includegraphics[width=0.55\textwidth]{volcano_SC_Ver_Imm}
+                    \caption{Verhaak - Single-cell}
+                \end{subfigure}
+                \caption{Volcano plots of metabolism to signature correlation}
             \end{figure}
         \end{adjustwidth}
     \end{frame}
@@ -856,7 +728,7 @@
     \begin{frame}{Summary}
         \begin{itemize}
             \item We can't find the 4 states mentioned in Neftel or Verhaak to be distinct
-            \pause \item Most distinct axis
+            \pause \item Most antagonistic pair
             \begin{itemize}
                 \item NPC vs MES - Neftel et al
                 \item PN vs MES - Verhaak et al
@@ -866,12 +738,18 @@
                 \item NPC $\approx$ PN
                 \item MES $\approx$ MES
             \end{itemize}
+            \pause \item Holds along other axis
+            \begin{itemize}
+                \item metabolism
+                \item cellcycle
+                \item immune axis
+            \end{itemize}
+
         \end{itemize}
     \end{frame}
 
     \begin{frame}{Future work}
         \begin{itemize}
-            \item Establish that the other axes do not contribute much
             \item Construct a network based on literature which explains the observations
         \end{itemize}
     \end{frame}
