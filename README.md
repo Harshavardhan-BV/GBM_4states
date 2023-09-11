@@ -8,11 +8,9 @@ Analysis of transcriptomic data to understand the relationship of the 4 distinct
     - trqwe
     - data.table
     - AUCell
-    - RMagic
     - Seurat
     - hdf5r
     - biomaRt
-    - 
 - Python 
     - [requirements.txt](./requirements.txt)
 
@@ -30,7 +28,7 @@ Analysis of transcriptomic data to understand the relationship of the 4 distinct
 Convert raw files to rds for easier loading. Done on a case-by-case basis as formats are not standardized.
 ```bash
 Rscript counts_to_rds-GSEID.R
-
+```
 ### 2. Gene-set enrichment analysis
 - Get the Gene-set enrichment score for each cell/sample using AUCell/ssGSEA
 ```bash
