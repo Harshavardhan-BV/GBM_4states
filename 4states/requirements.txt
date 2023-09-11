@@ -6,4 +6,3 @@ seaborn
 scipy
 gseapy
 fastcluster
-magic-impute
