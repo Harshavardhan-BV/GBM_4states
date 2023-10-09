@@ -6,6 +6,24 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import seaborn as sns
 plt.rcParams["svg.hashsalt"]=''
+sns.set_context('paper',font_scale=1.8)
+
+def screeplot(GSE,GSM,suff):
+    print(GSM,suff)
+    # Load the variance explained
+    var_df = pd.read_csv('./Output/'+GSE+'/PCA/'+GSM+'_expvar_'+suff+'.tsv',sep='\t',header=None)
+    var_df = var_df*100
+    # Select only first 10
+    var_df = var_df.iloc[:10,:]
+    # Plot the variance explained
+    plt.figure(figsize=(5,5))
+    plt.plot(var_df.index+1,var_df.values)
+    plt.xlabel('Principal Component')
+    plt.ylabel('Variance Explained (%)')
+    plt.tight_layout()
+    plt.savefig('./figures/'+GSE+'/PCA/'+GSM+'_screeplot_'+suff+'.svg')
+    plt.close()
+    plt.clf()
 
 def loada_clustermap(GSE, GSM, suff):
     print(GSM,suff)
@@ -43,7 +61,7 @@ def loada_clustermap(GSE, GSM, suff):
     plt.clf()
 
 # Sort the loadings of PC1 and plot a barplot. Colour the bars according to the geneset
-def loada_barplot(GSE, GSM, suff):
+def loada_barplot(GSE, GSM, PCi, suff):
     print(GSM,suff)
     # Load the loadings matrix
     load_df = pd.read_csv('./Output/'+GSE+'/PCA/'+GSM+'_loadings_'+suff+'.tsv',sep='\t',index_col=0)
@@ -57,18 +75,21 @@ def loada_barplot(GSE, GSM, suff):
     # select only the genes in the signature and merge with load_df
     gbmgenes = gbmgenes.melt(var_name='Signature').dropna()
     load_df = load_df.merge(gbmgenes,left_index=True,right_on='value', how='left')
+    # Set colour map as per the geneset
+    lut = { col: f'tab:{clr}' for col, clr in zip(['NefMES','NefAC', 'NefOPC', 'NefNPC', 'VerMES', 'VerCL', 'VerNL', 'VerPN'],['red','orange','green','blue','red','orange','green','blue'])}
     # Plot the loadings matrix but dont plot the ylabels
-    g = sns.barplot(data=load_df,x='PC1',y=load_df.index, hue='Signature', dodge=False, orient='h', order= load_df.sort_values('PC1',ascending=False).index)
+    plt.figure(figsize=(8,5))
+    g = sns.barplot(data=load_df,x=PCi,y=load_df.index, hue='Signature', dodge=False, orient='h', order= load_df.sort_values(PCi,ascending=False).index, palette=lut)
     g.set(yticklabels=[], yticks=[])
     plt.xlabel('PC1\n'+str(round(var_df.values[0][0],2))+'%')
     plt.tight_layout()
-    plt.savefig('./figures/'+GSE+'/PCA/'+GSM+'_loadings_barplot_'+suff+'.svg')
+    plt.savefig('./figures/'+GSE+'/PCA/'+GSM+'_loadings_'+PCi+'_barplot_'+suff+'.svg')
     plt.close()
     plt.clf()
 
 # GSE ID
-GSE = "GSE168004"
-# GSE = "GSE131928"
+# GSE = "GSE168004"
+GSE = "GSE131928"
 # GSE = "GSE182109"
 # GSE = "CCLE"
 # GSE = "TCGA"
@@ -83,4 +104,6 @@ for suff in ['Nef','Ver']:
     # Iterate over GSM samples
     for GSM in GSMs:
         loada_clustermap(GSE,GSM, suff)
-        loada_barplot(GSE,GSM, suff)
+        screeplot(GSE,GSM, suff)
+        for i in range(1,5):
+            loada_barplot(GSE,GSM, 'PC'+str(i),suff)
