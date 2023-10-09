@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 plt.rcParams["svg.hashsalt"]=''
+sns.set_context('poster')
 # Read the signatures
 df = pd.read_csv('./Signatures/GBM_signatures.csv')
 # Make directory for figures and output
@@ -39,7 +40,11 @@ def overlap_plt(overlap, suff):
     if suff!='all':
         overlap = overlap.filter(like=suff, axis=0).filter(like=suff, axis=1)
     # Plot a heatmap
-    sns.heatmap(overlap, annot=True, cmap='viridis',fmt=".0f")
+    plt.subplots(figsize=(10,10))
+    sns.heatmap(overlap, annot=True, cmap='viridis',fmt=".0f", cbar=False)
+    # Add boundaries at 4x4
+    plt.hlines(4, *plt.xlim(), color='white')
+    plt.vlines(4, *plt.ylim(), color='white')
     plt.tight_layout()
     # Save the figure
     plt.savefig('./figures/Sig_overlap/signature_overlap_'+suff+'.svg')

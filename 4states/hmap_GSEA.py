@@ -5,6 +5,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 plt.rcParams["svg.hashsalt"]=''
+sns.set_context('poster')
 
 # Read the GSE ID from command line
 parser = argparse.ArgumentParser(
