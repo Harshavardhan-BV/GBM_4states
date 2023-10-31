@@ -3,6 +3,13 @@ library(trqwe)
 library(dplyr)
 library(data.table)
 
+# Read the GSE ID from command line
+GSE = commandArgs(trailingOnly=TRUE)
+# test if there is only one argument: if not, return an error
+if (length(GSE)!=1) {
+  stop("One argument must be supplied (GSE ID)", call.=FALSE)
+} 
+
 get_sig = function(sigs,suff){
     # If suff doesnt contain - then return the genes in the signature set
     if (!grepl('-', suff)){
@@ -51,14 +58,6 @@ gbm_pair_pca = function(GSE, GSM, suff){
         gbm_pca(GSE, GSM, suff)
     }
 }
-
-# GSE ID
-# GSE = "GSE168004"
-GSE = "GSE131928"
-# GSE = "GSE182109"
-
-# GSE = "CCLE"
-# GSE = "TCGA"
 
 # GSM file list
 GSMs = list.files(paste0("./Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
