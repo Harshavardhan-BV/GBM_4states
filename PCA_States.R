@@ -3,18 +3,32 @@ library(trqwe)
 library(dplyr)
 library(data.table)
 
-gbm_pca = function(GSE, GSM, sc){
-    print(GSM)
-    # Read the counts
-    if (sc){
-        counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Imputed/", GSM, "_imputed.rds"), mc.cores=4)
-    }else{
-        counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
+# Read the GSE ID from command line
+GSE = commandArgs(trailingOnly=TRUE)
+# test if there is only one argument: if not, return an error
+if (length(GSE)!=1) {
+  stop("One argument must be supplied (GSE ID)", call.=FALSE)
+} 
+
+get_sig = function(sigs,suff){
+    # If suff doesnt contain - then return the genes in the signature set
+    if (!grepl('-', suff)){
+        sigs = sigs[,grep(suff, colnames(sigs))]
+    } else {
+    # Split by - and return the genes in each signature
+        sigs = lapply(strsplit(suff,'-')[[1]], function(x) sigs[,grep(x, colnames(sigs))])
     }
+    return(sigs)
+}
+
+gbm_pca = function(GSE, GSM, suff){
+    print(paste(GSM, suff))
+    # Read the counts
+    counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
     # Read the signatures
-    sigs = read.delim("./Signatures/GBM_states.gmt", header = F)
-    rownames(sigs) = sigs[,1]
-    sigs = sigs[,c(-1,-2)]
+    sigs = read.csv("./Signatures/GBM_signatures.csv")
+    #split suff by - and get the genes in each signature
+    sigs = get_sig(sigs, suff)
     genes = unique(unlist(sigs, use.names = F))
     genes = genes[genes %in% rownames(counts)]
     # Subset only the signature genes
@@ -27,24 +41,34 @@ gbm_pca = function(GSE, GSM, sc){
     loadings = data.frame(pca$rotation[,1:2])
     exp_var = data.frame(pca$sdev^2 / sum(pca$sdev^2))
     # Save the loadings as a tsv
-    fwrite(exp_var, paste0("./Output/", GSE,'/PCA/',GSM,'_expvar.tsv'), sep='\t', col.names=FALSE)
-    fwrite(loadings, paste0("./Output/", GSE,'/PCA/',GSM,'_loadings.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
+    fwrite(exp_var, paste0("./Output/", GSE,'/PCA/',GSM,'_expvar_',suff,'.tsv'), sep='\t', col.names=FALSE)
+    fwrite(loadings, paste0("./Output/", GSE,'/PCA/',GSM,'_loadings_',suff,'.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
 }
 
-# GSE ID
-GSE = "GSE168004"
-sc = TRUE
+gbm_pair_pca = function(GSE, GSM, suff){
+    # Read the signatures
+    sigs = read.csv("./Signatures/GBM_signatures.csv")
+    sigs = sigs[,grep(suff, colnames(sigs))]
+    # Make combinations of the signatures
+    sigs = combn(colnames(sigs),2)
+    # Iterate over the combinations
+    for (i in 1:ncol(sigs)){
+        suff = sigs[,i]
+        suff = paste(suff, collapse = '-')
+        gbm_pca(GSE, GSM, suff)
+    }
+}
 
 # GSM file list
-if (sc){
-    GSMs = list.files(paste0("./Data_generated/", GSE, "/Imputed/"), "*_imputed.rds")  %>% gsub('_imputed.rds','',.)
-}else{
-    GSMs = list.files(paste0("./Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
-}
+GSMs = list.files(paste0("./Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
+
 # Create directory for output
 dir.create(paste0("./Output/", GSE, "/PCA"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
-    gbm_pca(GSE, GSMs[i], sc)
+    gbm_pca(GSE, GSMs[i], 'Nef')
+    gbm_pair_pca(GSE, GSMs[i], 'Nef')
+    gbm_pca(GSE, GSMs[i], 'Ver')
+    gbm_pair_pca(GSE, GSMs[i], 'Ver')
 }

@@ -1,9 +1,19 @@
 [0] Config.pm:306> INFO - This is Biber 2.18
 [0] Config.pm:309> INFO - Logfile is 'slides.blg'
-[70] biber:340> INFO - === Wed Jul  5, 2023, 12:53:21
-[83] Biber.pm:418> INFO - Reading 'slides.bcf'
-[190] Biber.pm:978> INFO - Found 0 citekeys in bib section 0
-[229] bbl.pm:654> INFO - Writing 'slides.bbl' with encoding 'UTF-8'
-[229] bbl.pm:757> INFO - Output to slides.bbl
-[229] Biber.pm:130> WARN - The file 'slides.bcf' does not contain any citations!
-[230] Biber.pm:132> INFO - WARNINGS: 1
+[54] biber:340> INFO - === Mon Oct 16, 2023, 22:59:53
+[64] Biber.pm:418> INFO - Reading 'slides.bcf'
+[116] Biber.pm:978> INFO - Found 5 citekeys in bib section 0
+[128] Biber.pm:4401> INFO - Processing section 0
+[136] Biber.pm:4592> INFO - Looking for bibtex file 'References.bib' for section 0
+[138] bibtex.pm:1713> INFO - LaTeX decoding ...
+[144] bibtex.pm:1518> INFO - Found BibTeX data source 'References.bib'
+[290] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[290] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[290] Biber.pm:4221> INFO - Sorting list 'nyt/apasortcite//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[290] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
+[308] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[308] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[308] Biber.pm:4221> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[308] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
+[320] bbl.pm:654> INFO - Writing 'slides.bbl' with encoding 'UTF-8'
+[392] bbl.pm:757> INFO - Output to slides.bbl

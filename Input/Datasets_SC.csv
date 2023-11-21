@@ -1,0 +1,27 @@
+GSE,Bulk/SC,Tum/CL,Comments,preprocess,GSEA,GeneExpr
+GSE131928,SC,Tum,,Y,Y,Y
+GSE168004,SC,CL,,Y,Y,Y
+GSE182109,SC,Tum,GBMAtlas thingy,Y,Y,Y
+GSE189577,SC,Mouse XG,PDGFB overexpression,Y,Y,Y
+GSE57872,SC,Tum+CL,,Y,Y,Y
+GSE195682,SC,CL,,Y,Y,Y
+GSE174470,SC,Mouse XG?,,Y,Y,Y
+GSE212246,SC,Tum,ICBs,Y,Y,Y
+GSE84465,SC,Tum,,Y,Y,Y
+GSE231800,SC,Tum,neural stimulation via DREADDs,Y,Y,Y
+GSE76184,SC,Tum,radiation treated,Y,Y,Y
+GSE174554,SC,Tum,Under therapy,Y,Y,Y
+GSE231577,SC,,,Y,Y,Y
+GSE213308,SC,CL – Mouse XG,PP2Ac KO,Y,Y,Y
+GSE200984,SN,Tum,,Y,Y,Y
+GSE228785,SC,Tum,slow cycling,Y,Y,Y
+GSE122871,SC,Mouse XG,Gliomagenesis,Y,Y,Y
+GSE132172,SC,CL,,Y,Y,Y
+GSE141946,SC,Tum+Organoids,,Y,Y,Y
+GSE95157,SC,CL(Mouse model),,Y,Y,Y
+GSE130119,SC,Tum,,Y,Y,Y
+GSE168038,SC,Mouse XG,,Y,Y,Y
+GSE168039,SC,Mouse XG,DE?,Y,Y,Y
+GSE158700,SC,PDX,endothelial cells,Y,Y,Y
+GSE190129,SC,Tum,temozolomide treated,Y,Y,Y
+GSE151506,SC,,Has RRBS,Y,Y,Y

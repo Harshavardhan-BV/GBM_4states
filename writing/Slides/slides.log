@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/CVE-2023-32700 patched) (preloaded format=xelatex 2023.6.19)  5 JUL 2023 12:53
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/CVE-2023-32700 patched) (preloaded format=xelatex 2023.6.19)  16 OCT 2023 22:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1293,37 +1293,52 @@ Package biblatex Info: ... and expl3
 Package: blx-case-expl3 2022/07/12 v3.18b expl3 case changing code for biblatex
 
 ))
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 37.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 41.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\not' on input line 41.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 41.
+
 \@quotelevel=\count503
 \@quotereset=\count504
-
 (./slides.aux)
 \openout1 = `slides.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 3
-9.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 4
+1.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1359,65 +1374,65 @@ LaTeX Font Info:    ... okay on input line 39.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 39.
+Package hyperref Info: Link coloring OFF on input line 41.
 (./slides.out) (./slides.out)
 \@outlinefile=\write6
 \openout6 = `slides.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 39.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 41.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 39.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 41.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmr/m/n on input line 39.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 39.
+(Font)                  OT1/cmss/m/n --> TU/lmr/m/n on input line 41.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/FiraSansLight(0)/b/n on input line 
-39.
+41.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/FiraSansLight(0)/b/n on input line 
-39.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 39.
+41.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/cmss/m/n --> TU/FiraSansLight(0)/m/n on input line 
-39.
+41.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/FiraSansLight(0)/m/n on input line
- 39.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 39.
+ 41.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/FiraSansLight(0)/m/it on input line
- 39.
+ 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> TU/FiraSansLight(0)/m/it on input lin
-e 39.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 39.
+e 41.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/FiraMono(0)/m/n on input line 39.
+(Font)                  OT1/cmtt/m/n --> TU/FiraMono(0)/m/n on input line 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/FiraMono(0)/m/n on input line 39.
+(Font)                  OT1/cmtt/m/n --> TU/FiraMono(0)/m/n on input line 41.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
 (Font)                  TU/FiraSansLight(0)/m/n --> TU/FiraSansLight(0)/b/n on 
-input line 39.
+input line 41.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  TU/FiraSansLight(0)/m/it --> TU/FiraSansLight(0)/b/it o
-n input line 39.
+n input line 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> TU/lmr/b/n on input line 39.
+(Font)                  OT1/cmss/b/n --> TU/lmr/b/n on input line 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
 (Font)                  TU/FiraSansLight(0)/b/n --> TU/FiraSansLight(0)/b/n on 
-input line 39.
+input line 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  TU/FiraSansLight(0)/m/n --> TU/FiraSansLight(0)/b/n on 
-input line 39.
+input line 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  TU/FiraSansLight(0)/m/it --> TU/FiraSansLight(0)/b/it o
-n input line 39.
+n input line 41.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  TU/FiraMono(0)/m/n --> TU/FiraMono(0)/b/n on input line
- 39.
+ 41.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -1485,106 +1500,291 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'slides.bbl' found.
 
 (./slides.bbl)
-Package biblatex Info: Reference section=0 on input line 39.
-Package biblatex Info: Reference segment=0 on input line 39.
+Package biblatex Info: Reference section=0 on input line 41.
+Package biblatex Info: Reference segment=0 on input line 41.
  (./slides.nav)
-Overfull \vbox (40.26942pt too high) detected at line 40
+LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \vbox (40.26942pt too high) detected at line 42
  []
 
 [1
 
 ]
-File: ./figures//CCLE_ssgsea_corr_4D.pdf Graphic file (type pdf)
-<use ./figures//CCLE_ssgsea_corr_4D.pdf>
-File: ./figures//AUCell_GSM3828672_corrplot_4D.pdf Graphic file (type pdf)
-<use ./figures//AUCell_GSM3828672_corrplot_4D.pdf>
-File: ./figures//AUCell_GSM3828673_corrplot_4D.pdf Graphic file (type pdf)
-<use ./figures//AUCell_GSM3828673_corrplot_4D.pdf>
- [2
+File: ./figures//GBM.jpg Graphic file (type bmp)
+<./figures//GBM.jpg>
+File: ./figures//GBMincid.png Graphic file (type bmp)
+<./figures//GBMincid.png>
+File: ./figures//GBMsurv.png Graphic file (type bmp)
+<./figures//GBMsurv.png>
 
-]
-File: ./figures//AUCell_OSM_celllines_corrplot_4D.pdf Graphic file (type pdf)
-<use ./figures//AUCell_OSM_celllines_corrplot_4D.pdf>
-File: ./figures//AUCell_mgg23_corrplot_4D.pdf Graphic file (type pdf)
-<use ./figures//AUCell_mgg23_corrplot_4D.pdf>
-File: ./figures//AUCell_mgg75_corrplot_4D.pdf Graphic file (type pdf)
-<use ./figures//AUCell_mgg75_corrplot_4D.pdf>
- [3
-
-]
-File: ./figures//signature_overlap.pdf Graphic file (type pdf)
-<use ./figures//signature_overlap.pdf>
-
-Overfull \vbox (6.0287pt too high) detected at line 98
+Overfull \vbox (7.04335pt too high) detected at line 70
  []
 
-[4
+[2
 
 ]
-File: ./figures//CCLE_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//CCLE_Corrplot_coloured.pdf>
-File: ./figures//GSM3828672_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//GSM3828672_Corrplot_coloured.pdf>
-File: ./figures//GSM3828673_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//GSM3828673_Corrplot_coloured.pdf>
+File: ./figures//GBM.jpg Graphic file (type bmp)
+<./figures//GBM.jpg>
+File: ./figures//GBMincid.png Graphic file (type bmp)
+<./figures//GBMincid.png>
+File: ./figures//GBMsurv.png Graphic file (type bmp)
+<./figures//GBMsurv.png>
+
+Overfull \vbox (7.04335pt too high) detected at line 70
+ []
+
+[3
+
+]
+File: ./figures//verhaak_clusters.jpg Graphic file (type bmp)
+<./figures//verhaak_clusters.jpg>
+File: ./figures//neftel_ninja_star.jpg Graphic file (type bmp)
+<./figures//neftel_ninja_star.jpg>
+ [4
+
+]
+File: ./figures//verhaak_clusters.jpg Graphic file (type bmp)
+<./figures//verhaak_clusters.jpg>
+File: ./figures//neftel_ninja_star.jpg Graphic file (type bmp)
+<./figures//neftel_ninja_star.jpg>
  [5
 
-]
-File: ./figures//OSM_celllines_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//OSM_celllines_Corrplot_coloured.pdf>
-File: ./figures//mgg23_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//mgg23_Corrplot_coloured.pdf>
-File: ./figures//mgg75_Corrplot_coloured.pdf Graphic file (type pdf)
-<use ./figures//mgg75_Corrplot_coloured.pdf>
- [6
+] [6
 
 ]
-File: ./figures//GSM3828672_Consistency.pdf Graphic file (type pdf)
-<use ./figures//GSM3828672_Consistency.pdf>
-File: ./figures//GSM3828673_Consistency.pdf Graphic file (type pdf)
-<use ./figures//GSM3828673_Consistency.pdf>
- [7
+Overfull \hbox (8.65208pt too wide) detected at line 125
+[][]\OT1/cmss/m/n/9 ([]\OML/cmm/m/it/9 ; []\OT1/cmss/m/n/9 ) = [] []
+ []
+
+File: ./figures//ecdf.pdf Graphic file (type pdf)
+<use ./figures//ecdf.pdf>
+[7
 
 ]
-File: ./figures//OSM_celllines_Consistency.pdf Graphic file (type pdf)
-<use ./figures//OSM_celllines_Consistency.pdf>
-File: ./figures//mgg23_Consistency.pdf Graphic file (type pdf)
-<use ./figures//mgg23_Consistency.pdf>
-File: ./figures//mgg75_Consistency.pdf Graphic file (type pdf)
-<use ./figures//mgg75_Consistency.pdf>
- [8
+Overfull \hbox (8.65208pt too wide) detected at line 125
+[][]\OT1/cmss/m/n/9 ([]\OML/cmm/m/it/9 ; []\OT1/cmss/m/n/9 ) = [] []
+ []
+
+File: ./figures//ecdf.pdf Graphic file (type pdf)
+<use ./figures//ecdf.pdf>
+[8
 
 ]
-File: ./figures//GSM3828672_loadings_plot.pdf Graphic file (type pdf)
-<use ./figures//GSM3828672_loadings_plot.pdf>
-File: ./figures//GSM3828673_loadings_plot.pdf Graphic file (type pdf)
-<use ./figures//GSM3828673_loadings_plot.pdf>
- [9
+File: ./figures//GSEA_GSM3828672_corrplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//GSEA_GSM3828672_corrplot_Nef.pdf>
+File: ./figures//GSEA_TCGA_corrplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//GSEA_TCGA_corrplot_Nef.pdf>
+
+Overfull \vbox (0.19183pt too high) detected at line 146
+ []
+
+[9
 
 ]
-File: ./figures//OSM_celllines_loadings_plot.pdf Graphic file (type pdf)
-<use ./figures//OSM_celllines_loadings_plot.pdf>
-File: ./figures//mgg23_loadings_plot.pdf Graphic file (type pdf)
-<use ./figures//mgg23_loadings_plot.pdf>
-File: ./figures//mgg75_loadings_plot.pdf Graphic file (type pdf)
-<use ./figures//mgg75_loadings_plot.pdf>
- [10
+File: ./figures//GSEA_GSM3828672_corrplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//GSEA_GSM3828672_corrplot_Ver.pdf>
+File: ./figures//GSEA_TCGA_corrplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//GSEA_TCGA_corrplot_Ver.pdf>
+
+Overfull \vbox (0.19183pt too high) detected at line 166
+ []
+
+[10
 
 ]
-File: ./figures//GSM3828672_load-corr.pdf Graphic file (type pdf)
-<use ./figures//GSM3828672_load-corr.pdf>
-File: ./figures//GSM3828673_load-corr.pdf Graphic file (type pdf)
-<use ./figures//GSM3828673_load-corr.pdf>
- [11
+File: ./figures//GSEA_GSM3828672_corrplot_2D.pdf Graphic file (type pdf)
+<use ./figures//GSEA_GSM3828672_corrplot_2D.pdf>
+File: ./figures//GSEA_TCGA_corrplot_2D.pdf Graphic file (type pdf)
+<use ./figures//GSEA_TCGA_corrplot_2D.pdf>
+
+Overfull \vbox (0.19183pt too high) detected at line 186
+ []
+
+[11
 
 ]
-File: ./figures//OSM_celllines_load-corr.pdf Graphic file (type pdf)
-<use ./figures//OSM_celllines_load-corr.pdf>
-File: ./figures//mgg23_load-corr.pdf Graphic file (type pdf)
-<use ./figures//mgg23_load-corr.pdf>
-File: ./figures//mgg75_load-corr.pdf Graphic file (type pdf)
-<use ./figures//mgg75_load-corr.pdf>
- [12
+File: ./figures//GSM3828672_Corrplot_Nef.png Graphic file (type bmp)
+<./figures//GSM3828672_Corrplot_Nef.png>
+File: ./figures//TCGA_Corrplot_Nef.png Graphic file (type bmp)
+<./figures//TCGA_Corrplot_Nef.png>
+
+Overfull \vbox (32.06168pt too high) detected at line 206
+ []
+
+[12
+
+]
+File: ./figures//GSM3828672_Corrplot_Ver.png Graphic file (type bmp)
+<./figures//GSM3828672_Corrplot_Ver.png>
+File: ./figures//TCGA_Corrplot_Ver.png Graphic file (type bmp)
+<./figures//TCGA_Corrplot_Ver.png>
+
+Overfull \vbox (32.06168pt too high) detected at line 226
+ []
+
+[13
+
+]
+File: ./figures//GSM3828672_Consistency_Nef.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_Consistency_Nef.pdf>
+File: ./figures//TCGA_Consistency_Nef.pdf Graphic file (type pdf)
+<use ./figures//TCGA_Consistency_Nef.pdf>
+File: ./figures//GSM3828672_Consistency_Ver.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_Consistency_Ver.pdf>
+File: ./figures//TCGA_Consistency_Ver.pdf Graphic file (type pdf)
+<use ./figures//TCGA_Consistency_Ver.pdf>
+ [14
+
+]
+File: ./figures//GSM3828672_Consistency_Nef.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_Consistency_Nef.pdf>
+File: ./figures//TCGA_Consistency_Nef.pdf Graphic file (type pdf)
+<use ./figures//TCGA_Consistency_Nef.pdf>
+File: ./figures//GSM3828672_Consistency_Ver.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_Consistency_Ver.pdf>
+File: ./figures//TCGA_Consistency_Ver.pdf Graphic file (type pdf)
+<use ./figures//TCGA_Consistency_Ver.pdf>
+ [15
+
+]
+File: ./figures//GSM3828672_Consistency_Nef.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_Consistency_Nef.pdf>
+File: ./figures//TCGA_Consistency_Nef.pdf Graphic file (type pdf)
+<use ./figures//TCGA_Consistency_Nef.pdf>
+File: ./figures//GSM3828672_Consistency_Ver.pdf Graphic file (type pdf)
+<use ./figures//GSM3828672_Consistency_Ver.pdf>
+File: ./figures//TCGA_Consistency_Ver.pdf Graphic file (type pdf)
+<use ./figures//TCGA_Consistency_Ver.pdf>
+ [16
+
+]
+File: ./figures//GSM3828672_loadingsPC1_barplot_Nef.pdf Graphic file (type pdf)
+
+<use ./figures//GSM3828672_loadingsPC1_barplot_Nef.pdf>
+File: ./figures//TCGA_loadingsPC1_barplot_Nef.pdf Graphic file (type pdf)
+<use ./figures//TCGA_loadingsPC1_barplot_Nef.pdf>
+ [17
+
+]
+File: ./figures//GSM3828672_loadingsPC1_barplot_Ver.pdf Graphic file (type pdf)
+
+<use ./figures//GSM3828672_loadingsPC1_barplot_Ver.pdf>
+File: ./figures//TCGA_loadingsPC1_barplot_Ver.pdf Graphic file (type pdf)
+<use ./figures//TCGA_loadingsPC1_barplot_Ver.pdf>
+ [18
+
+]
+File: ./figures//Volcano_Bulk_NefMES-NefNPC.pdf Graphic file (type pdf)
+<use ./figures//Volcano_Bulk_NefMES-NefNPC.pdf>
+File: ./figures//Bar_Bulk_Nef.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Nef.pdf>
+File: ./figures//Volcano_Bulk_VerMES-VerPN.pdf Graphic file (type pdf)
+<use ./figures//Volcano_Bulk_VerMES-VerPN.pdf>
+File: ./figures//Bar_Bulk_Ver.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Ver.pdf>
+ [19
+
+]
+File: ./figures//Volcano_Bulk_NefMES-NefNPC.pdf Graphic file (type pdf)
+<use ./figures//Volcano_Bulk_NefMES-NefNPC.pdf>
+File: ./figures//Bar_Bulk_Nef.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Nef.pdf>
+File: ./figures//Volcano_Bulk_VerMES-VerPN.pdf Graphic file (type pdf)
+<use ./figures//Volcano_Bulk_VerMES-VerPN.pdf>
+File: ./figures//Bar_Bulk_Ver.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Ver.pdf>
+ [20
+
+]
+File: ./figures//Volcano_SC_NefMES-NefNPC.pdf Graphic file (type pdf)
+<use ./figures//Volcano_SC_NefMES-NefNPC.pdf>
+File: ./figures//Bar_SC_Nef.pdf Graphic file (type pdf)
+<use ./figures//Bar_SC_Nef.pdf>
+File: ./figures//Volcano_SC_VerMES-VerPN.pdf Graphic file (type pdf)
+<use ./figures//Volcano_SC_VerMES-VerPN.pdf>
+File: ./figures//Bar_SC_Ver.pdf Graphic file (type pdf)
+<use ./figures//Bar_SC_Ver.pdf>
+ [21
+
+]
+File: ./figures//Volcano_SC_NefMES-NefNPC.pdf Graphic file (type pdf)
+<use ./figures//Volcano_SC_NefMES-NefNPC.pdf>
+File: ./figures//Bar_SC_Nef.pdf Graphic file (type pdf)
+<use ./figures//Bar_SC_Nef.pdf>
+File: ./figures//Volcano_SC_VerMES-VerPN.pdf Graphic file (type pdf)
+<use ./figures//Volcano_SC_VerMES-VerPN.pdf>
+File: ./figures//Bar_SC_Ver.pdf Graphic file (type pdf)
+<use ./figures//Bar_SC_Ver.pdf>
+ [22
+
+]
+File: ./figures//Bar_Bulk_Nef-GLYC.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Nef-GLYC.pdf>
+File: ./figures//Bar_Bulk_Nef-PD-L1.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Nef-PD-L1.pdf>
+File: ./figures//Bar_Bulk_Ver-GLYC.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Ver-GLYC.pdf>
+File: ./figures//Bar_Bulk_Ver-PD-L1.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Ver-PD-L1.pdf>
+ [23
+
+]
+File: ./figures//Bar_Bulk_Nef-GLYC.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Nef-GLYC.pdf>
+File: ./figures//Bar_Bulk_Nef-PD-L1.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Nef-PD-L1.pdf>
+File: ./figures//Bar_Bulk_Ver-GLYC.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Ver-GLYC.pdf>
+File: ./figures//Bar_Bulk_Ver-PD-L1.pdf Graphic file (type pdf)
+<use ./figures//Bar_Bulk_Ver-PD-L1.pdf>
+ [24
+
+] [25
+
+] [26
+
+] [27
+
+]
+[28
+
+] [29
+
+] [30
+
+]
+File: ./figures//CSBLab.jpg Graphic file (type bmp)
+<./figures//CSBLab.jpg>
+File: ./figures//PMRF_Logo.pdf Graphic file (type pdf)
+<use ./figures//PMRF_Logo.pdf>
+ [31
+
+]
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
+File: beamericonarticle.pdf Graphic file (type pdf)
+<use beamericonarticle.pdf>
+ [32
+
+] [33
+
 
 ]
 \tf@nav=\write7
@@ -1597,19 +1797,27 @@ File: ./figures//mgg75_load-corr.pdf Graphic file (type pdf)
 \openout9 = `slides.snm'.
 
  (./slides.aux)
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `slides.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: AEA4B6A8AE45636C75679C2F0DFA4493;93.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                slides
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'slides.run.xml'.
 \openout1 = `slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37809 strings out of 476864
- 828040 string characters out of 5810745
- 1850979 words of memory out of 6000000
- 57227 multiletter control sequences out of 15000+600000
- 512903 words of font info for 65 fonts, out of 8000000 for 9000
+ 38530 strings out of 476864
+ 845478 string characters out of 5810745
+ 1860979 words of memory out of 6000000
+ 57910 multiletter control sequences out of 15000+600000
+ 520109 words of font info for 100 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 128i,13n,134p,1886b,5044s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,20n,134p,1886b,5464s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on slides.pdf (12 pages).
+Output written on slides.pdf (33 pages).
