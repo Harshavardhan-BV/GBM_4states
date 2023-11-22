@@ -22,15 +22,15 @@ def plot_seprate(corr_df,p_values, suff, GSE, GSM, sigs=None):
     p_values = p_values.applymap(lambda x: '*' if x < 0.05 else '')
     # Plot the clustermap with the text being pvalues
     sns.clustermap(corr_df, cmap='coolwarm', vmax=1, vmin=-1, annot=p_values, fmt='', annot_kws={"size": 20})
-    plt.savefig('figures/'+GSE+'/GSEA/GSEA_'+GSM+'_corrplot_'+suff+'.svg')
+    plt.savefig('../figures/'+GSE+'/GSEA/GSEA_'+GSM+'_corrplot_'+suff+'.svg')
     plt.clf()
     plt.close()
 
 def corr_plot_AUCell(GSE,GSM):
     print(GSM)
     # Read the correlation and pvalue matrices
-    corr_df = pd.read_csv('Output/'+GSE+'/GSEA/'+GSM+'-corr.tsv', index_col=0, sep='\t')
-    p_values = pd.read_csv('Output/'+GSE+'/GSEA/'+GSM+'-pval.tsv', index_col=0, sep='\t')
+    corr_df = pd.read_csv('../Output/'+GSE+'/GSEA/'+GSM+'-corr.tsv', index_col=0, sep='\t')
+    p_values = pd.read_csv('../Output/'+GSE+'/GSEA/'+GSM+'-pval.tsv', index_col=0, sep='\t')
     # Plot all signatures
     plot_seprate(corr_df, p_values, 'all', GSE, GSM)
     # Select only Verhaak signatures
@@ -44,10 +44,10 @@ def corr_plot_AUCell(GSE,GSM):
     plot_seprate(corr_df, p_values, '2D', GSE, GSM, sigs=sigs)
     
 # List of GSM IDs
-files = glob.glob('Output/'+GSE+'/GSEA/*-corr.tsv')
+files = glob.glob('../Output/'+GSE+'/GSEA/*-corr.tsv')
 GSMs = [os.path.basename(x).replace(f'-corr.tsv','') for x in files]
 # Make directory for figures
-os.makedirs('figures/'+GSE+'/GSEA/', exist_ok=True)
+os.makedirs('../figures/'+GSE+'/GSEA/', exist_ok=True)
 
 # Iterate over GSM samples
 for GSM in GSMs:

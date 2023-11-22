@@ -1,7 +1,6 @@
 library(dplyr)
 library(trqwe)
 library(data.table)
-library(Rmagic)
 library(Seurat)
 
 # Save the processed counts matrix

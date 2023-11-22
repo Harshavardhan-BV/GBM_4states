@@ -14,9 +14,9 @@ if (length(GSE)!=1) {
 run_AUCell <- function(GSE, GSM){
     print(GSM)
     # Read the counts
-    matrix_AUCell = mcreadRDS(paste0("./Data_generated/",GSE,"/Counts/",GSM,"_counts.rds"), mc.cores=4) %>% as.matrix()
+    matrix_AUCell = mcreadRDS(paste0("../Data_generated/",GSE,"/Counts/",GSM,"_counts.rds"), mc.cores=4) %>% as.matrix()
     # Get the gene sets
-    geneSets = getGmt('./Signatures/GBM_states.gmt')
+    geneSets = getGmt('../Signatures/GBM_states.gmt')
     # Subset only the expressed genes
     geneSets <- subsetGeneSets(geneSets, rownames(matrix_AUCell)) 
     # Build cell rankings
@@ -31,15 +31,15 @@ run_AUCell <- function(GSE, GSM){
     gc(reset = TRUE)
     if (any(dim(matrix_AUCell))){
         # Save the AUCell scores as a csv
-        fwrite(matrix_AUCell, paste0("./Output/",GSE,"/AUCell/",GSM,"-AUCell.csv"))
+        fwrite(matrix_AUCell, paste0("../Output/",GSE,"/AUCell/",GSM,"-AUCell.csv"))
     }
 }
 
 # GSM file list
-GSMs = list.files(paste0('./Data_generated/',GSE,'/Counts/'),'*_counts.rds') %>% gsub('_counts.rds','',.)
+GSMs = list.files(paste0('../Data_generated/',GSE,'/Counts/'),'*_counts.rds') %>% gsub('_counts.rds','',.)
 
 # Create directory for output
-dir.create(paste0("./Output/", GSE, "/AUCell"), showWarnings = F, recursive = T)
+dir.create(paste0("../Output/", GSE, "/AUCell"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (GSM in GSMs){

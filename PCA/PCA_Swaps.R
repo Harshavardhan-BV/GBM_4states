@@ -45,11 +45,11 @@ replic_pca = function(counts,sigs,houskeep,tgt,nswaps){
 swap_pca = function(GSE, GSM, suff, nrepl=10){
     print(paste(GSM, suff))
     # Read the counts
-    counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
+    counts = mcreadRDS(paste0("../Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
     # Read the housekeeping genes
-    houskeep = read.delim('./Signatures/Housekeeping_genes.txt')[,1] %>% unlist(n)
+    houskeep = read.delim('../Signatures/Housekeeping_genes.txt')[,1] %>% unlist(n)
     # Read the signatures
-    sigs = read.csv("./Signatures/GBM_signatures.csv")
+    sigs = read.csv("../Signatures/GBM_signatures.csv")
     # split suff by - and get the genes in each signature
     sigs = get_sig(sigs, suff)
     mega_df = NULL
@@ -69,14 +69,14 @@ swap_pca = function(GSE, GSM, suff, nrepl=10){
     mega_df = as.data.frame(mega_df)
     colnames(mega_df) = c('Signature', 'Swaps','Swap_pct' , 'PC1_Var', 'PC2_Var', 'PC3_Var', 'PC4_Var')
     # Save the results
-    fwrite(mega_df, paste0("./Output/", GSE, "/PCA_Swaps/", GSM, "_", suff, "_swaps.csv")) 
+    fwrite(mega_df, paste0("../Output/", GSE, "/PCA_Swaps/", GSM, "_", suff, "_swaps.csv")) 
 }
 
 # GSM file list
-GSMs = list.files(paste0("./Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
+GSMs = list.files(paste0("../Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
 
 # Create directory for output
-dir.create(paste0("./Output/", GSE, "/PCA_Swaps"), showWarnings = F, recursive = T)
+dir.create(paste0("../Output/", GSE, "/PCA_Swaps"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (GSM in GSMs){

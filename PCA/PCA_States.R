@@ -24,9 +24,9 @@ get_sig = function(sigs,suff){
 gbm_pca = function(GSE, GSM, suff){
     print(paste(GSM, suff))
     # Read the counts
-    counts = mcreadRDS(paste0("./Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
+    counts = mcreadRDS(paste0("../Data_generated/", GSE, "/Counts/", GSM, "_counts.rds"), mc.cores=4)
     # Read the signatures
-    sigs = read.csv("./Signatures/GBM_signatures.csv")
+    sigs = read.csv("../Signatures/GBM_signatures.csv")
     #split suff by - and get the genes in each signature
     sigs = get_sig(sigs, suff)
     genes = unique(unlist(sigs, use.names = F))
@@ -41,13 +41,13 @@ gbm_pca = function(GSE, GSM, suff){
     loadings = data.frame(pca$rotation[,1:2])
     exp_var = data.frame(pca$sdev^2 / sum(pca$sdev^2))
     # Save the loadings as a tsv
-    fwrite(exp_var, paste0("./Output/", GSE,'/PCA/',GSM,'_expvar_',suff,'.tsv'), sep='\t', col.names=FALSE)
-    fwrite(loadings, paste0("./Output/", GSE,'/PCA/',GSM,'_loadings_',suff,'.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
+    fwrite(exp_var, paste0("../Output/", GSE,'/PCA/',GSM,'_expvar_',suff,'.tsv'), sep='\t', col.names=FALSE)
+    fwrite(loadings, paste0("../Output/", GSE,'/PCA/',GSM,'_loadings_',suff,'.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
 }
 
 gbm_pair_pca = function(GSE, GSM, suff){
     # Read the signatures
-    sigs = read.csv("./Signatures/GBM_signatures.csv")
+    sigs = read.csv("../Signatures/GBM_signatures.csv")
     sigs = sigs[,grep(suff, colnames(sigs))]
     # Make combinations of the signatures
     sigs = combn(colnames(sigs),2)
@@ -60,10 +60,10 @@ gbm_pair_pca = function(GSE, GSM, suff){
 }
 
 # GSM file list
-GSMs = list.files(paste0("./Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
+GSMs = list.files(paste0("../Data_generated/", GSE, "/Counts/"), "*_counts.rds")  %>% gsub('_counts.rds','',.)
 
 # Create directory for output
-dir.create(paste0("./Output/", GSE, "/PCA"), showWarnings = F, recursive = T)
+dir.create(paste0("../Output/", GSE, "/PCA"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){

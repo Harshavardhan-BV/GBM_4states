@@ -7,14 +7,14 @@ import itertools as it
 
 # Read the GSE ID from command line
 parser = argparse.ArgumentParser(
-                    prog='Consistency_Expr.py',
-                    description='Calculates the consistency of the correlation between the expression of genes in signatures')
+                    prog='J-Metric.py',
+                    description='Calculates the J-metric of the correlation between the expression of genes in signatures')
 parser.add_argument('GSE', type=str, nargs=1, help='GSE ID')
 GSE = parser.parse_args().GSE[0]
 
 def corr_consistency(GSE, GSM, sigs, suff):
     # Read the correlation matrix
-    corr_df = pd.read_csv('./Output/'+GSE+'/Correlation/'+GSM+'_correlation.tsv', index_col=0, sep='\t')
+    corr_df = pd.read_csv('../Output/'+GSE+'/Correlation/'+GSM+'_correlation.tsv', index_col=0, sep='\t')
     # Pairwise combinations of signatures
     combinats = list(it.combinations(sigs,2))
     cons = np.empty(len(combinats))
@@ -38,13 +38,13 @@ def corr_consistency(GSE, GSM, sigs, suff):
         cons[i] = (np.sum(self_sum) - cross_sum)/2
     df = pd.DataFrame(combinats,columns=['G1','G2'])
     df['Consistency'] = cons
-    df.to_csv('./Output/'+GSE+'/Correlation/'+GSM+'_consistency_'+suff+'.tsv',sep='\t',index=False)
+    df.to_csv('../Output/'+GSE+'/Correlation/'+GSM+'_consistency_'+suff+'.tsv',sep='\t',index=False)
 
 # List of GSM IDs
-files = glob.glob('Output/'+GSE+'/Correlation/*_correlation.tsv')
+files = glob.glob('../Output/'+GSE+'/Correlation/*_correlation.tsv')
 GSMs = [os.path.basename(x).replace(f'_correlation.tsv','') for x in files]
 # Read the genes of signatures
-gbmgenes = pd.read_csv("./Signatures/GBM_signatures.csv")
+gbmgenes = pd.read_csv("../Signatures/GBM_signatures.csv")
 
 # Iterate over GSM samples
 for GSM in GSMs:

@@ -29,7 +29,7 @@ def hmap_corr(df,ax, title):
 
 def aucorr(GSE, GSM, suff):
     print(GSM)
-    df = pd.read_csv('Output/'+GSE+'/'+score+'/'+GSM+'-'+score+'.csv', index_col=0)
+    df = pd.read_csv('../Output/'+GSE+'/'+score+'/'+GSM+'-'+score+'.csv', index_col=0)
     if suff=='Nef':
         extm = ['NefMES','NefNPC']
         intr = ['NefAC','NefOPC']
@@ -50,16 +50,16 @@ def aucorr(GSE, GSM, suff):
     hmap_corr(df_intr,ax[2], 'Intermediate')
     # Save the figure
     plt.tight_layout()
-    plt.savefig('figures/'+GSE+'/GSEA/GSEA_'+GSM+'_splitcorr_'+suff+'.svg')
+    plt.savefig('../figures/'+GSE+'/GSEA/GSEA_'+GSM+'_splitcorr_'+suff+'.svg')
     plt.clf()
     plt.close()
 
 # List of GSM IDs
 score = 'AUCell' if sc else 'ssGSEA'
-files = glob.glob('Output/'+GSE+'/'+score+'/*-'+score+'.csv')
+files = glob.glob('../Output/'+GSE+'/'+score+'/*-'+score+'.csv')
 GSMs = [os.path.basename(x).replace(f'-'+score+'.csv','') for x in files]
 # Make directory for output
-os.makedirs('figures/'+GSE+'/GSEA/', exist_ok=True)
+os.makedirs('../figures/'+GSE+'/GSEA/', exist_ok=True)
 
 # Iterate over GSM samples
 for GSM in GSMs:

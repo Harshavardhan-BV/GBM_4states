@@ -47,7 +47,7 @@ def volc_grid(df, gs, suff):
     fig.legend(handles, labels, loc='lower center', ncol=3, bbox_to_anchor=(0.5, -0.2))
     fig.subplots_adjust(bottom=0.2)
     fig.tight_layout()
-    plt.savefig('./figures/GSEA/volcano_'+suff+'.svg')
+    plt.savefig('../figures/GSEA/volcano_'+suff+'.svg')
     plt.clf()
     plt.close()
 
@@ -71,7 +71,7 @@ def volc_grid_2D(df, gtgt, gsrc, suff):
     fig.legend(handles, labels, loc='lower center', ncol=3, bbox_to_anchor=(0.5, -0.2))
     fig.subplots_adjust(bottom=0.2)
     fig.tight_layout()
-    plt.savefig('./figures/GSEA/volcano_'+suff+'.svg')
+    plt.savefig('../figures/GSEA/volcano_'+suff+'.svg')
     plt.clf()
     plt.close()
 
@@ -80,14 +80,14 @@ def corr_scraper(GSEs, expr=False):
     # Iterate through GSEs
     for GSE in GSEs:
         # List GSMs in each GSE
-        files = glob.glob('./Output/'+GSE+'/GSEA/*-corr.tsv')
+        files = glob.glob('../Output/'+GSE+'/GSEA/*-corr.tsv')
         GSMs = [os.path.basename(file).replace('-corr.tsv','') for file in files]
         # Iterate through GSMs
         for GSM in GSMs:
             if expr:
-                path = './Output/'+GSE+'/GSEA-Expr/'
+                path = '../Output/'+GSE+'/GSEA-Expr/'
             else:
-                path = './Output/'+GSE+'/GSEA/'
+                path = '../Output/'+GSE+'/GSEA/'
             # Read the correlation and p-value dataframes
             corr_df = pd.read_csv(path+GSM+'-corr.tsv', sep='\t', index_col=0)
             p_values = pd.read_csv(path+GSM+'-pval.tsv', sep='\t', index_col=0)
@@ -104,9 +104,9 @@ def corr_scraper(GSEs, expr=False):
             df_mega = pd.concat([df_mega, df])
     return df_mega
             
-os.makedirs('./figures/GSEA', exist_ok=True)
+os.makedirs('../figures/GSEA', exist_ok=True)
 
-datasets = pd.read_csv('./Input/Datasets_Bulk.csv')
+datasets = pd.read_csv('../Input/Datasets_Bulk.csv')
 GSEs = datasets.GSE
 
 df_mega = corr_scraper(GSEs)
@@ -133,7 +133,7 @@ volc_grid_2D(df_mega_expr,  sigs_ver, gene_imm, 'Bulk_Ver_Imm_Expr')
 volc_grid(df_mega, sigs_2D, 'Bulk_2D')
 
 
-datasets = pd.read_csv('./Input/Datasets_SC.csv')
+datasets = pd.read_csv('../Input/Datasets_SC.csv')
 GSEs = datasets.GSE
 
 df_mega = corr_scraper(GSEs)

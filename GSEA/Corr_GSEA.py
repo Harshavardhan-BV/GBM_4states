@@ -29,7 +29,7 @@ def minmax(df, sigs, suff):
 
 def aucorr(GSE, GSM):
     print(GSM)
-    df = pd.read_csv('Output/'+GSE+'/'+suff+'/'+GSM+'-'+suff+'.csv', index_col=0)
+    df = pd.read_csv('../Output/'+GSE+'/'+suff+'/'+GSM+'-'+suff+'.csv', index_col=0)
     # Find the correlation of the matrix
     corr_df = df.corr(method='spearman')
     # Get the pvalues
@@ -37,21 +37,21 @@ def aucorr(GSE, GSM):
     # change diagonal to 0. df.corr defaults diagonal to 1 for some reason
     np.fill_diagonal(p_values.values, 0)
     # Save the correlation and pvalue matrices
-    corr_df.to_csv('Output/'+GSE+'/GSEA/'+GSM+'-corr.tsv', sep='\t')
-    p_values.to_csv('Output/'+GSE+'/GSEA/'+GSM+'-pval.tsv', sep='\t')
+    corr_df.to_csv('../Output/'+GSE+'/GSEA/'+GSM+'-corr.tsv', sep='\t')
+    p_values.to_csv('../Output/'+GSE+'/GSEA/'+GSM+'-pval.tsv', sep='\t')
     # Get min-max for each signature set
     sigs = ['NefMES','NefAC','NefOPC','NefNPC']
     minmax_df = minmax(df, sigs, 'Nef')
     sigs = ['VerMES','VerCL','VerNL','VerPN']
     minmax_df = pd.concat([minmax_df, minmax(df, sigs, 'Ver')])
-    minmax_df.to_csv('Output/'+GSE+'/GSEA/'+GSM+'-minmax.tsv', sep='\t')
+    minmax_df.to_csv('../Output/'+GSE+'/GSEA/'+GSM+'-minmax.tsv', sep='\t')
 
 # List of GSM IDs
 suff = 'AUCell' if sc else 'ssGSEA'
-files = glob.glob('Output/'+GSE+'/'+suff+'/*-'+suff+'.csv')
+files = glob.glob('../Output/'+GSE+'/'+suff+'/*-'+suff+'.csv')
 GSMs = [os.path.basename(x).replace(f'-'+suff+'.csv','') for x in files]
 # Make directory for output
-os.makedirs('Output/'+GSE+'/GSEA/', exist_ok=True)
+os.makedirs('../Output/'+GSE+'/GSEA/', exist_ok=True)
 
 # Iterate over GSM samples
 for GSM in GSMs:

@@ -2,10 +2,17 @@ library(trqwe)
 library(dplyr)
 library(data.table)
 
+# Read the GSE ID from command line
+GSE = commandArgs(trailingOnly=TRUE)
+# test if there is only one argument: if not, return an error
+if (length(GSE)!=1) {
+  stop("One argument must be supplied (GSE ID)", call.=FALSE)
+} 
+
 corr_pca = function(GSE, GSM){
     print(GSM)
     # Read the correlation matrix
-    corrdf = read.delim(paste0("./Output/", GSE,'/Correlation/',GSM,'_correlation.tsv'))
+    corrdf = read.delim(paste0("../Output/", GSE,'/Correlation/',GSM,'_correlation.tsv'))
     # If the correlation matrix is null, return
     if (is.null(corrdf)) {
         return()}
@@ -19,19 +26,16 @@ corr_pca = function(GSE, GSM){
     # Sort the loadings by the first PC
     loadings = loadings[order(loadings[,1], decreasing = T),]
     # Save the loadings as a tsv
-    fwrite(exp_var, paste0("Output/", GSE,'/Corr-PCA/',GSM,'_expvar.tsv'), sep='\t', col.names=FALSE)
-    fwrite(loadings, paste0("Output/", GSE,'/Corr-PCA/',GSM,'_loadings.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
+    fwrite(exp_var, paste0("../Output/", GSE,'/Corr-PCA/',GSM,'_expvar.tsv'), sep='\t', col.names=FALSE)
+    fwrite(loadings, paste0("../Output/", GSE,'/Corr-PCA/',GSM,'_loadings.tsv'), sep='\t', col.names=TRUE, row.names=TRUE)
     
 }
 
-# GSE ID
-GSE = "GSE131928"
-
 # GSM file list
-GSMs = list.files(paste0("./Output/", GSE, "/Correlation"), "*_correlation.tsv") %>% gsub('_correlation.tsv','',.)
+GSMs = list.files(paste0("../Output/", GSE, "/Correlation"), "*_correlation.tsv") %>% gsub('_correlation.tsv','',.)
 
 # Create directory for output
-dir.create(paste0("Output/", GSE, "/Corr-PCA"), showWarnings = F, recursive = T)
+dir.create(paste0("../Output/", GSE, "/Corr-PCA"), showWarnings = F, recursive = T)
 
 # Iterate over GSM samples and generate rds
 for (i in 1:length(GSMs)){
