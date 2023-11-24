@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('GSE', type=str, nargs=1, help='GSE ID')
 GSE = parser.parse_args().GSE[0]
 
-def auninja(GSE, GSM):
+def auninja(GSE, GSM, score=None):
     print(GSM)
     df = pd.read_csv('../Output/'+GSE+'/'+suff+'/'+GSM+'-'+suff+'.csv', index_col=0)
     # Define y axis
@@ -26,11 +26,23 @@ def auninja(GSE, GSM):
     # Assign cell type by argmax
     df['CellType'] = np.argmax(df.loc[:,['NefNPC','NefOPC','NefAC','NefMES']].values, axis=1)
     # Plot the scatter
-    sns.scatterplot(data=df, x='x', y='y', hue='CellType', palette=['tab:blue','tab:green','tab:orange','tab:red'], size=1, linewidth=0, alpha=0.5)
+    if score is None:
+        score = 'CellType'
+        palette = ['tab:blue','tab:green','tab:orange','tab:red']
+        fsuff = ''
+    else:
+        # Give a colour palette from -1 to 1
+        palette = sns.color_palette('coolwarm', as_cmap=True)
+        fsuff = '_'+score
+        palette = {'NefNPC':'Blues','NefOPC':'Greens','NefAC':'Oranges','NefMES':'Reds'}
+        palette = sns.color_palette(palette[score], as_cmap=True)
+    g = sns.scatterplot(data=df, x='x', y='y', hue= score, palette=palette,size=1, linewidth=0, alpha=0.5, legend=False)
+    # Add a colourbar
+    if score != 'CellType':
+        cbar = plt.colorbar(plt.cm.ScalarMappable(cmap=palette), ax=g)
     # Remove xlabel and ylabel and legend
     plt.xlabel('Relative metamodule score')
     plt.ylabel('Relative metamodule score')
-    plt.legend([],[], frameon=False)
     # Set each corners as NPC, OPC, AC and MES
     plt.text(0.05, 0.9, 'OPC', transform=plt.gca().transAxes, ha='left', color='tab:green')
     plt.text(0.05, 0.05, 'AC', transform=plt.gca().transAxes, ha='left', color='tab:orange')
@@ -43,7 +55,7 @@ def auninja(GSE, GSM):
     plt.ylim(-y_max,y_max)
     plt.tight_layout()
     # Save the figure
-    plt.savefig('../figures/'+GSE+'/GSEA/'+GSM+'-ninjastar.svg')
+    plt.savefig('../figures/'+GSE+'/GSEA/'+GSM+fsuff+'-ninjastar.svg')
     # Close the figure
     plt.close()
     plt.clf()
@@ -57,4 +69,5 @@ os.makedirs('../figures/'+GSE+'/GSEA/', exist_ok=True)
 
 # Iterate over GSM samples
 for GSM in GSMs:
-    auninja(GSE,GSM)
+    for score in ['NefNPC','NefOPC','NefAC','NefMES', None]:
+        auninja(GSE,GSM,score)
