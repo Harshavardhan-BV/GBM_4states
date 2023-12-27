@@ -1,0 +1,306 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,subcaption,graphicx,tikz,floatrow}
+\usepackage[labelfont=bf]{caption}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{ {./figures/} }
+\usepackage[margin=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage[style=apa,
+			sorting=nyt,
+			date=year,
+			bibencoding=utf8,
+			isbn=false,
+			eprint=false,
+			dashed=false,
+            doi=false,
+			uniquelist=false,
+			maxbibnames=10,
+			minbibnames=1,
+			maxcitenames=2,
+			uniquename=init,
+			giveninits=true,
+			useprefix=false,
+			minsortnames=1,
+			maxsortnames=2]{biblatex}
+\usepackage{biblatex}
+\captionsetup{labelformat=simple}
+\DeclareCaptionSubType[Alph]{figure}
+\bibliography{References}
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+\DeclareCaptionLabelFormat{bold}{\textbf{#2}}
+\captionsetup{subrefformat=bold}
+
+\title{Proneural – Mesenchymal antagonism dominates the patterns of phenotypic heterogeneity in Glioblastoma}
+\author{Harshavardhan BV$^{a}$, Mohit Kumar Jolly$^{b,*}$
+\\
+{\scriptsize $^{a}$ IISc Mathematics Inititative, Indian Institute of Science, Bengaluru, 560012, India}\\
+{\scriptsize $^{b}$ Department of Bioengineering, Indian Institute of Science, Bengaluru, 560012, India}\\
+\scriptsize{Correspondence email: \href{mailto:mkjolly@iisc.ac.in}{mkjolly@iisc.ac.in}} }
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Abstract}
+The aggressive nature of glioblastoma (GBM) – one of the deadliest forms of brain tumours – is majorly attributed to underlying phenotypic heterogeneity. Early attempts to classify this heterogeneity at a transcriptomic level in TCGA GBM cohort proposed the existence of four distinct molecular subtypes: Proneural, Neural, Classical and Mesenchymal. Further, a single-cell RNA-seq analysis of primary tumours also reported similar 4 subtypes mimicking neuro-developmental lineages. However, it remains unclear whether these 4 subtypes identified via bulk and single-cell transcriptomics are mutually exclusive or not. Here, we perform pairwise correlations among individual genes and gene signatures corresponding to these proposed subtypes, and show that the subtypes are not distinctly mutually antagonistic in either TCGA or single-cell RNA-sequencing data. We observed that the proneural (or neural progenitor-like) – mesenchymal axis is the most prominent antagonistic pair, with the other two subtypes lying on this spectrum. These results are reinforced through a meta-analysis of over 100 single-cell and bulk transcriptomic datasets as well as in terms of functional association with metabolic switching, cell cycle and immune evasion pathways. These results suggest rethinking GBM phenotypic characterization for more effective therapeutic targeting efforts.
+
+\section{Introduction}
+
+Glioblastoma Multiforme (GBM) is a primary brain tumour that originates from the glial cells in the brain. It is classified as a grade IV glioma by the World Health Organization (WHO) due to its highly malignant nature \parencite{who2021}. GBM is not only one of the most common primary brain tumours but also one of the deadliest, with a median survival of only 15 months and a grim 5-year survival of just 6.9\% for those diagnosed with it \parencite{cbtrus, multimodalsurvival}. The standard of care for GBM patients is surgical resection followed by radiation and temozolomide (TMZ) treatment \parencite{gbmsoc}. However, given the aggressive nature of the disease, GBM recurrence is unfortunately very common \parencite{recurr}. Recurrent GBMs have an even worse prognosis with a median survival of only 25-40 weeks \parencite{multimodalsurvival}. Multiple reasons contribute to the failure of existing treatments: the unique nature of the blood-brain barrier, immunosuppressive environment, highly invasive nature, de novo and acquired drug resistance and phenotypic plasticity and heterogeneity \parencite{moleculardrugres, gbmheteroplast}. 
+
+Heterogeneity in GBM exists at many levels: functional, molecular, inter-patient and intra-tumoural \parencite{moleculardrugres}. It is a major clinical challenge due to varied susceptibilities of cellular subpopulations to treatment. Additionally, GBM cells exhibit a remarkable degree of plasticity, allowing them to adapt and evolve rapidly in response to diverse treatments \parencite{gbmheteroplast}. Similar to observations in breast cancer, lung cancer and melanoma \parencite{breaster, persisterprogs, resistpersister, diversehomo, melanomaifng, melanomares}, GBM subpopulations can also undergo genetic and/or non-genetic (reversible) cell-state transitions \parencite{diversehomo, tmzplastic, gbmscatlas}, often driving drug resistance and eventual GBM recurrence. Understanding the molecular underpinnings of such plasticity and heterogeneity is, therefore, essential.
+
+An earlier key study characterising heterogeneity in GBM used transcriptomic data from the TCGA-GBM cohort and reported 4 subtypes: Proneural (TCGA-PN), Neural (TCGA-NL), Classical (TCGA-CL), and Mesenchymal (TCGA-MES) \parencite{Verhaak}. Except for the neural subtype, other subtypes were associated with specific gene abnormalities: EGFR alterations in classical, NF1 mutations in mesenchymal, and PDGFRA and IDH1 mutations in proneural. Upon quantifying the enrichment of gene expression profiles of neural cell types in GBM, the proneural samples were highly enriched for oligodendrocytic signature, while the mesenchymal ones were strongly associated with cultured astroglial signature. Further analysis suggested that the neural subtype may be associated with contamination of normal neural cells in the GBM sample, indicating that proneural, mesenchymal and classical phenotypes may be the GBM-specific ones \parencite{neuralfake, margincompos}. Multi-region tumour sampling and single-cell RNA-sequencing (scRNA-seq) demonstrated that these different molecular subtypes can co-exist in the same tumour specimen \parencite{patelscrna, intratumor, margincompos}. These observations are reminiscent of intra-tumour heterogeneity along the proliferative-invasive spectrum in melanoma samples \parencite{melanomalandscape} and along the epithelial-mesenchymal axis in carcinomas \parencite{emtplastic,cschetero,emthetero}.
+
+To further characterise intra-tumour heterogeneity, scRNA-seq of GBM tumours from 28 adult and pediatric patients were used, and 4 meta-modules mimicking neuro-developmental lineages were identified: neural-progenitor-like (NPC-like), oligodendrocyte-progenitor-like (OPC-like), astrocyte-like (AC-like), and mesenchymal-like (MES-like) states. Each tumour analysed contained cells in at least 2 of these 4 cell-states, with varied relative ratios. These subtypes had amplifications of CDK4, PDGFRA, EGFR and NF1 respectively. Consistently, AC-like and MES-like states were found to correspond to TCGA-CL and TCGA-MES subtypes, respectively, while TCGA-PN subtype corresponded to a combination of OPC-like and NPC-like cell-states \parencite{Neftel}. Together, these landmark studies in GBM heterogeneity posited the (co-) existence of four distinct cellular states. However, whether these four cell-states are mutually exclusive or antagonistic among one another or not remains elusive. 
+
+Here, we first quantify pairwise correlations among the scores of all four proposed subtypes in TCGA and scRNA-seq datasets based on which these subtypes were proposed and demonstrate that only proneural (or neural-progenitor-like) - mesenchymal pair shows a strong antagonistic pattern. Next, we show that this antagonism is also present at the individual gene level among these two states. Finally, a meta-analysis of more than 100 bulk and single-cell RNA-seq GBM datasets endorses this analysis and reveals functional differences between proneural and mesenchymal states in terms of their association with cell cycle, metabolic status and immune evasion. Our results thus suggest that the proneural-mesenchymal switch dominates the patterns of GBM phenotypic heterogeneity.
+
+\section{Results}
+\subsection{Scoring of subtype-specific signatures reveal that not all cell-states are mutually antagonistic}
+
+\begin{figure}[h!]
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{sigoverlap}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{ninjastar}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{4star}
+    \end{subfigure}
+    \centering
+    \includegraphics[width=\textwidth]{Figure1}
+    \caption{\textbf{Subtypes defined for GBM:} \subref{sigoverlap}: Representation of number of genes within each geneset, highlighting the common genes between different genesets. \subref{ninjastar}: Recreation of the two-dimensional representation of cellular states as defined in \cite{Neftel}. \subref{4star}: Two-dimensional representation coloured by scores for each subtype: (i) OPC-like, (ii) NPC-like, (iii) AC-like, (iv) MES-like. }
+    \label{introfig}
+\end{figure}
+
+The four proposed sub-types were classified at a transcriptomic level and thus characterised by sets of genes highly expressed in each of them \parencite{Neftel, Verhaak}. Thus, we quantified the enrichment of different gene sets in each sample in a given cohort. If the proposed subtypes correspond to distinct cell-states, we expect to see antagonism or independence in the expression patterns of these gene sets. Mutually exclusive or antagonistic gene expression profiles can emerge from one set of genes/master regulators of one phenotype suppressing those from the other sets, as witnessed in other cancers exhibiting phenotypic plasticity \parencite{melanomaswitch,sclcpheno}. Thus, antagonism in gene regulatory networks is expected to manifest as a negative correlation between the enrichment scores of such gene sets. However, if the gene modules corresponding to different phenotypes do not regulate one another, we expect to see no correlation among their scores. As expected, the genesets corresponding to these four subtypes - (TCGA-CL, TCGA-MES, TCGA-PN, TCGA-NL) \parencite{Verhaak} or (NPC-like, APC-like, OC-like and MES-like) \parencite{Neftel} - do not show much overlap (\autoref{sigoverlap}).
+
+We first recreated the graphical representation presented earlier \parencite{Neftel} using corresponding enrichment scores of the signatures corresponding to the proposed four subtypes (\autoref{ninjastar}). This projection adopts a discontinuous x-axis, which, while being a valid stylistic choice, introduces a visual separation that may inadvertently emphasise the distinctions between cell states, leading to the impression that the four states are all mutually antagonistic and that they correspond to four independent dimensions. Moreover, the utilisation of the “max" operation between sets of subtypes for the y-axis could contribute to this exaggeration. Thus, we questioned whether this portrayal could be inadvertently obscuring the true and intricate relationships between the identified states. First, we quantified the scores of individual subtypes on this projection (\autoref{4star}). The scores of a particular subtype are relatively high in the “arm" corresponding to that subtype but not exclusive; also, the discontinuity of the x-axis becomes clearly visible with a break in the gradient. This analysis suggested that the use of a discontinuous x-axis was at least partly distorting the true relationship among the proposed subtypes in the underlying gene expression space, and thus, unlike the visual impression created, the four subtypes may not be as mutually exclusive among one another.
+
+\begin{figure}[h!]
+    \begin{subfigure}[c]{\textwidth}
+            \phantomcaption
+            \label{ssgseacorr}
+        \end{subfigure}
+        \begin{subfigure}[c]{\textwidth}
+            \phantomcaption
+            \label{auscatter}
+        \end{subfigure}
+    \centering
+    \includegraphics[width=\textwidth]{Figure2}
+    \caption{\textbf{Trends revealed by the Signature scores:} \subref{ssgseacorr}: Heatmaps visualizing spearman correlation of ssGSEA and AUCell scores for subtypes in the (i) Neftel signature, (ii) Verhaak signature, and (iii) comparison between subtypes across these signatures across (top) GSE131928 and (bottom) TCGA-GBM  datasets. The presence of “$*$" indicates that the correlation has a p-value $<$ 0.05. \subref{auscatter}: Scatterplots showing AUCell scores from the GSE131928 dataset, comparing scores between genesets that exhibit negative and positive correlations. For the (i) Neftel signature, the comparison is between NPC-like-vs-MES-like and NPC-like-vs-OPC-like, and for the (ii) Verhaak signature, the comparison is between MES-vs-PN and MES-vs-CL.}
+    \label{ssgsea}
+\end{figure}
+
+We investigated the two source datasets: GSE131928 and TCGA-GBM, from which the Neftel signature and Verhaak signature were derived, respectively. In both these groups of four genesets each, we noticed that not all pairwise correlations are negative; instead, many pairs show positive correlation as well, indicating that they are not distinct (\autoref{ssgseacorr}). Particularly, we noticed that the Neftel NPC-like and MES-like signatures are negatively correlated and, hence, antagonistic. Similarly, for the Verhaak signatures, the PN and MES pair are antagonistic. When comparing across the Neftel and Verhaak signatures, we had the following observations: a) Neftel NPC-like and Verhaak PN are positively correlated with each other, b) Neftel MES-like and Verhaak MES are positively correlated with one another, and c) both Neftel NPC and Verhaak PN are negatively correlated with the MES signatures from both the geneset cohorts, further endorsing previous observations about NPC-like and PN may correspond to similar cell-states \parencite{Neftel}.
+
+The difference between the pairs of states that are negatively and positively correlated is further illustrated through the scatter between the pairs of scores coloured by the maximum score in the GSE131928 dataset (\autoref{auscatter}). The cells with high PN/NPC enrichment tend to have very low or no expression of MES genes. Interestingly, the cells with high enrichment of AC-like or OPC-like in Neftel signatures and CL or NL in Verhaak signatures lie in between the gradient of scores in these axes. On the other hand, the cells that are highly enriched for OPC-like tend to have comparable expression of NPC-like as well. This trend is observed for the other pairs as well (\autoref{auscattersupp}) and in the TCGA-GBM dataset (\autoref{ssgseascatter}). 
+
+Together, our results indicate that across the two datasets used for identifying the two sets of four subtypes \parencite{Neftel, Verhaak}, the proneural (PN) (or equivalently NPC-like) and mesenchymal (or equivalently MES-like) show strongest antagonistic trends, despite little overlap in gene signatures of PN \& NPC-like or MES \& MES-like.
+
+\subsection{NPC/PN-MES antagonism is prevalent at the gene level as well}
+
+\begin{figure}[h!]
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{exprcorr}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{jmetric}
+    \end{subfigure}
+    \textbf{\begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{pcload}
+    \end{subfigure}}
+    \centering
+    \includegraphics[width=\textwidth]{Figure3}
+    \caption{\textbf{Analysis for antagonism of signature genes in the TCGA-GBM dataset:} \subref{exprcorr} Heatmaps visualizing spearman correlation of gene expression levels in the (i) Neftel signature and (ii) Verhaak signature. The colors beside the heatmap represent the geneset to which each gene belongs. \subref{jmetric}: J-Metric values for various combinations of subtypes for (i) Neftel signature and (ii) Verhaak signature. \subref{pcload}: PC1 loadings of PCA based on the gene expression levels in the (i) Neftel signature and (ii) Verhaak signature. The inset shows the geneset to which the top 10\% of genes belong for both positive and negative loadings.}
+    \label{expr}
+\end{figure}
+
+After investigating pairwise correlations at the gene signature level, we then focused on the gene level to confirm that our observations were not an artifact of the gene set enrichment scoring methods. Thus, we calculated pairwise correlation among all genes involved in the 4 Neftel gene sets together and noticed that most MES genes correlated positively with one another, most NPC genes correlated positively with each other, but most MES genes were antagonistic to most NPC ones (\autoref{exprcorr}). Similar observations were made for Verhaak signatures as well – where genes from PN, MES and CL clustered separately - and for both the source datasets – GSE 131928 and TCGA-GBM (\autoref{exprcorr}, \autoref{exprcorrsupp}). These observations suggest that antagonism seen among the enrichment scores of MES vs NPC or PN emerges from coordinated expression profiles of genes showing a negative correlation.
+
+To quantify these associations, we define J-metric (\autoref{jmetric_eqn}) that quantifies the extent of positive correlation among genes in the same geneset and extent of negative correlation among those across genesets \parencite{topojmetric}. J-metric calculations further support our observations that the MES-NPC or the MES-PN gene sets are the most antagonistic ones among all six pairwise correlations (\autoref{jmetric},\autoref{jmetricsupp}) (Neftel: MES-AC, MES-OPC, MES-NPC, AC-OPC, AC-NPC, OPC-NPC and Verhaak: MES-CL, MES-NL, MES-PN, CL-NL, CL-PN, NL-PN).
+
+Next, we interrogated whether this antagonistic relationship also corresponds to the highest variance. To investigate this, we conducted Principal Component Analysis (PCA) on the gene expression levels within each signature. The first principal component (PC1) represents the axis that captures the greatest variance. Looking at the PC1 loadings for TCGA and GSE131928 (\autoref{pcload}, \autoref{pcloadsupp}), we noticed that for the Neftel signatures, MES genes dominate on loadings with positive PC1 coefficient and NPC genes on the negative loadings. Similarly, for the Verhaak signatures, the PN genes dominate on the positive loadings and the MES genes on the negative loadings. Together, these results suggest that the MES- NPC/PN antagonism seen at signature levels percolates to individual genes, and among all the six possible pairwise analyses, MES and NPC (or PN) genes show distinct mutually exclusive patterns.
+
+\subsection{Meta-analysis across multiple transcriptomic datasets reveal the functional consequences of NPC/PN-MES antagonism}
+\begin{figure}[h!]
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{bulkmetanal}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{scmetanal}
+    \end{subfigure}
+    \centering
+    \includegraphics[width=\textwidth]{Figure4}
+    \caption{\textbf{Meta-analysis for trends in correlation of subtypes:} \subref{bulkmetanal}: Analysis of Bulk RNASeq datasets. \subref{scmetanal}: Analysis of Single-Cell RNASeq datasets. The left panel displays the volcano plot of correlation between NPC-vs-MES and PN-vs-MES for (i) Neftel Signature and (ii) Verhaak Signature. A dataset with correlation coefficient $<$ -0.3 and p-value $<$ 0.05 is categorised as negatively correlated, with correlation coefficient $>$ 0.3 and p-value $<$ 0.05 is categorised as positively correlated and NA otherwise. The right panel displays the stacked bar plot of these counts for correlation between different combinations of subtypes.}
+    \label{metanal}
+\end{figure}
+
+To test for the generalisability of our results, we investigated if the trends we observe hold up across multiple transcriptomic datasets. We examine 80 bulk RNA-sequencing datasets with samples spanning across patient tumour samples, mouse models and cell-lines to capture the maximum variability. For datasets with samples across different organisms (mouse models, patient samples) and contexts (in vitro, in vivo), we segregated them accordingly and combined the samples, totalling to 90 consolidated samples across all datasets. In each consolidated sample, we calculated the correlation coefficient between the scores of each pair of subtypes. For the correlations between Neftel MES-like and Neftel NPC-like, out of the 38 samples that show a significant correlation, 33 samples (86.8 \%) are negatively correlated, with just 5 being positive. This pair shows the most bias for being negatively correlated among all the possible combinations, with a few of the other pairs showing bias towards being positively correlated (\autoref{bulkmetanal}). Similarly, for the correlations between Verhaak MES and Verhaak PN, of the 48 samples that show a significant correlation, 45 (93.8 \%) of them are negatively correlated, with just 3 being positive. This pair shows the most bias for negatively correlated among all possible pairwise comparisons.
+
+However, when analysing bulk transcriptomic datasets, positive correlations could also arise due to the co-occurrence of those subtypes in a tumour and thus may not reflect their genuine transcriptomic associations. To address this, we have looked at 26 single-cell RNASeq datasets, with 30 consolidated samples as well. Again, here we see the Neftel MES and Neftel NPC pair to have the most bias for negatively correlated of 13 (86.7\%) out of 15 significantly correlated, which is the highest bias for negatively correlated (\autoref{scmetanal}). For the Verhaak signature, the MES-PN pair have the most bias for negatively correlated of 23 (100\%) out of 23 significantly correlated.
+
+\begin{figure}[ht]
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{metapdl1}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{metaglyc}
+    \end{subfigure}
+    \centering
+    \includegraphics[width=\textwidth]{Figure5}
+    \caption{\textbf{Meta-analysis for trends in correlation with immune and metabolic signatures for bulk datasets:} \subref{metapdl1}: Correlation of subtypes with PD-L1 Signature score. \subref{metaglyc}: Correlation of subtypes with Hallmark Glycolysis score. The left panel displays the volcano plot of correlation between (top left) Signature-vs-NPC/PN and (bottom left) Signature-vs-MES for (i) Neftel Signature and (ii) Verhaak Signature. A dataset with correlation coefficient $<$ -0.3 and p-value $<$ 0.05 is categorised as negatively correlated, with correlation coefficient $>$ 0.3 and p-value $<$ 0.05 is categorised as positively correlated and NA otherwise. The right panel displays the stacked bar plot of these counts for correlation between different subtypes with either of the signatures.}
+    \label{metaxis}
+\end{figure}
+
+Next, we checked if the antagonism between MES-NPC/PN has any functional relevance. To characterise the immune infiltration, we looked at the correlation of PD-L1 signature scores with the subtype specific scores. With the bulk datasets, Neftel NPC and Verhaak PN showed the highest negative correlation with PD-L1 of 33 out of 34 (97\%) and  35 out of 38 (92.1\%) respectively. Meanwhile, the Neftel and Verhaak MES showed the highest positive correlation with PD-L1 of 49 out of 55 (89.1\%) and 55 out of 60 (91.7\%) respectively (\autoref{metapdl1}). To characterise the metabolic activity, we looked at the correlation of Glycolysis signature scores with the subtype specific scores. With the bulk datasets, Neftel NPC and Verhaak PN showed the highest negative correlation of 24 out of 39 (61.5\%) and  29 out of 42 (69\%) respectively, while, the Neftel and Verhaak MES showed the highest positive correlation of 60 out of 61 (98.4\%) and 57 out of 60 (95\%) respectively (\autoref{metaglyc}). Similarly, for proliferative activity, we looked at the correlation with KEGG cell cycle signature score. With the bulk datasets, Neftel NPC and Verhaak PN showed the highest positive correlation of 18 out of 28 (64.3\%) and  34 out of 40 (85\%) respectively, while, the Neftel and Verhaak MES showed the highest negative correlation of 19 out of 38 (50\%) and 24 out of 60 (63\%) respectively (\autoref{metacc}).
+
+Similar trends in general are observed with the single cell datasets as well, however, these should be treated with caution given the low number ($<$10) of cases showing significant correlation. Generally, the MES signatures are more negatively correlated with KEGG cell cycle (\autoref{metasccc}), and, positively with PD-L1 (\autoref{metascpdl1}) and glycolyis (\autoref{metascglyc}) while, NPC/PN are positively with KEGG cell cycle and negatively with PD-L1 and glycolysis. Together these results points towards NPC/PN and MES occupying opposing ends of the functional spectrum.
+
+\section{Discussion}
+Our in-depth analysis underscores that not all four proposed GBM subtypes can be unequivocally categorized as distinct entities. It is apparent that, within this classification, some subtypes exhibit a level of similarity that prevents us from asserting their distinctiveness. However, we noticed consistently that the proneural/mesenchymal axis (as per \cite{Verhaak} classification) or neural progenitor-like/mesenchymal-like axis (as per \cite{Neftel} classification) are the most notably antagonistic pairs. This antagonistic relationship, together with their inverse relationships with functional attributes (cell cycle, immune evasion, metabolism) as identified via our meta-analysis, implies a clear demarcation between these two subtypes, rendering them genuinely distinct states.
+
+Our results are reminiscent of previous single-cell/single-nucleus RNA-seq observations of a cohort of primary tumours showing that phenotypes of proliferating GBM cells lie along a single axis of variation ranging from proneural to mesenchymal \parencite{prolif1axis}. Diverse biological phenotypes being mostly explained by Principal Component 1 (PC1) axis has also been observed for other instances of cancer cell plasticity: epithelial-mesenchymal transition in carcinomas, and proliferative-invasive switch in melanomas \parencite{pc1teams}, suggesting this feature to be a more generic occurrence than only in GBM. Transcriptional variability along the proneural-mesenchymal axis also impacts drug sensitivity \parencite{gbmclonal}, similar to the association of EMT with resistance to chemotherapy, targeted therapy and immune checkpoint blockade therapy \parencite{emtresist, breaster, emtimmuno}. Consistently, recurrent GBMs are enriched in a mesenchymal state \parencite{gbmscatlas}. This variability also has implication in the development of targeted therapy. For example, a drug aimed at the NPC-like state can also impact cells in the OPC-like state, given their transcriptional similarity. Conversely, the MES-like state is expected to be refractory to the drug targeting NPC-like state.
+
+Our meta-analysis suggests that mesenchymal subtype is relatively enriched in glycolytic traits, a behaviour validated in metabolic differences between proneural and mesenchymal tumor-initiating cells \parencite{gbmmetabol, glycmes}. The observed association of PD-L1 with mesenchymal subgroup in GBM \parencite{gbmpdl1vesc, gbmpdl1prog, immsubtype} also reinforces our analysis; functionally, PD-L1 can trigger more aggressive GBM behaviour through the downstream Ras/Erk signaling. The independent association of both PD-L1 and glycolysis with worse patient outcomes in GBM \parencite{gbmpdl1expr, gbmpdl1prog} suggests more aggressive behaviour of MES phenotype, given the enrichment of both glycolysis and PD-L1 levels in MES subtype. Concurrent enrichment of glycolysis and PD-L1 was found to be associated with worse overall survival across multiple cancer types as well \parencite{pdl1pemt}.
+
+Our results establish important functional differences between proneural and mesenchymal states and suggest rethinking GBM phenotypic classification. Thus, future efforts to characterize GBM phenotypic plasticity and heterogeneity should incorporate both genetic and non-genetic (transcriptional, epigenetic, metabolic) components, given increasing evidence about the interplay of both components in cancer cell adaptation to therapeutic attacks \parencite{drugpheno, druggennongen, garofano}. Further, the mapping of underlying gene regulatory networks enabling phenotypic heterogeneity – as done in EMT, neuroendocrine differentiation in small cell lung cancer, and phenotypic switching in melanoma \parencite{combiemt, mirnaemt, sclctfn, sclchybrid, melanomagrn} - is still in its infancy in GBM \parencite{gbmgrntmz, gbmgrn}. A hallmark of these networks across the cancer types is the presence of “teams” of mutually inhibitory players that can allow for co-existence of cell-states in a population and most variability in phenotypic space residing along the PC1 axis \parencite{emtlandscape, pc1teams, topojmetric, melanomagrn}. Whether such “teams” exist for proneural vs mesenchymal phenotypes remains elusive as of yet. 
+
+Overall, the results presented here across bulk and single-cell transcriptomics demonstrate that proneural-mesenchymal axis dominates the patterns of phenotypic heterogeneity in GBM, and cells lying along this axis have varied functional traits in terms of metabolism and immune-evasion. Such extensive meta-analysis conducted for over 100 datasets offers an unbiased view of GBM heterogeneity, and highlights clinical implications of its accurate classification at both diagnostic and therapeutic aspects. Moreover, it can be a first key step to narrow down on the molecular mechanisms shaping these low-dimensional phenotypic heterogeneity patterns. 
+
+\section{Methods}
+\subsection{Datasets and preprocessing}
+All the datasets are publicly available and given in \href{file://./Supplementary/TableS1.csv}{Table S1} and \href{file://./Supplementary/TableS2.csv}{Table S2} for single-cell and bulk RNA sequencing datasets respectively. The datasets with the GSE IDs are available and downloaded from the Gene Expression Omnibus (GEO) website. Other datasets such as The Cancer Genome Atlas (TCGA), Chinese Glioma Genome Atlas (CGGA), Glioma Longitudinal AnalySiS (GLASS), Cancer Cell Line Encyclopedia (CCLE), QCell were downloaded from their respective website. 
+
+We consolidated all the samples from the same datasets into a single count matrix, except for instances where there were variations in the model system or sequencing platform, under which circumstances they were treated separately. Only the tumour cells were selected for the single-cell datasets for which metadata was available. Finally, all the bulk datasets, were normalised to log transcripts per million ($log_2(TPM)$) and, for the single cell datasets, they were log normalised. 
+
+\subsection{Scoring of Signatures}
+The Verhaak signatures and the pathways signatures for Hallmark Glycolysis and KEGG cell-cyle were obtained from MSigDB \parencite{msigdb}. The Neftel signatures and signature for PD-L1 were obtained from previous reports \parencite{Neftel, pdl1}. These signatures are given in \href{file://./Supplementary/TableS3.csv}{Table S3}.
+
+The scoring of bulk datasets were done using ssGSEA \parencite{ssgsea} given by:
+\begin{equation}
+ES(G,S) = \sum_{i=1}^N \left[ \underbrace{\sum_{r\in G, j\le i}\frac{|r_j|^{(1/4)}}{\sum_{r_j\in G}|r_j|^{(1/4)}}}_{\text{ECDF of genes in signature}} - \underbrace{\sum_{r\notin G, j\le i} \frac{1}{N - N_G}}_{\text{ECDF of background genes}}\right]
+\label{ssgsea_eqn} 
+\end{equation}
+Where,\\
+$G_i =$ Gene Set i\\
+$N_i =$ Number of genes in set i\\
+$r_j =$ Rank of gene j\\
+
+The implementation of ssGSEA in GSEAPy \parencite{gseapy} was used and the normalised expression scores were used for further analysis. The scoring of the single-cell datasets were done using AUCell from the SCENIC package in R \parencite{aucell}. Pairwise correlations between the scores were done with \texttt{spearmanr} function in SciPy. 
+
+\subsection{Correlation of Gene expression}
+The expression levels of the genes for a particular signature were selected. The pairwise spearman correlations were computed using the \texttt{cor} function in R. These correlations were then used to group together genes with similar expression patterns through hierarchical clustering, which was accomplished using the \texttt{clustermap} function in seaborn.
+
+To quantify the antagonism between the different genesets, the J-Metric \parencite{topojmetric} was used given by:
+
+\begin{equation}
+J = \underbrace{\sum_{x,y \in G_1} \frac{\rho_r(x,y)}{4 {N_1}^2} + \sum_{x,y \in G_2} \frac{\rho_r(x,y)}{4 {N_2}^2}}_{\text{Correlation within genesets}} - \underbrace{\sum_{x \in G_1, y \in G_2} \frac{\rho_r(x,y)}{2  N_1 N_2}}_{\text{Correlation across genesets}}
+\label{jmetric_eqn}
+\end{equation}
+Where, \\
+$G_i =$ Gene Set i\\
+$N_i =$ Number of genes in set i\\
+$\rho_r(x,y) =$ Spearman correlation of gene x with gene y\\
+
+A higher value of J-metric corresponds to more antagonism between the genesets. A value closer to 1 indicates that the within geneset correlation is more positive and the across geneset correlation is more negative. Whereas, a value closer to 0 indicates the correlation within geneset and across geneset to be of similar levels.
+
+\subsection{PCA of Gene expression}
+Principal Component Analysis (PCA) was done on the expression levels of all the genes for each signature using \texttt{prcomp} function in R. Subsequently, the loadings of the first principal component (PC1) were visualized in a bar plot, sorted by their values. To further analyse these results, the top 10\% of genes were selected based on their loadings in PC1, both in the positive and negative directions. The counts of genes belonging to each geneset were then quantified.
+
+\subsection{Code availability}
+The scripts used for analysis and the processed data are available at:\\
+\url{https://github.com/Harshavardhan-BV/GBM_4states}
+
+\section{Author contributions}
+MKJ conceptualised and designed the study. HBV performed the analysis. HBV and MKJ wrote and edited the manuscript.
+
+\section{Acknowledgements}
+HBV is supported by the Prime Minister’s Research Fellowship (PMRF). MKJ was supported by Ramanujan Fellowship (SB/S2/RJN-049/2018) by the Science and Engineering Research Board (SERB), Department of Science and Technology, Government of India.
+
+\section{Conflict of Interest}
+The authors declare no conflict of interest.
+
+\printbibliography 
+
+\newpage
+\section{Supplementary Material}
+\beginsupplement
+
+\begin{figure}[h]
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{auscattersupp}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{ssgseascatter}
+    \end{subfigure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/FigureS1}
+    \caption{\subref{auscattersupp}: Scatterplots showing AUCell scores from the GSE131928 dataset for the remaining combinations of genesets for (i) Neftel signatures and (ii) Verhaak signatures. \subref{ssgseascatter}: Scatterplots showing ssGSEA scores from the TCGA dataset for all the combinations of genesets. The left row pertains to Neftel signatures, while the right row pertains to Verhaak signatures.}
+    \label{ssgseasupp}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{exprcorrsupp}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{jmetricsupp}
+    \end{subfigure}
+    \textbf{\begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{pcloadsupp}
+    \end{subfigure}}
+    \centering
+    \includegraphics[width=\textwidth]{figures/FigureS2}
+    \caption{\textbf{Analysis for antagonism of signature genes in the GSE131928 dataset:} \subref{exprcorrsupp} Heatmaps visualizing spearman correlation of gene expression levels in the (i) Neftel signature and (ii) Verhaak signature. The colors beside the heatmap represent the geneset to which each gene belongs. \subref{jmetricsupp}:  J-Metric values for various combinations of subtypes for (i) Neftel signature and (ii) Verhaak signature signature. \subref{pcloadsupp} PC1 loadings of PCA based on the gene expression levels in the (i) Neftel signature and (ii) Verhaak signature. The inset shows the geneset to which the top 10\% of genes belong for both positive and negative loadings.}
+    \label{exprsupp}
+\end{figure}
+
+\begin{figure}[h]
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{metacc}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{metasccc}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{metascpdl1}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+        \phantomcaption
+        \label{metascglyc}
+    \end{subfigure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/FigureS3}
+    \caption{\textbf{Meta-analysis for trends in correlation with cellcycle, immune and metabolic signatures for bulk and single datasets:} \subref{metacc}: Stacked bar plot illustrating the counts of correlations between subtypes and KEGG Cell Cycle signature score in bulk datasets. \subref{metasccc}: Correlations between subtypes and KEGG Cell Cycle signature score for Single-Cell datasets. \subref{metascpdl1}: Correlations between subtypes and PD-L1 signature score for Single-Cell datasets. \subref{metascglyc}: Correlations between subtypes and Hallmark Glycolysis score for Single-Cell datasets.}
+    \label{metaaxissupp}
+\end{figure}
+
+\end{document}
