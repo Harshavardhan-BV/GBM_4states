@@ -2,8 +2,13 @@ library(dplyr)
 library(trqwe)
 library(data.table)
 # List all the files within subdirectories of ./Data/TCGA
-files <- list.files(path = "../Data/TCGA", recursive = TRUE, full.names = TRUE, pattern = "*.tsv")
-
+files <- list.files(path = "../Data/TCGA", recursive = TRUE, full.names = TRUE, pattern = "*.rna_seq.augmented_star_gene_counts.tsv$")
+# Get basename and remove the pattern
+flies = gsub('.*/','',files)
+# Read the metadata
+metdat = read.delim('../Data/TCGA/gdc_sample_sheet.TCGA-GBM.tsv', sep='\t')
+# Arrange metdat by the file names
+metdat = metdat[match(flies, metdat$File.Name),]
 for (file in files){
     print(file)
     # Read the count matrix for all 
@@ -22,7 +27,7 @@ for (file in files){
     }
 }
 # Set the column names
-colnames(counts_all)[2:ncol(counts_all)] = seq(1,ncol(counts_all)-1)
+colnames(counts_all)[2:ncol(counts_all)] = metdat$Sample.ID
 # Merge duplicate row names and take mean
 counts_all = counts_all %>%
   group_by(gene_name) %>%

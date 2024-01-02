@@ -11,6 +11,9 @@ Analysis of transcriptomic data to understand the relationship of the 4 states g
     - Seurat
     - hdf5r
     - biomaRt
+    - survival
+    - survminer
+    - ggforestplot
 - Python 
     - [requirements.txt](./requirements.txt)
 
@@ -77,6 +80,10 @@ python volc_GSEA.py
 ```bash
 python barplot_GSEA.py
 ```
+- Get the heatmap of the correlation dataset-wise
+```bash
+python hmap_meta.py
+```
 
 ### 3. Correlation of GBM signature expression
 - Get the correlation matrix of gene expression of the signatures
@@ -109,6 +116,34 @@ Rscript PCA_States.R GSEID
 - Plot the PCA loadings and explained variance of the GBM signature expression for a particular dataset
 ```bash
 python loadingsplot_PCA_states.py GSEID
+```
+
+### 5. TF associations 
+- Get the correlation matrix of gene expression with each of the signature scores
+```bash
+cd GRN
+Rscript Gene_GSEA_Corr.R GSEID -sc #if single cell data
+#(or)
+Rscript Gene_GSEA_Corr.R GSEID #if bulk data
+```
+#### 5.1 Plot correlation of TF with NPC/PN vs MES (Figure 6A/S4A)
+- Plot the scatter plot of each gene/TF with x coordinate as correlation of TF with NPC/PN and y coordinate as correlation of TF with MES. Also saves a list of top correlated TFs
+```bash
+python plot_Gene_GSEA_Corr.py GSEID 
+```
+#### 5.2 Heatmap of top TF correlation (Figure 6B/S4B)
+- Get the pairwise spearman correlation of the top correlated TFs across the cells/samples
+```bash
+Rscript TF_Corr.R GSEID
+```
+- Plot the heatmap of the top correlated TFs for a particular dataset
+```bash
+python plot_TF_Corr.py GSEID
+```
+#### 5.3 Survival analysis of top TFs (Figure 6C/S4C)
+- Perform survival analysis and get the forest plot of HR and KM plots for the top correlated TFs for a particular dataset
+```bash
+Rscript HR_KM_TF.R GSEID
 ```
 
 ## Additional Miscellanous analysis
@@ -189,7 +224,7 @@ Rscript PCA_AUCell_corr.R GSEID
 ```bash
 python python hmap_PCA_AUCell_corr.py GSEID
 ```
-##### 4.6 PCA of correlation 
+#### 4.6 PCA of correlation 
 - Get the PCA loadings and explained variance of the correlation matrix of the signature expression
 ```bash
 Rscript PCA_Corr.R GSEID
@@ -198,7 +233,7 @@ Rscript PCA_Corr.R GSEID
 ```bash
 python loadingsplot_PCA_Corr.py GSEID
 ```
-##### 4.7 Non-linear dimensionality reduction of GBM signature expression
+#### 4.7 Non-linear dimensionality reduction of GBM signature expression
 - Get the 2D t-SNE and UMAP plots based on expression of GBM signature genes for a particular dataset
 ```bash
 python tSNE_states.R GSEID
